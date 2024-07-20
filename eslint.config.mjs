@@ -10,7 +10,7 @@ export default [
 	rules: {
 	  'quotes': ['error', 'double'],
 	  'indent': ['error', 4],
-
+	  'no-unused-labels': 'warn'
 	}},
   { languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } } },
   {languageOptions: { globals: {...globals.browser, ...globals.node} }},
