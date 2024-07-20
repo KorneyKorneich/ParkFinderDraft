@@ -28,7 +28,7 @@ import {
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
-
+//
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
