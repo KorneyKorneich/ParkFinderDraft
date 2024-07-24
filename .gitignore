@@ -3,7 +3,6 @@
 .DS_Store
 .env
 /ios/build
-!/ios/Pods/
+ios/Pods
 package-lock.json
 .idea
-
