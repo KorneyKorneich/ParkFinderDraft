@@ -1,10 +1,14 @@
 {
-  "name": "ParkFinder",
+
+  "name": "ParkingFinder",
+
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+
+    "ios": "react-native run-ios && react-native run-iosnpm",
+
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
@@ -29,7 +33,9 @@
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
     "babel-plugin-module-resolver": "^5.0.2",
-    "eslint": "^9.7.0",
+
+    "eslint": "^8.56.0",
+
     "eslint-plugin-react": "^7.35.0",
     "globals": "^15.8.0",
     "jest": "^29.6.3",

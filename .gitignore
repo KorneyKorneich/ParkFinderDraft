@@ -1,7 +1,8 @@
 # OSX
 #
 .DS_Store
-
+.env
+Packge-lock.json
 # Xcode
 #
 build/
@@ -58,6 +59,7 @@ yarn-error.log
 # Ruby / CocoaPods
 **/Pods/
 /vendor/bundle/
+Podfile.lock
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
@@ -72,3 +74,4 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
