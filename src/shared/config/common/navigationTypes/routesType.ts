@@ -4,4 +4,4 @@ export type RootStackParamList = {
     AuthScreen: undefined;
     DrawerNavigator: undefined;
     ParkListScreen: undefined;
-};
+}; 
