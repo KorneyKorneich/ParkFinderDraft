@@ -1,1 +1,1 @@
-export type { UserStoreSchema } from "@entities/user/userStore.cfg.ts";
+export type { UserStoreSchema } from "./user/userStore.cfg.ts";
