@@ -15,5 +15,3 @@ const ParkListScreen = () => {
 };
 
 export default ParkListScreen;
-
- 
