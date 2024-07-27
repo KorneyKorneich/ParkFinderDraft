@@ -5,13 +5,13 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@shared": ["./shared/index.ts"],
-      "@entities": ["./entities/index.ts"],
-      "@screens": ["./screens/index.ts"],
+      "@shared/*": ["src/shared/*"],
+      "@entities/*": ["src/entities/*"],
+      "@screens/*": ["src/screens/*"]
     }
   },
   "include": ["src/**/*"],
-  "exclude" : ["node_modules"]
+  "exclude": ["node_modules"]
 }

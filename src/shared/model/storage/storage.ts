@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import * as process from "node:process";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_NATIVE_APP_FIREBASE_API_KEY,
@@ -11,5 +11,6 @@ const firebaseConfig = {
 	appId: process.env.REACT_NATIVE_APP_FIREBASE_APP_ID
 };
 
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+export const FIREBASE_APP = initializeApp(firebaseConfig);
+export const FIRESTORE_DB = getFirestore(FIREBASE_APP);
+export const FIREBASE_AUTH = getAuth(FIREBASE_APP);
