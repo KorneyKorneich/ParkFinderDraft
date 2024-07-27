@@ -1,4 +1,4 @@
-import { Nullable, UserSchema } from "src/shared/config";
+import { Nullable, UserSchema } from "@shared";
 
 export interface UserStoreSchema {
     user: Nullable<UserSchema>,
