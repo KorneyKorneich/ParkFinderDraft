@@ -1,19 +1,17 @@
 {
+  "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
     "module": "commonjs",
-    "strict": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "lib": ["esnext"],
-    "types": ["react", "react-native"]
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@shared": ["./shared/index.ts"],
+      "@entities": ["./entities/index.ts"],
+      "@screens": ["./screens/index.ts"],
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude" : ["node_modules"]
 }

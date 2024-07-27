@@ -1,4 +1,5 @@
-package com.parkfinder
+package com.ParkingFinder
+
 
 import android.app.Application
 import com.facebook.react.PackageList
