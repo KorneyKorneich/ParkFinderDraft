@@ -1,14 +1,14 @@
 import { TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import { styles } from './MyCheckBox.style';
-import MyImage from '../MyImage/MyImage';
+import { styles } from './CustomCheckBox.style';
+import CustomImage from '../CustomImage/CustomImage';
 
-interface IMyCheckBox {
+interface ICustomCheckBox {
     checkedStatus: boolean;
     onChange: (value: boolean) => void;
 }; 
 
-const MyCheckBox: React.FC<IMyCheckBox> = ({ checkedStatus, onChange }) => {
+const CustomCheckBox: React.FC<ICustomCheckBox> = ({ checkedStatus, onChange }) => {
     const [isChecked, setIsChecked] = useState<boolean>(checkedStatus);
     const checkedImg = require('../../assets/images/checkMark.png');
 
@@ -20,9 +20,9 @@ const MyCheckBox: React.FC<IMyCheckBox> = ({ checkedStatus, onChange }) => {
 
     return (
         <TouchableOpacity onPress={toggleCheckbox} style={styles.checkbox}>
-            {isChecked && <MyImage path={checkedImg} />}
+            {isChecked && <CustomImage path={checkedImg} />}
         </TouchableOpacity>
     )
 }
 
-export default MyCheckBox;
+export default CustomCheckBox;

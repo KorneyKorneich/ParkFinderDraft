@@ -1,12 +1,12 @@
 import { TextInput, TextInputProps, View } from 'react-native';
 import React from 'react';
-import { styles } from './MyTextInput.style';
+import { styles } from './CustomTextInput.style';
 
-export interface IMyTextInput extends TextInputProps {
+export interface ICustomTextInput extends TextInputProps {
 
 };
 
-const MyTextInput: React.FC<IMyTextInput> = ({ style, ...props }) => {
+const CustomTextInput: React.FC<ICustomTextInput> = ({ style, ...props }) => {
     return (
         <View style={styles.inputBox}>
             <TextInput {...props} style={[styles.input, style]} />
@@ -14,5 +14,5 @@ const MyTextInput: React.FC<IMyTextInput> = ({ style, ...props }) => {
     )
 }
 
-export default MyTextInput;
+export default CustomTextInput;
 

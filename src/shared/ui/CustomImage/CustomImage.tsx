@@ -1,16 +1,16 @@
 import { Image, StyleProp, ImageStyle, ImageSourcePropType, ImageProps } from 'react-native';
 import React from 'react';
-import { styles } from './MyImage.styles';
+import { styles } from './CustomImage.styles';
 
-interface IMyImage extends ImageProps {
+interface ICustomImage extends ImageProps {
     path: ImageSourcePropType;
     style?: StyleProp<ImageStyle>
 };
 
-const MyImage: React.FC<IMyImage> = ({ path, style, ...props }) => {
+const CustomImage: React.FC<ICustomImage> = ({ path, style, ...props }) => {
     return (
         <Image {...props} style={[styles.checkedImg, style]} source={path} />
     )
 }
 
-export default MyImage;
+export default CustomImage;
