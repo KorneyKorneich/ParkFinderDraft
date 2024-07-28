@@ -10,6 +10,7 @@ const StackNavigator = () => {
 	const isLogged = useUserStore(state => state.isLoggedIn);
 	const stack = isLogged ? authorizedStackRoutes : unauthorizedStackRoutes;
 	return (
+
 		<Stack.Navigator initialRouteName="AuthScreen" screenOptions={{ headerShown: false }}>
 			{stack.map((route, index) => (
 				<Stack.Screen
@@ -20,6 +21,7 @@ const StackNavigator = () => {
 				/>
 			))}
 		</Stack.Navigator>
+
 	);
 };
 

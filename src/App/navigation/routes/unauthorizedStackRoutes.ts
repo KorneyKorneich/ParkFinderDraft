@@ -1,4 +1,4 @@
-import {AuthScreen} from "@screens/ui";
+import { AuthScreen } from "@screens/AuthScreen";
 
 export const unauthorizedStackRoutes = [
 	{

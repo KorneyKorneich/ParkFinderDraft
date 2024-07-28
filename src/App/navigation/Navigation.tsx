@@ -8,4 +8,4 @@ const Navigation = () => (
 	</NavigationContainer>
 );
 
-export default Navigation;   
+export default Navigation;

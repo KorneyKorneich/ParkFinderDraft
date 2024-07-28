@@ -9,7 +9,8 @@
     "paths": {
       "@shared/*": ["src/shared/*"],
       "@entities/*": ["src/entities/*"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/screens/*"],
+      "@widgets/*": ["src/widgets/*"]
     }
   },
   "include": ["src/**/*"],

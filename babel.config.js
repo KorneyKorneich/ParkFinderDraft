@@ -10,6 +10,7 @@ module.exports = {
 					"@shared": "./src/shared",
 					"@entities": "./src/entities",
 					"@screens": "./src/screens",
+					"@widgets": "./src/widgets",
 				},
 			},
 		],
