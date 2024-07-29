@@ -11,7 +11,7 @@ const StackNavigator = () => {
 	const stack = isLogged ? authorizedStackRoutes : unauthorizedStackRoutes;
 	return (
 
-		<Stack.Navigator initialRouteName="AuthScreen" screenOptions={{ headerShown: false }}>
+		<Stack.Navigator initialRouteName="EmailAuthScreen" screenOptions={{ headerShown: false }}>
 			{stack.map((route, index) => (
 				<Stack.Screen
 					key={index}

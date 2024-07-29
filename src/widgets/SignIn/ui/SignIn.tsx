@@ -1,8 +1,7 @@
 import { KeyboardAvoidingView } from "react-native";
 import { useState } from "react";
 import { useUserStore } from "@entities/user";
-import { CustomInput, StyleGuide } from "@shared/ui";
-import { CustomButton } from "@shared/ui/Components/CustomButton/ui/CustomButton.tsx";
+import { CustomButton, CustomInput, StyleGuide } from "@shared/ui";
 
 interface SignUpProps {
 }
@@ -25,3 +24,4 @@ export const SignIn = (props: SignUpProps) => {
 		</KeyboardAvoidingView>
 	);
 };
+

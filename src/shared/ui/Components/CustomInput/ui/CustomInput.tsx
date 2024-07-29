@@ -3,7 +3,7 @@ import { Text, TextInput, TextInputProps, View } from "react-native";
 import { styles } from "./CustomInput.styles.ts";
 
 interface CustomInputProps extends TextInputProps {
-    title: string;
+    title?: string;
     value: string;
     setValue: (value: string) => void;
 	isPassword?: boolean

@@ -12,7 +12,6 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
 	signIn: async (credentials: Credentials) => {
 		const { email, password } = credentials;
 		set({isLoading: true});
-		console.log("signIn");
 		await signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
 			.then((res) => {
 				set({
@@ -41,7 +40,6 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
 					isLoggedIn: true,
 					isLoading: false
 				});
-				console.log(res);
 			})
 			.catch((e) => {
 				set({loginError: e.message});

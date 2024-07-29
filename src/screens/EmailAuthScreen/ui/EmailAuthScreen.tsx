@@ -1,19 +1,26 @@
 import { Text, SafeAreaView, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { DeviceMobile, Google, Logo } from "@shared/ui";
-import {styles} from "./AuthScreen.styles.ts";
+import {styles} from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
-import { SignIn } from "@widgets/SignIn/SignIn.tsx";
+//TODO: move to shared
+import { UnauthorizedStackRoutesProps } from "../../../App/navigation/routes/unauthorizedStackRoutes.ts";
+import { SignIn } from "@widgets/SignIn";
 
 
-export const AuthScreen = () => {
+
+export const EmailAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 	const [isSignUp, setIsSignUp] = useState(true);
+
 
 	function handleToSignUp(){
 		setIsSignUp(true);
 	}
 	function handleToSignIn() {
 		setIsSignUp(false);
+	}
+	function handleToPhoneAuth() {
+		navigation.navigate("PhoneAuthScreen");
 	}
 
 	return (
@@ -42,7 +49,7 @@ export const AuthScreen = () => {
 					<TouchableOpacity style={styles.authWithGoogle} >
 						<Google />
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.authWithPhone} >
+					<TouchableOpacity style={styles.authWithPhone} onPress={handleToPhoneAuth}>
 						<DeviceMobile />
 					</TouchableOpacity>
 				</View>
