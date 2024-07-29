@@ -5,14 +5,14 @@ import { StyleGuide } from "@shared/ui";
 interface CustomButtonProps extends  ButtonProps{
     title: string;
 	onPress: () => void
-
+	color: StyleGuide
 }
 
 export const CustomButton = (props: CustomButtonProps) => {
-	const {title, onPress, ...rest} = props;
+	const {title, onPress, color, ...rest} = props;
 	return (
-		<View style={styles.customButtonContainer}>
-			<TouchableOpacity onPress={onPress}  color={StyleGuide.WHITE} {...rest}>
+		<View style={[styles.customButtonContainer, {backgroundColor: color}]}>
+			<TouchableOpacity onPress={onPress} {...rest}>
 				<Text style={styles.buttonTitle}>{title}</Text>
 			</TouchableOpacity>
 		</View>

@@ -1,6 +1,6 @@
 import { Text, SafeAreaView, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { Logo } from "@shared/ui";
+import { DeviceMobile, Google, Logo } from "@shared/ui";
 import {styles} from "./AuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn/SignIn.tsx";
@@ -30,6 +30,24 @@ export const AuthScreen = () => {
 				</TouchableOpacity>
 			</View>
 			{ isSignUp ? <SignUp /> : <SignIn />}
+			<View style={styles.bottomOptions}>
+				<View style={ styles.separator}>
+					<View style={styles.line} />
+					<View>
+						<Text style={styles.separatorText}>Or</Text>
+					</View>
+					<View style={styles.line} />
+				</View>
+				<View style={styles.buttonsContainer}>
+					<TouchableOpacity style={styles.authWithGoogle} >
+						<Google />
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.authWithPhone} >
+						<DeviceMobile />
+					</TouchableOpacity>
+				</View>
+
+			</View>
 		</SafeAreaView>
 	);
 };
