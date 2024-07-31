@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
-import { appColors } from "../../../constants/appColors";
+import { StyleGuide } from "@shared/ui/stylesConsts/stylesConsts";
 
 export const styles = StyleSheet.create({
     btnArea: {
-        backgroundColor: appColors.secondary,
+        backgroundColor: StyleGuide.BLUE,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         paddingVertical: 2
     },
     title: {
-        color: appColors.text,
+        color: StyleGuide.BLACK,
         fontSize: 18
     }
 });

@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
-import { appColors } from "../../../constants/appColors";
+import { StyleGuide } from "@shared/ui/stylesConsts/stylesConsts";
 
 export const styles = StyleSheet.create({
     checkbox: {
-        backgroundColor: appColors.backgroundLight,
+        backgroundColor: StyleGuide.BACKGROUNDLIGHT,
         width: 30,
         height: 30,
         borderRadius: 5,
-        borderColor: appColors.border,
+        borderColor: StyleGuide.CHECKBOXBORDER,
         borderWidth: 1
     }
 });
