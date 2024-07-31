@@ -6,3 +6,5 @@ export {DownArrow} from "./assets/DownArrow";
 export {StyleGuide} from "./stylesConsts/stylesConsts";
 export {CustomInput} from "./Components/CustomInput/ui/CustomInput";
 export {CustomButton} from "./Components/CustomButton/ui/CustomButton";
+export {CloseIcon} from "./assets/CloseIcon";
+export {VerificationImg} from "./assets/VerificationImg";

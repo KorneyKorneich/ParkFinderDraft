@@ -3,18 +3,15 @@ import { useState } from "react";
 import { useUserStore } from "@entities/user";
 import { CustomButton, CustomInput, StyleGuide } from "@shared/ui";
 
-interface SignUpProps {
-}
 
-
-export const SignIn = (props: SignUpProps) => {
-	const {} = props;
+export const SignIn = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const signIn = useUserStore(state => state.signIn);
 
-	const handleSignIn = () => {
-		signIn({email, password});
+	const handleSignIn = async () => {
+
+		await signIn({email, password}).catch(e => console.log(e));
 	};
 	return (
 		<KeyboardAvoidingView>

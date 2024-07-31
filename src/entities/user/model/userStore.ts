@@ -1,25 +1,21 @@
 import { create } from "zustand";
-import {Credentials, UserStoreSchema} from "./userStore.cfg.ts";
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "firebase/auth";
-import { FIREBASE_AUTH } from "@shared/api";
+import { Credentials, OTPProps, PhoneCreds, UserStoreSchema } from "./userStore.cfg.ts";
+import auth from "@react-native-firebase/auth";
 
 
 export const useUserStore = create<UserStoreSchema>()((set) => ({
 	user: null,
-	isLoggedIn: false,
 	isLoading: false,
 
 	signIn: async (credentials: Credentials) => {
 		const { email, password } = credentials;
 		set({isLoading: true});
-		await signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
+		await auth().signInWithEmailAndPassword(email, password)
 			.then((res) => {
 				set({
 					user: {
-						email,
 						uuid: res.user.uid
 					},
-					isLoggedIn: true,
 					isLoading: false
 				});
 			})
@@ -30,14 +26,12 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
 	signUp: async (credentials: Credentials) => {
 		const { email, password } = credentials;
 		set({isLoading: true});
-		await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password)
+		await auth().createUserWithEmailAndPassword(email, password)
 			.then((res) => {
 				set({
 					user:{
-						email,
 						uuid: res.user.uid
 					},
-					isLoggedIn: true,
 					isLoading: false
 				});
 			})
@@ -47,8 +41,26 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
 	},
 	signOut: async() => {
 		set({isLoading: true});
-		await signOut(FIREBASE_AUTH)
-			.then(() => {set({isLoading: false, isLoggedIn: false});});
+		await auth().signOut()
+			.then(() => {set({isLoading: false});});
+	},
+	phoneSignIn: async (creds: PhoneCreds) => {
+		set({isLoading: true});
+		const confirm =  await auth().signInWithPhoneNumber(`${creds.selectedCountry?.callingCode} ${creds.phone}`);
+			 set({isLoading: false});
+
+		return confirm;
+	},
+	OTPConfirm: async function handleOTPConfirm (props: OTPProps){
+		set({isLoading: true});
+		await props.confirm.confirm(props.code)
+			.then(res =>{
+				set({user:{
+					uuid: res?.user.uid as string
+				}});
+			})
+			.catch((err) => console.log(err));
+		set({isLoading: false});
 	}
 }));
 

@@ -1,7 +1,8 @@
 import { EmailAuthScreen } from "@screens/EmailAuthScreen";
 import { PhoneAuthScreen } from "@screens/PhoneAuthScreen";
 import { NativeStackScreenProps } from "react-native-screens/native-stack";
-import { RootStackParamList } from "@shared/api";
+import { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import { OTPVerification } from "@screens/OTPVerification/ui/OTPVerification.tsx";
 
 export const unauthorizedStackRoutes = [
 	{
@@ -18,14 +19,22 @@ export const unauthorizedStackRoutes = [
 			title: "PhoneAuthScreen",
 		},
 	},
+	{
+		name: "OTPVerifyScreen",
+		component: OTPVerification,
+		options: {
+			title: "OTPVerifyScreen",
+		},
+	},
+
 ];
 
 type UnauthorizedStackParamList = {
 	EmailAuthScreen: undefined;
 	PhoneAuthScreen: undefined;
+	OTPVerifyScreen: { confirmation?: FirebaseAuthTypes.ConfirmationResult };
 }
 
-export type UnauthorizedStackRoutesProps = NativeStackScreenProps<UnauthorizedStackParamList, "EmailAuthScreen">;
-
+export type UnauthorizedStackRoutesProps = NativeStackScreenProps<UnauthorizedStackParamList, "OTPVerifyScreen">;
 
 

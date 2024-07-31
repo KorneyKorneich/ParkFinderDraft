@@ -1,4 +1,4 @@
-package com.ParkingFinder
+package com.parkingfinder
 
 
 import android.app.Application
@@ -11,6 +11,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+import com.parkingfinder.BuildConfig
 
 class MainApplication : Application(), ReactApplication {
 

@@ -1,18 +1,18 @@
 import { StyleSheet } from "react-native";
 import { StyleGuide } from "@shared/ui";
+import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
 	container:{
 		width:"90%",
 		height:"100%",
 		marginHorizontal: "auto",
-
 	},
 
 	img:{
 		justifyContent: "center",
 		alignItems: "center",
-		marginTop: 35
+		marginTop: 35,
 	},
 
 	textContainer:{
@@ -22,15 +22,35 @@ const styles = StyleSheet.create({
 	},
 
 	title:{
-		fontSize: StyleGuide.HEADING_4,
+		fontSize: Fonts.HEADING_4,
+		marginBottom: 5
 	},
+
 	text:{
-		fontSize: StyleGuide.REGULAR_BODY,
+		fontSize: Fonts.REGULAR_BODY,
 
 	},
 
 	inputContainer:{
 		flexDirection: "row",
+		alignItems: "center",
+		// justifyContent: "center",
+		gap: 20,
+		marginVertical: 20,
+		paddingBottom: 20,
+		borderBottomColor: StyleGuide.GREY,
+		borderBottomWidth: 1
+
+	},
+
+	selectCountryContainer:{
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 10
+	},
+
+	phoneInput:{
+		width: "100%"
 	}
 
 
