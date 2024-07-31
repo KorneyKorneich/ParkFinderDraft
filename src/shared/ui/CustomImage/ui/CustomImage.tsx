@@ -7,10 +7,8 @@ interface ICustomImage extends ImageProps {
     style?: StyleProp<ImageStyle>
 };
 
-const CustomImage: React.FC<ICustomImage> = ({ path, style, ...props }) => {
+export const CustomImage: React.FC<ICustomImage> = ({ path, style, ...props }) => {
     return (
         <Image {...props} style={[styles.checkedImg, style]} source={path} />
     )
-}
-
-export default CustomImage;
+};

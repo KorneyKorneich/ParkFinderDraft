@@ -83,8 +83,6 @@ android {
     defaultConfig {
         applicationId "com.parkingfinder"
 
- 
-
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

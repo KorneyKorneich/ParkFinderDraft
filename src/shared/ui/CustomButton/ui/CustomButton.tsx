@@ -9,13 +9,10 @@ interface ICustomButton extends TouchableOpacityProps {
     textStyle?: StyleProp<TextStyle>;
 }
 
-const CustomButton: React.FC<ICustomButton> = ({ title, style, textStyle, onPress, ...props }) => {
+export const CustomButton: React.FC<ICustomButton> = ({ title, style, textStyle, onPress, ...props }) => {
     return (
         <TouchableOpacity onPress={onPress} {...props} activeOpacity={0.8} style={[styles.btnArea, style]}>
             <Text style={[styles.title, textStyle]}>{title}</Text>
         </TouchableOpacity>
     )
-}
-
-export default CustomButton;
-
+};

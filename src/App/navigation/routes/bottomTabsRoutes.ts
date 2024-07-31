@@ -1,4 +1,5 @@
-import {AddParkScreen, MapScreen} from "@screens";
+import { AddParkScreen } from "@screens/AddParkScreen/index";
+import { MapScreen } from "@screens/MapScreen/index";
 
 export const bottomTabsRoutes = [
 	{
