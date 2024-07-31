@@ -1,11 +1,7 @@
-# OSX
-#
 .DS_Store
 .env
-Packge-lock.json
-# Xcode
+#.idea/workspace.xml
 #
-build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -59,8 +55,6 @@ yarn-error.log
 # Ruby / CocoaPods
 **/Pods/
 /vendor/bundle/
-Podfile.lock
-
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
 
@@ -74,4 +68,3 @@ Podfile.lock
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-

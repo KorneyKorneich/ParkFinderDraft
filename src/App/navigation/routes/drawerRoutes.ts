@@ -1,5 +1,5 @@
 import BottomTabNavigator from "../navigators/BottomTabNavigator";
-import ParkListScreen from '../../../screens/ParkListScreen/ui/ParkListScreen';
+import { ParkListScreen } from '@screens/ParkListScreen/index';
 
 export const drawerRoutes = [
 	{

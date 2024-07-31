@@ -1,5 +1,5 @@
-import AddParkScreen from "../../../screens/AddParkScreen/ui/AddParkScreen";
-import MapScreen from "../../../screens/MapScreen/ui/MapScreen";
+import { AddParkScreen } from "@screens/AddParkScreen/index";
+import { MapScreen } from "@screens/MapScreen/index";
 
 export const bottomTabsRoutes = [
 	{

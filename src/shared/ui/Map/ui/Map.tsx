@@ -3,17 +3,15 @@ import React from 'react';
 import { YaMap, Marker } from 'react-native-yamap';
 import { styles } from './Map.styles';
 
-YaMap.init('d2e70461-6197-4d29-9e81-2e3f21a44678');
+export const Map = () => {
+    YaMap.init(process.env.REACT_NATIVE_APP_YANDEX_MAP_API_KEY as string);
 
-
-const Map = () => {
     return (
-            <YaMap
-                style={styles.map}
-            >
+        <YaMap
+            style={styles.map}
+        >
 
-            </YaMap>
+        </YaMap>
     )
 }
 
-export default Map;

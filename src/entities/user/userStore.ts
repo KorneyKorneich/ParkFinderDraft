@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { UserStoreSchema } from "@entities";
+import { UserStoreSchema } from "@entities/index";
 
 
 const useUserStore = create<UserStoreSchema>()((set) => ({

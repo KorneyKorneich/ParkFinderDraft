@@ -1,5 +1,5 @@
 import DrawerNavigator from "../navigators/DrawerNavigator";
-import AuthScreen from "../../../screens/AuthScreen/ui/AuthScreen";
+import {AuthScreen} from "@screens/AuthScreen/index";
 
 export const stackRoutes = [
 	{
