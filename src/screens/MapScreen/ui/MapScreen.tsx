@@ -2,8 +2,9 @@ import { View, Text, Button } from "react-native";
 import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import {RootStackParamList} from "@shared/api";
+import { Map } from "@shared/ui";
 
-export const MapScreen = () => {
+const MapScreen = () => {
 	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 	return (
 		<View>
@@ -12,3 +13,5 @@ export const MapScreen = () => {
 		</View>
 	);
 };
+
+export default MapScreen;
