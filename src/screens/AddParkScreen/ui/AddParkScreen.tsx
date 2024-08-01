@@ -1,13 +1,12 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import {styles} from './AddParkScreen.styles';
+import { View, Text } from "react-native";
+import React from "react";
 
-const AddParkScreen = () => {
-    return (
-        <View>
-            <Text>AddParkScreen</Text>
-        </View>
-    )
-}
+export const AddParkScreen = () => {
+	return (
+		<View>
+			<Text>AddParkScreen</Text>
+		</View>
+	);
+};
 
-export default AddParkScreen;
+

@@ -3,7 +3,8 @@ import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@shared/api";
 
-const ParkListScreen = () => {
+
+export const ParkListScreen = () => {
 	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
 	return (
@@ -13,7 +14,3 @@ const ParkListScreen = () => {
 		</View>
 	);
 };
-
-export default ParkListScreen;
-
- 

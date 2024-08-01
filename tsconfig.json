@@ -10,7 +10,9 @@
       "@shared/*": ["src/shared/*"],
       "@entities/*": ["src/entities/*"],
       "@screens/*": ["src/screens/*"],
-      "@features/*": ["src/features/*"]
+      "@features/*": ["src/features/*"],
+      "@widgets/*": ["src/widgets/*"]
+
     }
   },
   "include": ["src/**/*"],

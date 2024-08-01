@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { styles } from './CustomCheckBox.style';
 import { CustomImage } from '../../CustomImage/ui/CustomImage';
 
+
 interface ICustomCheckBox {
     checkedStatus: boolean;
     onChange: (value: boolean) => void;

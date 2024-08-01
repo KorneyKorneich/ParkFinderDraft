@@ -1,5 +1,5 @@
-import { AddParkScreen } from "@screens/AddParkScreen/index";
-import { MapScreen } from "@screens/MapScreen/index";
+import { AddParkScreen } from "@screens/AddParkScreen";
+import { MapScreen } from "@screens/MapScreen";
 
 export const bottomTabsRoutes = [
 	{
@@ -17,3 +17,4 @@ export const bottomTabsRoutes = [
 		},
 	},
 ];
+

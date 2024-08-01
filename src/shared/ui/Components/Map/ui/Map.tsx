@@ -13,5 +13,5 @@ export const Map = () => {
 
         </YaMap>
     )
-}
+};
 
