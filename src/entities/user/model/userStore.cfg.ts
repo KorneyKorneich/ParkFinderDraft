@@ -1,6 +1,6 @@
 import {Nullable, UserSchema} from "@shared/api";
-import { Country } from "@screens/PhoneAuthScreen/types/types.ts";
 import { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import { Country } from "@entities/country";
 
 export interface UserStoreSchema {
     user: Nullable<UserSchema>,

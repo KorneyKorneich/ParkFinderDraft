@@ -1,6 +1,6 @@
 import { EmailAuthScreen } from "@screens/EmailAuthScreen";
 import { PhoneAuthScreen } from "@screens/PhoneAuthScreen";
-import { OTPVerification } from "@screens/OTPVerification/ui/OTPVerification.tsx";
+import { OTPVerification } from "@screens/OTPVerification";
 
 export const unauthorizedStackRoutes = [
 	{

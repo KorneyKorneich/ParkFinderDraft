@@ -1,7 +1,8 @@
-import { Image, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./CountryItem.styles.ts";
 import { Country } from "../types/countyTypes.ts";
+import { CustomImage } from "@shared/ui";
 
 interface CountryItemProps {
     item: Country,
@@ -14,7 +15,7 @@ export const CountryItem = (props: CountryItemProps) => {
 
 	return (
 		<TouchableOpacity onPress={() => handleCountryPick(item)} style={styles.countryContainer}>
-			<Image source={{ uri: item.flag }} resizeMode={"contain"} style={{ width: 40, height: 25 }} />
+			<CustomImage path={{ uri: item.flag }} resizeMode={"contain"}/>
 			<Text>{item.name}</Text>
 		</TouchableOpacity>
 	);

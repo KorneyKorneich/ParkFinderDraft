@@ -1,6 +1,5 @@
 import axios from "axios";
-import { Country } from "@screens/PhoneAuthScreen/types/types.ts";
-import { CountryAPIType } from "../types/countyTypes.ts";
+import { Country, CountryAPIType } from "../types/countyTypes.ts";
 
 export async function getCountries(): Promise<Country[]> {
 	const response =  await axios.get("https://restcountries.com/v2/all");
