@@ -9,9 +9,8 @@ import {
 } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
-import { Nullable } from "@shared/api";
+import { Nullable, UnauthorizedStackRoutesProps } from "@shared/api";
 import { FirebaseAuthTypes } from "@react-native-firebase/auth";
-import { UnauthorizedStackRoutesProps } from "../../../App/navigation/routes/unauthorizedStackRoutes.ts";
 import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
@@ -43,9 +42,6 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 				setConfirmation(confirm);
 			}
 			navigation.navigate( "OTPVerifyScreen", { confirmation: confirmation } );
-
-
-
 		}catch (e){
 			console.log(e);
 		}

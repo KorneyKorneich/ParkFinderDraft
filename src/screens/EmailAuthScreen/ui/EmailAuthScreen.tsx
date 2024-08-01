@@ -4,8 +4,8 @@ import { DeviceMobile, Google, Logo } from "@shared/ui";
 import {styles} from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 //TODO: move to shared
-import { UnauthorizedStackRoutesProps } from "../../../App/navigation/routes/unauthorizedStackRoutes.ts";
 import { SignIn } from "@widgets/SignIn";
+import { UnauthorizedStackRoutesProps } from "@shared/api";
 
 
 

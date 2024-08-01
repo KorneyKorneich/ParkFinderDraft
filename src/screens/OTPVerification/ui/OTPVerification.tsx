@@ -3,8 +3,8 @@ import { KeyboardAvoidingView, SafeAreaView, Text, View } from "react-native";
 import { CustomButton, StyleGuide, VerificationImg } from "@shared/ui";
 import React, { useState } from "react";
 import { OtpInput } from "react-native-otp-entry";
-import { UnauthorizedStackRoutesProps } from "../../../App/navigation/routes/unauthorizedStackRoutes.ts";
 import { useUserStore } from "@entities/user";
+import { UnauthorizedStackRoutesProps } from "@shared/api";
 
 
 
@@ -18,7 +18,6 @@ export const OTPVerification = ( {navigation, route}: UnauthorizedStackRoutesPro
 
 	const OTPConfirm = useUserStore(state => state.OTPConfirm);
 	const handleOTPConfirm = () => {
-		console.log(confirm);
 		confirm
 			? OTPConfirm({confirm, code})
 			: navigation.goBack();
