@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     controlledInBox: {
         flexDirection: "row",
         justifyContent: "center",
+        alignItems: 'center',
         position: 'absolute',
         zIndex: 2,
         top: 20,
@@ -14,8 +15,10 @@ export const styles = StyleSheet.create({
     },
     inputStyles: {
         backgroundColor: StyleGuide.SEARCHINPUT,
-        borderTopLeftRadius: 15,
-        borderBottomLeftRadius: 15,
+        borderTopLeftRadius: 12,
+        borderBottomLeftRadius: 12,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
         paddingLeft: 10,
         borderColor: StyleGuide.SEARCHBORDER,
         borderWidth: 1,
@@ -28,6 +31,7 @@ export const styles = StyleSheet.create({
         width: '20%',
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0,
-        backgroundColor: StyleGuide.SEARCHBTN
+        backgroundColor: StyleGuide.SEARCHBTN, 
+        height: '100%',
     }
 });

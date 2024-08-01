@@ -6,12 +6,18 @@ export const styles = StyleSheet.create({
         backgroundColor: StyleGuide.BLUE,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 15,
+        borderRadius: 12,
         paddingHorizontal: 15,
         paddingVertical: 2
     },
     title: {
-        color: StyleGuide.BLACK,
-        fontSize: 18
-    }
+        fontSize: 18,
+        textAlign: "center",
+        fontWeight: "bold",
+        color: StyleGuide.WHITE
+    },
+    customButtonContainer: {
+        width: "100%",
+        padding: 15,
+    },
 });
