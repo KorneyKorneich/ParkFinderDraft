@@ -12,7 +12,7 @@ export const SignIn = () => {
 	const handleSignIn = async () => {
 
 		await signIn({email, password}).catch(
-			//handle catches
+			//todo: add error handler
 		);
 	};
 	return (

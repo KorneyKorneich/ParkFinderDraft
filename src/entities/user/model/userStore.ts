@@ -60,7 +60,7 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
 				}});
 			})
 			.catch(
-				//catch err
+				//todo: add error handler
 			);
 		set({isLoading: false});
 	}

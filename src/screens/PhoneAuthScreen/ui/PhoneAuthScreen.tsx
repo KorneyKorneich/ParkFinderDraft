@@ -43,7 +43,7 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 			}
 			navigation.navigate( "OTPVerifyScreen", { confirmation: confirmation } );
 		}catch (e){
-			//catch err
+			//todo: add error handler
 		}
 	}
 
