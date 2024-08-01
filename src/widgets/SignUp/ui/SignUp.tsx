@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useUserStore } from "@entities/user";
 import { CustomInput, StyleGuide } from "@shared/ui";
 import { CustomButton } from "@shared/ui/Components/CustomButton/ui/CustomButton.tsx";
+import { styles } from "./SignIn.style";
 
 export const SignUp = () => {
 	const [email, setEmail] = useState("");
@@ -14,9 +15,9 @@ export const SignUp = () => {
 	};
 	return (
 		<KeyboardAvoidingView>
-			<CustomInput title={"Email"} value={email} setValue={setEmail}/>
-			<CustomInput title={"Password"} value={password} setValue={setPassword} isPassword/>
-			<CustomButton title={"Sign Up"} onPress={handleSignUp} color={StyleGuide.PRIMARY}/>
+			<CustomInput title={"Email"} value={email} onChangeText={setEmail} boxStyle={styles.textInputBox}/>
+			<CustomInput title={"Password"} value={password} onChangeText={setPassword} boxStyle={styles.textInputBox} isPassword/>
+			<CustomButton title={"Sign Up"} onPress={handleSignUp} color={StyleGuide.GREEN}/>
 		</KeyboardAvoidingView>
 	);
 };

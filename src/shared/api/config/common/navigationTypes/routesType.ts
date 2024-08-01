@@ -1,12 +1,3 @@
-// <<<<<<< HEAD
-// export type RootStackParamList = {
-//     MapScreen: undefined;
-//     AddParkScreen: undefined;
-//     AuthScreen: undefined;
-//     DrawerNavigator: undefined;
-//     ParkListScreen: undefined;
-// };
-// =======
 import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { NativeStackScreenProps } from "react-native-screens/native-stack";
 

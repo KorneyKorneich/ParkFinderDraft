@@ -1,8 +1,8 @@
 import { TextInput, View } from 'react-native';
 import React, { useRef, useState } from 'react';
-import { CustomButton, CustomTextInput } from '@shared/ui/index';
+import { CustomButton } from '@shared/ui/index';
 import { styles } from './ControlledInput.style';
-import { CustomInput } from '@shared/ui/Components/Test/test';
+import { CustomInput } from '@shared/ui';
 
 export const ControlledInput = () => {
     const image = require('@shared/ui/assets/images/loupe.png');

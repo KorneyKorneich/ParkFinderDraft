@@ -39,11 +39,11 @@ export const OTPVerification = ( {navigation, route}: UnauthorizedStackRoutesPro
 					<OtpInput
 						onTextChange={(text) => setCode(text)}
 						numberOfDigits={6}
-						focusColor={StyleGuide.PRIMARY}
+						focusColor={StyleGuide.GREEN}
 					/>
 				</View>
 				<View style={styles.OTPConfirm} >
-					<CustomButton title={"Confirm"} onPress={handleOTPConfirm} color={StyleGuide.PRIMARY} />
+					<CustomButton title={"Confirm"} onPress={handleOTPConfirm} color={StyleGuide.GREEN} />
 				</View>
 			</KeyboardAvoidingView>
 

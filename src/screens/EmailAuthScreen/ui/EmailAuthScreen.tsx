@@ -6,8 +6,6 @@ import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn";
 import { UnauthorizedStackRoutesProps } from "@shared/api";
 
-
-
 export const EmailAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 	const [isSignUp, setIsSignUp] = useState(true);
 

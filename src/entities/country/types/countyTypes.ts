@@ -4,7 +4,6 @@ export interface CountryAPIType {
     callingCodes: string[];
     flags: Flag;
     flag: string;
-
 }
 
 interface Flag {

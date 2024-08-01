@@ -1,6 +1,3 @@
-
-export { CustomTextInput } from "./Components/CustomTextInput/ui/CustomTextInput.tsx"; ////
-
 export { Logo } from "./assets/Logo";
 export { Google } from "./assets/Google";
 export { DeviceMobile } from "./assets/DeviceMobile";

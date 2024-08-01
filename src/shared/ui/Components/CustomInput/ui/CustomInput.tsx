@@ -1,31 +1,23 @@
 import React from "react";
-import { Text, TextInput, TextInputProps, View } from "react-native";
+import { StyleProp, Text, TextInput, TextInputProps, View, ViewStyle } from "react-native";
 import { styles } from "./CustomInput.styles.ts";
 
 interface CustomInputProps extends TextInputProps {
     title?: string;
-    value: string;
-    setValue: (value: string) => void;
-	isPassword?: boolean
+	isPassword?: boolean;
+    boxStyle?: StyleProp<ViewStyle>,
 }
 
-export const CustomInput = (props: CustomInputProps) => {
-	const { title, value, setValue, isPassword, ...rest } = props;
-
-	const handleTextChange = (text: string) => {
-		setValue(text);
-	};
+export const CustomInput: React.FC<CustomInputProps> = ({ title, isPassword, style, boxStyle, ...rest }) => {
 
 	return (
-		<View style={styles.wrapper}>
+		<View style={[styles.inputBox, boxStyle]}>
 			<View style={styles.container}>
-				<Text style={styles.title}>{title}</Text>
+				{title && <Text style={styles.title}>{title}</Text>}
 				<TextInput
 					autoCapitalize={"none"}
 					secureTextEntry={isPassword}
-					style={styles.input}
-					value={value}
-					onChangeText={handleTextChange}
+					style={[styles.input, style]}
 					{...rest}
 				/>
 			</View>

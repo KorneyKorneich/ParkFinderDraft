@@ -3,15 +3,12 @@ import { Nullable } from "@shared/api";
 import { Country } from "../types/countyTypes";
 import { getCountries } from "../api/countryCodeUtils.ts";
 
-
-
 interface CountrySchema {
     countries: Nullable<Country[]>,
     isLoading: boolean
 	defaultData: Nullable<Country>
 	fetchCountries: () => Promise<void>
 }
-
 
 export const useCountryStore = create<CountrySchema>()((set) => ({
 	countries: null,
@@ -25,9 +22,6 @@ export const useCountryStore = create<CountrySchema>()((set) => ({
 			defaultData: countries.filter((country) => country.code === "US")[0]
 		});
 	},
-
-
-
 }));
 
 
