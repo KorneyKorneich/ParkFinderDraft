@@ -1,3 +1,1 @@
-import ParkListScreen from "./ui/ParkListScreen";
-
-export {ParkListScreen};
+export {ParkListScreen} from "./ui/ParkListScreen.tsx";

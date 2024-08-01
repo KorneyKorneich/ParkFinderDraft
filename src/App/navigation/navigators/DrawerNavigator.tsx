@@ -16,7 +16,7 @@ const DrawerNavigator = () => {
 					name={route.name}
 					component={route.component}
 					options={route.options}
-				/>
+				/> 
 			))}
 		</Drawer.Navigator>
 	);
