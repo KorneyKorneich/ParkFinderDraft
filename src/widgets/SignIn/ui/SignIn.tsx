@@ -11,7 +11,9 @@ export const SignIn = () => {
 
 	const handleSignIn = async () => {
 
-		await signIn({email, password}).catch(e => console.log(e));
+		await signIn({email, password}).catch(
+			//handle catches
+		);
 	};
 	return (
 		<KeyboardAvoidingView>

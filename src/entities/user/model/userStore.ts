@@ -59,7 +59,9 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
 					uuid: res?.user.uid as string
 				}});
 			})
-			.catch((err) => console.log(err));
+			.catch(
+				//catch err
+			);
 		set({isLoading: false});
 	}
 }));
