@@ -13,7 +13,6 @@ const StackNavigator = () => {
 		setUser(user);
 	}
 
-
 	const stack = user ? authorizedStackRoutes : unauthorizedStackRoutes;
 
 	useEffect(() => {

@@ -18,6 +18,7 @@ export const OTPVerification = ( {navigation, route}: UnauthorizedStackRoutesPro
 
 	const OTPConfirm = useUserStore(state => state.OTPConfirm);
 	const handleOTPConfirm = () => {
+		console.log(confirm);
 		confirm
 			? OTPConfirm({confirm, code})
 			: navigation.goBack();
@@ -39,11 +40,11 @@ export const OTPVerification = ( {navigation, route}: UnauthorizedStackRoutesPro
 					<OtpInput
 						onTextChange={(text) => setCode(text)}
 						numberOfDigits={6}
-						focusColor={StyleGuide.GREEN}
+						focusColor={StyleGuide.PRIMARY}
 					/>
 				</View>
 				<View style={styles.OTPConfirm} >
-					<CustomButton title={"Confirm"} onPress={handleOTPConfirm} color={StyleGuide.GREEN} />
+					<CustomButton title={"Confirm"} onPress={handleOTPConfirm} color={StyleGuide.PRIMARY} />
 				</View>
 			</KeyboardAvoidingView>
 

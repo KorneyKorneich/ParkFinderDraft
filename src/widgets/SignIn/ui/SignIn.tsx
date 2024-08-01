@@ -17,7 +17,7 @@ export const SignIn = () => {
 		<KeyboardAvoidingView>
 			<CustomInput title={"Email"} value={email} setValue={setEmail}/>
 			<CustomInput title={"Password"} value={password} setValue={setPassword} isPassword/>
-			<CustomButton title={"Sign In"} onPress={handleSignIn} color={StyleGuide.GREEN}/>
+			<CustomButton title={"Sign In"} onPress={handleSignIn} color={StyleGuide.PRIMARY}/>
 		</KeyboardAvoidingView>
 	);
 };

@@ -1292,7 +1292,7 @@ PODS:
     - Firebase/Auth (= 10.29.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (2.18.0):
+  - RNGestureHandler (2.18.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1334,7 +1334,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.32.0):
+  - RNScreens (3.33.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1358,7 +1358,11 @@ PODS:
     - Yoga
   - RNSVG (15.4.0):
     - React-Core
+  - RNYamap (4.6.0):
+    - React
+    - YandexMapsMobile (= 4.6.1-full)
   - SocketRocket (0.7.0)
+  - YandexMapsMobile (4.6.1-full)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1427,6 +1431,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNYamap (from `../node_modules/react-native-yamap`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1445,6 +1450,7 @@ SPEC REPOS:
     - PromisesObjC
     - RecaptchaInterop
     - SocketRocket
+    - YandexMapsMobile
 
 EXTERNAL SOURCES:
   boost:
@@ -1568,6 +1574,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNYamap:
+    :path: "../node_modules/react-native-yamap"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1641,11 +1649,13 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   RNFBApp: a7aff07a7f212149539fce51a1326c6d208b03ad
   RNFBAuth: 3ed676e60d0ca3b2c71023240658e1f02bc752d7
-  RNGestureHandler: 4fd316f1bdb8d7f6a54efc58da5923cb83014b19
+  RNGestureHandler: efed690b8493a00b99654043daeb1335276ac4a2
   RNReanimated: f4ff116e33e0afc3d127f70efe928847c7c66355
-  RNScreens: 5aeecbb09aa7285379b6e9f3c8a3c859bb16401c
+  RNScreens: d2a12528d1abe4922e7ee5c9a00dd40c827c2ab5
   RNSVG: cb24fb322de8c1ebf59904e7aca0447bb8dbed5a
+  RNYamap: 318681058bb5c369a720d18eb872145a60a23bac
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
+  YandexMapsMobile: b5f4dfeb8d1fe324dc18afb33d772b04d04d34f6
   Yoga: 88480008ccacea6301ff7bf58726e27a72931c8d
 
 PODFILE CHECKSUM: 57af0f9c2bfa226cd569a294cf5bcf2bd81a6fb5

@@ -10,7 +10,7 @@ export const bottomTabsRoutes = [
 		},
 	},
 	{
-		name: "AddParkScreen",
+		name: "AddParkScreen", 
 		component: AddParkScreen,
 		options: {
 			title: "AddParkScreen",

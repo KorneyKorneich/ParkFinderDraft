@@ -1,9 +1,8 @@
 import { FlatList, Modal, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import styles from "./CountryPickModal.styles.ts";
 import { CloseIcon } from "@shared/ui";
-import { CountryItem } from "@entities/country";
+import { Country, CountryItem } from "@entities/country";
 import React from "react";
-import { Country } from "@screens/PhoneAuthScreen/types/types.ts";
 
 interface CountryPickModalProps {
     isModalVisible: boolean;
