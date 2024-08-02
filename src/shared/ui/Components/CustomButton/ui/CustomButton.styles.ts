@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { StyleGuide } from "@shared/ui/stylesConsts/stylesConsts";
+import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
     btnArea: {

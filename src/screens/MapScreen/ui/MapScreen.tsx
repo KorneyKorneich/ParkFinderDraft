@@ -3,8 +3,7 @@ import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@shared/api";
 import { Map } from "@shared/ui";
-import { ControlledInput } from "@features/index";
-
+import { ControlledInput } from "@features/ControlledInput";
 
 export const MapScreen = () => {
 	const navigation = useNavigation<NavigationProp<RootStackParamList>>();

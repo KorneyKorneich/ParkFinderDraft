@@ -1,7 +1,7 @@
 import React from 'react';
 import { GestureResponderEvent, ImageSourcePropType, StyleProp, Text, TextStyle, TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
 import { styles } from './CustomButton.styles';
-import { CustomImage } from '@shared/ui/Components/CustomImage/ui/CustomImage';
+import { CustomImage } from '@shared/ui';
 
 interface ICustomButton extends TouchableOpacityProps {
     title?: string;
