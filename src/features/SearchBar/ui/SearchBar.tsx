@@ -1,10 +1,10 @@
 import { TextInput, View } from 'react-native';
 import React, { useRef, useState } from 'react';
 import { CustomButton } from '@shared/ui/index';
-import { styles } from './ControlledInput.style';
+import { styles } from './SearchBar.style';
 import { CustomInput } from '@shared/ui';
 
-export const ControlledInput = () => {
+export const SearchBar = () => {
     const image = require('@shared/ui/assets/images/loupe.png');
     const [value, setValue] = useState<string>();
 
