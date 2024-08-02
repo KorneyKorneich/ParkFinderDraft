@@ -1,7 +1,7 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2015",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
@@ -10,7 +10,9 @@
       "@shared/*": ["src/shared/*"],
       "@entities/*": ["src/entities/*"],
       "@screens/*": ["src/screens/*"],
+      "@features/*": ["src/features/*"],
       "@widgets/*": ["src/widgets/*"]
+
     }
   },
   "include": ["src/**/*"],

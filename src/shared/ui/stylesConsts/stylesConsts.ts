@@ -1,14 +1,17 @@
 import { Dimensions } from "react-native";
 
 export enum StyleGuide {
-    GREY = "#e3e3e3",
-    WHITE ="#FFFFFF",
-    BLACK= "#130F26",
-    PRIMARY ="#33AD5F",
-
-    //TEXT COLORS
-    TEXT_GREY = "#7D7D91",
-
+    GREY = "rgb(227, 227, 227)",
+    WHITE = "rgb(255,255,255)",
+    BLACK = "rgba(0,0,0)",
+    GREEN = "rgb(51, 173, 95)",
+    BLUE = 'rgb(0, 123, 255)',
+    SEARCH_INPUT = 'rgba(255, 255, 255, .8)',
+    SEARCH_BORDER = 'rgba(209, 209, 209, .8)',
+    SEARCH_BTN = 'rgba(209, 209, 209, .8)',
+    CHECKBOX_BORDER = 'rgb(108, 117, 125)',
+    BACKGROUND_LIGHT = 'rgb(240, 240, 240)',
+    TEXT_GREY = 'rgb(125, 125, 145)'
 }
 
 export enum Fonts {
@@ -25,4 +28,3 @@ export enum SIZES {
     HEIGHT = Dimensions.get("screen").height,
     WIDTH = Dimensions.get("screen").width
 }
-

@@ -2,13 +2,14 @@ import { StyleSheet } from "react-native";
 import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
-	wrapper:{
-		marginVertical: 10
-	},
+	inputBox: {
+        width: '100%',
+        justifyContent: 'center',
+        paddingHorizontal: 10
+    },
 	container:{
 		flexDirection: "column",
 		gap: 5
-
 	},
 	title:{
 		fontSize: 12,
@@ -21,5 +22,4 @@ export const styles = StyleSheet.create({
 		borderColor: StyleGuide.GREY,
 		borderWidth: 1
 	}
-
 });

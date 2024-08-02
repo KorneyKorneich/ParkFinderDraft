@@ -1,22 +1,24 @@
-import { styles } from "./CustomButton.styles.ts";
-import { ButtonProps, Text, TouchableOpacity, View } from "react-native";
-import { StyleGuide } from "@shared/ui";
+import React from 'react';
+import { GestureResponderEvent, ImageSourcePropType, StyleProp, Text, TextStyle, TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { styles } from './CustomButton.styles';
+import { CustomImage } from '@shared/ui';
 
-interface CustomButtonProps extends  ButtonProps{
-    title: string;
-	onPress: () => void
-	color: StyleGuide
-	id?: string
+interface ICustomButton extends TouchableOpacityProps {
+    title?: string;
+    style?: StyleProp<ViewStyle>;
+    onPress?: (event: GestureResponderEvent) => void;
+    textStyle?: StyleProp<TextStyle>;
+    imgPath?: ImageSourcePropType;
+    color?: string;
 }
 
-export const CustomButton = (props: CustomButtonProps) => {
-	const {title, onPress, color, id, ...rest} = props;
-	return (
-		<View style={[styles.customButtonContainer, {backgroundColor: color}]}>
-			<TouchableOpacity id={id} onPress={onPress} {...rest}>
-				<Text style={styles.buttonTitle}>{title}</Text>
-			</TouchableOpacity>
-		</View>
-	);
+export const CustomButton: React.FC<ICustomButton> = ({ title, style, imgPath, textStyle, onPress, color, ...props }) => {
+    return (
+        <TouchableOpacity onPress={onPress} {...props} activeOpacity={0.8}
+            style={[styles.btnArea, styles.customButtonContainer, { backgroundColor: color }, style]}>
+            {title
+                ? <Text style={[styles.title, textStyle]}>{title}</Text>
+                : imgPath && <CustomImage path={imgPath} />}
+        </TouchableOpacity>
+    );
 };
-

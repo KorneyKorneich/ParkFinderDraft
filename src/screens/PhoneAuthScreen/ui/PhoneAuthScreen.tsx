@@ -84,7 +84,7 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 					<TextInput style={styles.phoneInput} value={phone} onChangeText={number => setPhone(number)} placeholder={"Enter your phone number"} />
 				</View>
 			</View>
-			<CustomButton title={"Verify"} id={"recaptcha-container"} onPress={handlePhoneVerify} color={StyleGuide.PRIMARY} />
+			<CustomButton title={"Verify"} id={"recaptcha-container"} onPress={handlePhoneVerify} color={StyleGuide.GREEN} />
 			{countries && <CountryPickModal isModalVisible={isModalVisible} handleModalClose={handleModalClose} handleCountryPick={handleCountryPick} countries={countries}/>}
 		</SafeAreaView>
 	);

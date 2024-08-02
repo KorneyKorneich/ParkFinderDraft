@@ -3,14 +3,15 @@ import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@shared/api";
 
-
-export const ParkListScreen = () => {
+const AuthScreen = () => {
 	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
 	return (
 		<View>
-			<Text>ParkListScreen</Text>
-			<Button title='to main' onPress={() => navigation.goBack()}/>
+			<Text>AuthScreen</Text>
+			<Button title='onMainPage' onPress={() => navigation.navigate("DrawerNavigator")} />
 		</View>
 	);
 };
+
+export default AuthScreen;
