@@ -1,4 +1,4 @@
-import { StyleGuide } from "@shared/ui/stylesConsts/stylesConsts";
+import { StyleGuide } from "@shared/ui/";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
