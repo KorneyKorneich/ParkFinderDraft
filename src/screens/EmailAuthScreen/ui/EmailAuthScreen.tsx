@@ -1,13 +1,13 @@
 import { Text, SafeAreaView, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { DeviceMobile, Google, Logo } from "@shared/ui";
-import {styles} from "./EmailAuthScreen.styles.ts";
+import { styles } from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn";
 import { UnauthorizedStackRoutesProps } from "@shared/api";
 
-export const EmailAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
-	const [isSignUp, setIsSignUp] = useState(true);
+export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
+	const [ isSignUp, setIsSignUp ] = useState(true);
 
 
 	function handleToSignUp(){
@@ -26,11 +26,11 @@ export const EmailAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 				<Logo />
 			</View>
 			<View style={styles.switcher}>
-				<TouchableOpacity onPress={handleToSignUp} style={[styles.signUp, isSignUp ? styles.active : null]}>
-					<Text style={[styles.signUpText, isSignUp ? styles.textActive : null ]}>Sign Up</Text>
+				<TouchableOpacity onPress={handleToSignUp} style={[ styles.signUp, isSignUp ? styles.active : null ]}>
+					<Text style={[ styles.signUpText, isSignUp ? styles.textActive : null ]}>Sign Up</Text>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={handleToSignIn} style={[styles.signIn, !isSignUp ? styles.active : null]}>
-					<Text style={[styles.signInText, !isSignUp ? styles.textActive : null ]}>Sign In</Text>
+				<TouchableOpacity onPress={handleToSignIn} style={[ styles.signIn, !isSignUp ? styles.active : null ]}>
+					<Text style={[ styles.signInText, !isSignUp ? styles.textActive : null ]}>Sign In</Text>
 				</TouchableOpacity>
 			</View>
 			{ isSignUp ? <SignUp /> : <SignIn />}

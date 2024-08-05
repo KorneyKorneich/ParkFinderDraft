@@ -3,10 +3,10 @@ import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
 	inputBox: {
-        width: '100%',
-        justifyContent: 'center',
-        paddingHorizontal: 10
-    },
+		width: "100%",
+		justifyContent: "center",
+		paddingHorizontal: 10
+	},
 	container:{
 		flexDirection: "column",
 		gap: 5

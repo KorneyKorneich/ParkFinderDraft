@@ -11,13 +11,13 @@ interface CustomInputProps extends TextInputProps {
 export const CustomInput: React.FC<CustomInputProps> = ({ title, isPassword, style, boxStyle, ...rest }) => {
 
 	return (
-		<View style={[styles.inputBox, boxStyle]}>
+		<View style={[ styles.inputBox, boxStyle ]}>
 			<View style={styles.container}>
 				{title && <Text style={styles.title}>{title}</Text>}
 				<TextInput
 					autoCapitalize={"none"}
 					secureTextEntry={isPassword}
-					style={[styles.input, style]}
+					style={[ styles.input, style ]}
 					{...rest}
 				/>
 			</View>

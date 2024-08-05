@@ -12,8 +12,12 @@ const StackNavigator = () => {
 	function AuthStateChanged(user) {
 		setUser(user);
 	}
+	
+	//TODO: dont forget to improve this
+	
+	// const stack = user ? authorizedStackRoutes : unauthorizedStackRoutes;
 
-	const stack = user ? authorizedStackRoutes : unauthorizedStackRoutes;
+	const stack = authorizedStackRoutes;
 
 	useEffect(() => {
 		const subscriber = auth().onAuthStateChanged(AuthStateChanged);

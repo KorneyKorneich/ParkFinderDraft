@@ -1,7 +1,8 @@
 module.exports = {
 	"env": {
 		"browser": true,
-		"es2021": true
+		"es2021": true,
+		"node": true,
 	},
 	"extends": [
 		"eslint:recommended",
@@ -37,6 +38,10 @@ module.exports = {
 			"error",
 			"always"
 		],
-		"react/react-in-jsx-scope": "off"
+		"react/react-in-jsx-scope": "off",
+		"space-infix-ops": "error", 
+		"object-curly-spacing": [ "error", "always" ], 
+		"array-bracket-spacing": [ "error", "always" ],
+		"@typescript-eslint/no-var-requires": "off" 
 	}
 };

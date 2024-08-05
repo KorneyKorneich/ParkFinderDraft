@@ -1,4 +1,4 @@
-import {Nullable, UserSchema} from "@shared/api";
+import { Nullable, UserSchema } from "@shared/api";
 import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { Country } from "@entities/country";
 

@@ -12,7 +12,6 @@
       "@screens/*": ["src/screens/*"],
       "@features/*": ["src/features/*"],
       "@widgets/*": ["src/widgets/*"]
-
     }
   },
   "include": ["src/**/*"],
