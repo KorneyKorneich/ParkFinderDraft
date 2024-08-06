@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
 		borderRadius: 12,
 		paddingHorizontal: 15,
 		paddingVertical: 15,
+		marginVertical: 10,
 	},
 	title: {
 		fontSize: 18,

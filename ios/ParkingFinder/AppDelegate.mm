@@ -15,7 +15,7 @@
 
   self.initialProps = @{};
 
-    [YMKMapKit setApiKey:@"8d0df3ad-a829-40f7-a8ef-c408a5af1ed7"];
+    [YMKMapKit setApiKey:@"e3aa0fd7-1107-4862-880b-4b79a4f6c93a"];
     [YMKMapKit setLocale:@"ru_RU"];
     [YMKMapKit mapKit];
     [super application:application didFinishLaunchingWithOptions:launchOptions];

@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-	Image,
-	SafeAreaView,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from "react-native";
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
 import { Nullable, UnauthorizedStackRoutesProps } from "@shared/api";
@@ -14,15 +7,25 @@ import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
-export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
+interface PhoneForm {
+	phone: string;
+}
 
-	const getCountries = useCountryStore(state => state.fetchCountries);
-	const countries = useCountryStore(state => state.countries);
-	const defaultCountry = useCountryStore(state => state.defaultData);
-	const phoneAuth = useUserStore(state => state.phoneSignIn);
+export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
+	const {
+		handleSubmit,
+		control,
+		formState: { errors },
+		setError,
+	} = useForm<PhoneForm>();
 
-	const [phone, setPhone] = useState("");
+	const getCountries = useCountryStore((state) => state.fetchCountries);
+	const countries = useCountryStore((state) => state.countries);
+	const defaultCountry = useCountryStore((state) => state.defaultData);
+	const phoneAuth = useUserStore((state) => state.phoneSignIn);
+
 	const [selectedCountry, setSelectedCountry] = useState<Nullable<Country>>(null);
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [confirmation, setConfirmation] = useState<FirebaseAuthTypes.ConfirmationResult>();
@@ -35,17 +38,17 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 		setIsModalVisible(true);
 	}
 
-	async function handlePhoneVerify() {
+	const handlePhoneVerify: SubmitHandler<PhoneForm> = async (data) => {
 		try {
-			if(selectedCountry){
-				const confirm = await phoneAuth({selectedCountry: selectedCountry, phone: phone});
+			if (selectedCountry) {
+				const confirm = await phoneAuth({ selectedCountry: selectedCountry, phone: data.phone });
 				setConfirmation(confirm);
 			}
-			navigation.navigate( "OTPVerifyScreen", { confirmation: confirmation } );
-		}catch (e){
+			navigation.navigate("OTPVerifyScreen", { confirmation: confirmation });
+		} catch (e) {
 			//todo: add error handler
 		}
-	}
+	};
 
 	function handleCountryPick(item: Country) {
 		setSelectedCountry(item);
@@ -67,7 +70,7 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 				<Text style={styles.title}>Enter your phone number</Text>
 				<Text style={styles.text}>We will send you verification code</Text>
 			</View>
-			<View style={styles.inputContainer}>
+			<View style={[styles.inputContainer, errors.phone && styles.errorInput]}>
 				<TouchableOpacity onPress={handleModalOpen} style={styles.selectCountryContainer}>
 					<View style={{ justifyContent: "center" }}>
 						<DownArrow width={10} height={10} />
@@ -80,12 +83,42 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 						<Text>{selectedCountry?.callingCode}</Text>
 					</View>
 				</TouchableOpacity>
-				<View>
-					<TextInput style={styles.phoneInput} value={phone} onChangeText={number => setPhone(number)} placeholder={"Enter your phone number"} />
-				</View>
+				<Controller
+					name={"phone"}
+					control={control}
+					render={({ field: { onChange, onBlur, value } }) => (
+						<TextInput
+							style={styles.phoneInput}
+							value={value}
+							onChangeText={onChange}
+							onBlur={onBlur}
+							placeholder={"Enter your phone number"}
+						/>
+					)}
+					rules={{
+						required: "Phone Number is required",
+						pattern: {
+							value: /^\d+$/,
+							message: "Enter a valid phone number",
+						},
+					}}
+				/>
 			</View>
-			<CustomButton title={"Verify"} id={"recaptcha-container"} onPress={handlePhoneVerify} color={StyleGuide.GREEN} />
-			{countries && <CountryPickModal isModalVisible={isModalVisible} handleModalClose={handleModalClose} handleCountryPick={handleCountryPick} countries={countries}/>}
+			{errors.phone && <Text style={styles.errorMessage}>{errors.phone.message}</Text>}
+			<CustomButton
+				title={"Verify"}
+				id={"recaptcha-container"}
+				onPress={handleSubmit(handlePhoneVerify)}
+				color={StyleGuide.GREEN}
+			/>
+			{countries && (
+				<CountryPickModal
+					isModalVisible={isModalVisible}
+					handleModalClose={handleModalClose}
+					handleCountryPick={handleCountryPick}
+					countries={countries}
+				/>
+			)}
 		</SafeAreaView>
 	);
 };

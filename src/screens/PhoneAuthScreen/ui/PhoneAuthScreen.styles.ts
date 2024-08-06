@@ -3,56 +3,58 @@ import { StyleGuide } from "@shared/ui";
 import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
-	container:{
-		width:"90%",
-		height:"100%",
+	container: {
+		width: "90%",
+		height: "100%",
 		marginHorizontal: "auto",
 	},
 
-	img:{
+	img: {
 		justifyContent: "center",
 		alignItems: "center",
 		marginTop: 35,
 	},
 
-	textContainer:{
+	textContainer: {
 		marginTop: "20%",
 		justifyContent: "center",
 		alignItems: "center",
 	},
 
-	title:{
+	title: {
 		fontSize: Fonts.HEADING_4,
-		marginBottom: 5
+		marginBottom: 5,
 	},
 
-	text:{
+	text: {
 		fontSize: Fonts.REGULAR_BODY,
-
 	},
 
-	inputContainer:{
+	inputContainer: {
 		flexDirection: "row",
 		alignItems: "center",
 		gap: 20,
 		marginVertical: 20,
 		paddingBottom: 20,
 		borderBottomColor: StyleGuide.GREY,
-		borderBottomWidth: 1
-
+		borderBottomWidth: 1,
 	},
 
-	selectCountryContainer:{
+	selectCountryContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		gap: 10
+		gap: 10,
 	},
 
-	phoneInput:{
-		width: "100%"
-	}
-
-
+	phoneInput: {
+		width: "100%",
+	},
+	errorMessage: {
+		color: StyleGuide.ERROR,
+	},
+	errorInput: {
+		borderBottomColor: StyleGuide.ERROR,
+	},
 });
 
 export default styles;

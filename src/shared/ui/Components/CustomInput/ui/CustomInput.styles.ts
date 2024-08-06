@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
 	inputBox: {
 		width: "100%",
 		justifyContent: "center",
-		// paddingHorizontal: 10,
 	},
 	container: {
 		flexDirection: "column",
@@ -21,5 +20,9 @@ export const styles = StyleSheet.create({
 		borderRadius: 8,
 		borderColor: StyleGuide.GREY,
 		borderWidth: 1,
+	},
+	error: {
+		color: StyleGuide.ERROR,
+		borderColor: StyleGuide.ERROR,
 	},
 });

@@ -7,17 +7,26 @@ interface CustomInputProps extends TextInputProps {
 	isPassword?: boolean;
 	boxStyle?: StyleProp<ViewStyle>;
 	value: string;
+	incorrectValue?: boolean;
 }
 
-export const CustomInput: React.FC<CustomInputProps> = ({ title, isPassword, style, boxStyle, value, ...rest }) => {
+export const CustomInput: React.FC<CustomInputProps> = ({
+	title,
+	isPassword,
+	style,
+	boxStyle,
+	value,
+	incorrectValue,
+	...rest
+}) => {
 	return (
 		<View style={[styles.inputBox, boxStyle]}>
 			<View style={styles.container}>
-				{title && <Text style={styles.title}>{title}</Text>}
+				{title && <Text style={[styles.title, incorrectValue ? styles.error : null]}>{title}</Text>}
 				<TextInput
 					autoCapitalize={"none"}
 					secureTextEntry={isPassword}
-					style={[styles.input, style]}
+					style={[styles.input, style, incorrectValue ? styles.error : null]}
 					value={value}
 					{...rest}
 				/>
