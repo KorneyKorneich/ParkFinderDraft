@@ -1,23 +1,70 @@
-import { KeyboardAvoidingView } from "react-native";
-import { useState } from "react";
+import { KeyboardAvoidingView, Text } from "react-native";
 import { useUserStore } from "@entities/user";
 import { CustomInput, StyleGuide } from "@shared/ui";
 import { CustomButton } from "@shared/ui";
 import { styles } from "./SignIn.style";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+
+interface SignUpForm {
+	email: string;
+	password: string;
+}
 
 export const SignUp = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const signUp = useUserStore(state => state.signUp);
+	const {
+		handleSubmit,
+		control,
+		formState: { errors },
+	} = useForm<SignUpForm>();
 
-	const handleSignUp = () => {
-		signUp({email, password});
+	const signUp = useUserStore((state) => state.signUp);
+
+	const handleSignUp: SubmitHandler<SignUpForm> = async (data) => {
+		await signUp({ email: data.email, password: data.password });
 	};
 	return (
 		<KeyboardAvoidingView>
-			<CustomInput title={"Email"} value={email} onChangeText={setEmail} boxStyle={styles.textInputBox}/>
-			<CustomInput title={"Password"} value={password} onChangeText={setPassword} boxStyle={styles.textInputBox} isPassword/>
-			<CustomButton title={"Sign Up"} onPress={handleSignUp} color={StyleGuide.GREEN}/>
+			<Controller
+				name={"email"}
+				control={control}
+				render={({ field: { onChange, onBlur, value } }) => (
+					<CustomInput
+						title={"Email"}
+						value={value}
+						onChangeText={onChange}
+						boxStyle={styles.textInputBox}
+						onBlur={onBlur}
+					/>
+				)}
+				rules={{
+					required: true,
+					pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+				}}
+			/>
+
+			{errors.email && <Text>Enter the valid Email</Text>}
+
+			<Controller
+				name={"password"}
+				control={control}
+				render={({ field: { onChange, onBlur, value } }) => (
+					<CustomInput
+						title={"Password"}
+						value={value}
+						onBlur={onBlur}
+						onChangeText={onChange}
+						boxStyle={styles.textInputBox}
+						isPassword
+					/>
+				)}
+				rules={{
+					required: true,
+					minLength: 6,
+				}}
+			/>
+
+			{errors.password && <Text>Min length is 6</Text>}
+			<CustomButton title={"Sign Up"} onPress={handleSubmit(handleSignUp)} color={StyleGuide.GREEN} />
 		</KeyboardAvoidingView>
 	);
 };

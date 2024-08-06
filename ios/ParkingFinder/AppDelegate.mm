@@ -1,7 +1,8 @@
+#import <YandexMapsMobile/YMKMapKitFactory.h>
 #import "AppDelegate.h"
 #import <Firebase.h>
 #import <React/RCTBundleURLProvider.h>
-#import <YandexMapsMobile/YMKMapKitFactory.h>
+
 
 @implementation AppDelegate
 
@@ -14,16 +15,12 @@
 
   self.initialProps = @{};
 
-
+    [YMKMapKit setApiKey:@"8d0df3ad-a829-40f7-a8ef-c408a5af1ed7"];
     [YMKMapKit setLocale:@"ru_RU"];
-    [YMKMapKit setApiKey:@"API_KEY"];
+    [YMKMapKit mapKit];
+    [super application:application didFinishLaunchingWithOptions:launchOptions];
 
-
-  // You can add your custom initial props in the dictionary below.
-  // They will be passed down to the ViewController used by React Native.
-
-
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  return YES;
 }
 
 
