@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
 import { Nullable, UnauthorizedStackRoutesProps } from "@shared/api";
-import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
@@ -25,10 +24,10 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
 	const countries = useCountryStore((state) => state.countries);
 	const defaultCountry = useCountryStore((state) => state.defaultData);
 	const phoneAuth = useUserStore((state) => state.phoneSignIn);
+	const isLoading = useUserStore((state) => state.isLoading);
 
 	const [selectedCountry, setSelectedCountry] = useState<Nullable<Country>>(null);
 	const [isModalVisible, setIsModalVisible] = useState(false);
-	const [confirmation, setConfirmation] = useState<FirebaseAuthTypes.ConfirmationResult>();
 
 	function handleModalClose() {
 		setIsModalVisible(false);
@@ -41,13 +40,11 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
 	const handlePhoneVerify: SubmitHandler<PhoneForm> = async (data) => {
 		try {
 			if (selectedCountry) {
-				const confirm = await phoneAuth({ selectedCountry: selectedCountry, phone: data.phone });
-				setConfirmation(confirm);
+				await phoneAuth({ selectedCountry: selectedCountry, phone: data.phone }).then((res) => {
+					navigation.navigate("OTPVerifyScreen", { confirmation: res });
+				});
 			}
-			navigation.navigate("OTPVerifyScreen", { confirmation: confirmation });
-		} catch (e) {
-			//todo: add error handler
-		}
+		} catch (e) {}
 	};
 
 	function handleCountryPick(item: Country) {
@@ -105,12 +102,17 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
 				/>
 			</View>
 			{errors.phone && <Text style={styles.errorMessage}>{errors.phone.message}</Text>}
-			<CustomButton
-				title={"Verify"}
-				id={"recaptcha-container"}
-				onPress={handleSubmit(handlePhoneVerify)}
-				color={StyleGuide.GREEN}
-			/>
+			{isLoading ? (
+				<ActivityIndicator size={"large"} color={StyleGuide.GREEN} />
+			) : (
+				<CustomButton
+					title={"Verify"}
+					id={"recaptcha-container"}
+					onPress={handleSubmit(handlePhoneVerify)}
+					color={StyleGuide.GREEN}
+				/>
+			)}
+
 			{countries && (
 				<CountryPickModal
 					isModalVisible={isModalVisible}
