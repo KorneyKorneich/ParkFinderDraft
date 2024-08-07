@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-	Image,
-	SafeAreaView,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from "react-native";
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
 import { Nullable, UnauthorizedStackRoutesProps } from "@shared/api";
@@ -15,42 +8,42 @@ import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
 
-export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
-
-	const getCountries = useCountryStore(state => state.fetchCountries);
-	const countries = useCountryStore(state => state.countries);
-	const defaultCountry = useCountryStore(state => state.defaultData);
-	const phoneAuth = useUserStore(state => state.phoneSignIn);
+export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
+	const getCountries = useCountryStore((state) => state.fetchCountries);
+	const countries = useCountryStore((state) => state.countries);
+	const defaultCountry = useCountryStore((state) => state.defaultData);
+	const phoneAuth = useUserStore((state) => state.phoneSignIn);
 
 	const [phone, setPhone] = useState("");
 	const [selectedCountry, setSelectedCountry] = useState<Nullable<Country>>(null);
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [confirmation, setConfirmation] = useState<FirebaseAuthTypes.ConfirmationResult>();
 
-	function handleModalClose() {
+	const handleModalClose = () => {
 		setIsModalVisible(false);
-	}
+	};
 
-	function handleModalOpen() {
+	const handleModalOpen = () => {
 		setIsModalVisible(true);
-	}
+	};
 
-	async function handlePhoneVerify() {
-		try {
-			if(selectedCountry){
-				const confirm = await phoneAuth({selectedCountry: selectedCountry, phone: phone});
-				setConfirmation(confirm);
-			}
-			navigation.navigate( "OTPVerifyScreen", { confirmation: confirmation } );
-		}catch (e){
-			//todo: add error handler
+	const handlePhoneVerify = async () => {
+		if (selectedCountry) {
+			const confirm = await phoneAuth({
+				selectedCountry: selectedCountry,
+				phone: phone,
+			});
+			setConfirmation(confirm);
 		}
-	}
+		navigation.navigate("OTPVerifyScreen", {
+			confirmation: confirmation,
+		});
+	};
 
-	function handleCountryPick(item: Country) {
+	const handleCountryPick = (item: Country) => {
 		setSelectedCountry(item);
 		setIsModalVisible(false);
-	}
+	};
 
 	useEffect(() => {
 		getCountries().then(() => {
@@ -81,11 +74,28 @@ export const PhoneAuthScreen = ({navigation}: UnauthorizedStackRoutesProps) => {
 					</View>
 				</TouchableOpacity>
 				<View>
-					<TextInput style={styles.phoneInput} value={phone} onChangeText={number => setPhone(number)} placeholder={"Enter your phone number"} />
+					<TextInput
+						style={styles.phoneInput}
+						value={phone}
+						onChangeText={(number) => setPhone(number)}
+						placeholder={"Enter your phone number"}
+					/>
 				</View>
 			</View>
-			<CustomButton title={"Verify"} id={"recaptcha-container"} onPress={handlePhoneVerify} color={StyleGuide.GREEN} />
-			{countries && <CountryPickModal isModalVisible={isModalVisible} handleModalClose={handleModalClose} handleCountryPick={handleCountryPick} countries={countries}/>}
+			<CustomButton
+				title={"Verify"}
+				id={"recaptcha-container"}
+				onPress={handlePhoneVerify}
+				color={StyleGuide.GREEN}
+			/>
+			{countries && (
+				<CountryPickModal
+					isModalVisible={isModalVisible}
+					handleModalClose={handleModalClose}
+					handleCountryPick={handleCountryPick}
+					countries={countries}
+				/>
+			)}
 		</SafeAreaView>
 	);
 };
