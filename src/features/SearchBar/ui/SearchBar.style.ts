@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
 		top: 20,
 		left: "20%",
 		width: "80%",
-		transform: [ { translateX: -40 } ],
+		transform: [{ translateX: -40 }],
 	},
 	inputStyles: {
 		backgroundColor: StyleGuide.SEARCH_INPUT,
@@ -25,13 +25,13 @@ export const styles = StyleSheet.create({
 	},
 	inputBoxStyle: {
 		paddingHorizontal: 0,
-		width: "80%"
+		width: "80%",
 	},
 	btnStyle: {
 		width: "20%",
 		borderTopLeftRadius: 0,
 		borderBottomLeftRadius: 0,
-		backgroundColor: StyleGuide.SEARCH_BTN, 
+		backgroundColor: StyleGuide.SEARCH_BTN,
 		height: "100%",
-	}
+	},
 });

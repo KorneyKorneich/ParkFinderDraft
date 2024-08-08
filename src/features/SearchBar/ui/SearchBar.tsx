@@ -8,7 +8,7 @@ import { useSetlocationStore } from "@entities/user/model/setlocationStore/setlo
 
 export const SearchBar = () => {
 	const image = require("@shared/ui/assets/images/loupe.png");
-	const [ value, setValue ] = useState<string>();
+	const [value, setValue] = useState<string>();
 
 	const { setLocation } = useSetlocationStore();
 
@@ -20,9 +20,13 @@ export const SearchBar = () => {
 
 	return (
 		<View style={styles.controlledInBox}>
-			<CustomInput value={value} onChangeText={setValue} boxStyle={styles.inputBoxStyle} style={styles.inputStyles} />
+			<CustomInput
+				value={value}
+				onChangeText={setValue}
+				boxStyle={styles.inputBoxStyle}
+				style={styles.inputStyles}
+			/>
 			<CustomButton imgPath={image} onPress={handleSearch} style={styles.btnStyle} />
 		</View>
 	);
 };
-

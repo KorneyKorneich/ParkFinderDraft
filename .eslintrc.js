@@ -1,47 +1,25 @@
 module.exports = {
-	"env": {
-		"browser": true,
-		"es2021": true,
-		"node": true,
+	env: {
+		browser: true,
+		es2021: true,
+		node: true,
 	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:@typescript-eslint/recommended",
-		"prettier"
-	],
-	"overrides": [
-	],
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": "latest",
-		"sourceType": "module"
+	extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+	overrides: [],
+	parser: "@typescript-eslint/parser",
+	parserOptions: {
+		ecmaVersion: "latest",
+		sourceType: "module",
 	},
-	"plugins": [
-		"react",
-		"@typescript-eslint"
-	],
-	"rules": {
-		"indent": [
-			"error",
-			"tab"
-		],
-		"linebreak-style": [
-			"error",
-			"windows"
-		],
-		"quotes": [
-			"error",
-			"double"
-		],
-		"semi": [
-			"error",
-			"always"
-		],
+	plugins: ["react", "@typescript-eslint"],
+	rules: {
+		indent: ["error", "tab"],
+		"linebreak-style": ["error", "windows"],
+		quotes: ["error", "double"],
+		semi: ["error", "always"],
 		"react/react-in-jsx-scope": "off",
-		"space-infix-ops": "error", 
-		"object-curly-spacing": [ "error", "always" ], 
-		"array-bracket-spacing": [ "error", "always" ],
-		"@typescript-eslint/no-var-requires": "off" 
-	}
+		"space-infix-ops": "error",
+		"object-curly-spacing": ["error", "always"],
+		"@typescript-eslint/no-var-requires": "off",
+	},
 };

@@ -5,21 +5,21 @@ export const styles = StyleSheet.create({
 	inputBox: {
 		width: "100%",
 		justifyContent: "center",
-		paddingHorizontal: 10
+		paddingHorizontal: 10,
 	},
-	container:{
+	container: {
 		flexDirection: "column",
-		gap: 5
+		gap: 5,
 	},
-	title:{
+	title: {
 		fontSize: 12,
 	},
-	input:{
+	input: {
 		width: "100%",
 		backgroundColor: StyleGuide.WHITE,
 		padding: 10,
 		borderRadius: 8,
 		borderColor: StyleGuide.GREY,
-		borderWidth: 1
-	}
+		borderWidth: 1,
+	},
 });

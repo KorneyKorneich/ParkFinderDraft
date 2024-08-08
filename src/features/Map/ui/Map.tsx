@@ -16,32 +16,16 @@ export const Map = () => {
 	const mapRef = useRef<Nullable<YaMap>>(null);
 
 	useEffect(() => {
-		if (mapRef.current && currentLocation) {            
-			mapRef.current.setCenter(
-				{ lat: currentLocation.lat, lon: currentLocation.lon },
-				10, 
-				0,  
-				0   
-			);
+		if (mapRef.current && currentLocation) {
+			mapRef.current.setCenter({ lat: currentLocation.lat, lon: currentLocation.lon }, 10, 0, 0);
 		}
-	}, [ currentLocation ]);
+	}, [currentLocation]);
 
 	useEffect(() => {
 		if (mapRef.current && location) {
-			mapRef.current.setCenter(
-				{ lat: location.lat, lon: location.lon },
-				10, 
-				0,  
-				0   
-			);
+			mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 10, 0, 0);
 		}
-	}, [ location ]);
+	}, [location]);
 
-	return (
-		<YaMap
-			ref={mapRef}
-			style={styles.map}
-		>
-		</YaMap>
-	);
+	return <YaMap ref={mapRef} style={styles.map}></YaMap>;
 };
