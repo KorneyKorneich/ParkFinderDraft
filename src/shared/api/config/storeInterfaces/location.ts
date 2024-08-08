@@ -1,9 +1,4 @@
-import { Nullable } from "../common/common";
-
-export interface location {
-    lat: number;
-    lon: number;
-} 
+import { Nullable, location } from "../common/common";
 
 export type setLocationType = (value: Nullable<location>) => void;
 

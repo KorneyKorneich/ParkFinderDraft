@@ -10,7 +10,7 @@ interface CountryItemProps {
 }
 
 export const CountryItem = (props: CountryItemProps) => {
-	const {item, handleCountryPick} = props;
+	const { item, handleCountryPick } = props;
 
 
 	return (

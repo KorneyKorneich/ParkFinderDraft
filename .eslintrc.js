@@ -42,6 +42,7 @@ module.exports = {
 		"space-infix-ops": "error", 
 		"object-curly-spacing": [ "error", "always" ], 
 		"array-bracket-spacing": [ "error", "always" ],
-		"@typescript-eslint/no-var-requires": "off" 
+		"@typescript-eslint/no-var-requires": "off",
+		"react/no-children-prop": "off" 
 	}
 };

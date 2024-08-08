@@ -30,7 +30,7 @@ export const requestLocationPermission = async (setCurrentLocation: setCurrentLo
 				const location = await getLocation() as currentLocation;
 				setCurrentLocation(location);
 			} catch (error) {
-				console.error(error);
+				//TODO: fill catch area with error logic
 			}
 		}
 	}
