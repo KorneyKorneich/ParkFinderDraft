@@ -1,13 +1,12 @@
-import { Dimensions, StyleSheet } from "react-native";
-
-const { width, height } = Dimensions.get('window');
+import {  StyleSheet } from "react-native";
+import { SIZES } from "@shared/ui/stylesConsts/stylesConsts";
 
 const vw = (percentage: number) => {
-  return (width * percentage) / 100;
+  return (SIZES.WIDTH * percentage) / 100;
 };
 
 const vh = (percentage: number) => {
-  return (height * percentage) / 100;
+  return (SIZES.HEIGHT * percentage) / 100;
 };
 
 export const styles = StyleSheet.create({
@@ -16,4 +15,3 @@ export const styles = StyleSheet.create({
         height: vh(100),
     },
 });
-

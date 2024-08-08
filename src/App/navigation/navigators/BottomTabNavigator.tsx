@@ -1,13 +1,14 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { bottomTabsRoutes } from "../routes/bottomTabsRoutes";
+import { ROUTES } from "@shared/api";
 
 const BottomTabs = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
 	return (
 		<BottomTabs.Navigator
-			initialRouteName='MapScreen'
+			initialRouteName={ROUTES.MapScreen}
 			screenOptions={{ headerShown: false }}
 		>
 			{bottomTabsRoutes.map((route, index) => (
@@ -23,4 +24,3 @@ const BottomTabNavigator = () => {
 };
 
 export default BottomTabNavigator;
- 

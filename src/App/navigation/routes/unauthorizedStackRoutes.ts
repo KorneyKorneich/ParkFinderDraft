@@ -4,7 +4,7 @@ import { EmailAuthScreen } from "@screens/EmailAuthScreen";
 import { PhoneAuthScreen } from "@screens/PhoneAuthScreen";
 import { OTPVerification } from "@screens/OTPVerification";
 import { StackNavigationOptions } from "@react-navigation/stack";
-import { AuthorizedStackParamList, UnauthorizedStackParamList } from "@shared/api";
+import { AuthorizedStackParamList, UnauthorizedStackParamList, ROUTES } from "@shared/api";
 import { NativeStackScreenProps } from "react-native-screens/native-stack";
 
 type RouteConfig<ParamList extends Record<string, object | undefined>, RouteName extends keyof ParamList> = {
@@ -15,34 +15,34 @@ type RouteConfig<ParamList extends Record<string, object | undefined>, RouteName
 
 export const authorizedStackRoutes: RouteConfig<AuthorizedStackParamList, keyof AuthorizedStackParamList>[] = [
 	{
-		name: "DrawerNavigator",
+		name: ROUTES.DrawerNavigator,
 		component: DrawerNavigator,
 		options: {
-			title: "DrawerNavigator",
+			title: ROUTES.DrawerNavigator,
 		},
 	},
 ];
 
 export const unauthorizedStackRoutes: RouteConfig<UnauthorizedStackParamList, keyof UnauthorizedStackParamList>[] = [
 	{
-		name: "EmailAuthScreen",
+		name: ROUTES.EmailAuthScreen,
 		component: EmailAuthScreen,
 		options: {
-			title: "EmailAuthScreen",
+			title: ROUTES.EmailAuthScreen,
 		},
 	},
 	{
-		name: "PhoneAuthScreen",
+		name: ROUTES.PhoneAuthScreen,
 		component: PhoneAuthScreen,
 		options: {
-			title: "PhoneAuthScreen",
+			title: ROUTES.PhoneAuthScreen,
 		},
 	},
 	{
-		name: "OTPVerifyScreen",
+		name: ROUTES.OTPVerifyScreen,
 		component: OTPVerification,
 		options: {
-			title: "OTPVerifyScreen",
+			title: ROUTES.OTPVerifyScreen,
 		},
 	},
 ];

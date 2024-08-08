@@ -5,6 +5,6 @@ export type {
 	UnauthorizedStackRoutesProps,
 	UnauthorizedStackParamList,
 } from "./config/common/navigationTypes/routesType.ts";
-export { InitialScreens } from "./config/common/navigationTypes/routesType.ts";
+export { InitialScreens, ROUTES } from "./config/common/navigationTypes/routesType.ts";
 
 export { FIRESTORE_DB, FIREBASE_APP, FIREBASE_AUTH, FIREBASE } from "./storage/storage.ts";

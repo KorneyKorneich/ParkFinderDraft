@@ -19,3 +19,14 @@ export type UnauthorizedStackRoutesProps = NativeStackScreenProps<UnauthorizedSt
 export enum InitialScreens {
 	UnauthorizedInitialScreen = "EmailAuthScreen",
 }
+
+export enum ROUTES {
+	MapScreen = "MapScreen",
+    AddParkScreen = "AddParkScreen",
+    DrawerNavigator = "DrawerNavigator",
+    ParkListScreen = "ParkListScreen",
+	EmailAuthScreen = "EmailAuthScreen",
+    PhoneAuthScreen = "PhoneAuthScreen",
+    OTPVerifyScreen = "OTPVerifyScreen",
+	BottomTabNavigator = "BottomTabNavigator"
+}

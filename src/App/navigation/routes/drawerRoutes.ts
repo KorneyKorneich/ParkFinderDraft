@@ -1,19 +1,20 @@
 import BottomTabNavigator from "../navigators/BottomTabNavigator";
 import { ParkListScreen } from "@screens/ParkListScreen";
+import { ROUTES } from "@shared/api";
 
 export const drawerRoutes = [
 	{
-		name: "BottomTabNavigator",
+		name: ROUTES.BottomTabNavigator,
 		component: BottomTabNavigator,
 		options: {
-			title: "BottomTabNavigator",
+			title: ROUTES.BottomTabNavigator,
 		},
 	},
 	{
-		name: "ParkListScreen",
+		name: ROUTES.ParkListScreen,
 		component: ParkListScreen,
 		options: {
-			title: "ParkListScreen",
+			title: ROUTES.ParkListScreen,
 		},
 	},
 ];
