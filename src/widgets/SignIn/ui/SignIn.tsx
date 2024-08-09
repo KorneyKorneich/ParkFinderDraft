@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Text, ActivityIndicator, View } from "react-native";
+import { KeyboardAvoidingView, Text, ActivityIndicator } from "react-native";
 import { useUserStore } from "@entities/user";
 import { CustomButton, CustomInput, StyleGuide } from "@shared/ui";
 import { styles } from "./SignIn.style";
@@ -38,6 +38,7 @@ export const SignIn = () => {
 				setError("password", { type: "manual", message: errorMessage });
 			} else {
 				setError("email", { type: "manual", message: errorMessage });
+				setError("password", { type: "manual", message: errorMessage });
 			}
 		}
 	};
