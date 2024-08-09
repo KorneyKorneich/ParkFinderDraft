@@ -12,3 +12,4 @@ export { CustomInput } from "./Components/CustomInput/ui/CustomInput";
 export { CustomButton } from "./Components/CustomButton/ui/CustomButton";
 export { CustomImage } from "./Components/CustomImage/ui/CustomImage";
 export { CustomCheckBox } from "./Components/CustomCheckBox/ui/CustomCheckBox";
+export { ParkingInfModal } from "./Components/ParkingInfModal/ui/ParkingInfModal";
