@@ -72,4 +72,15 @@ export const styles = StyleSheet.create({
 		fontSize: 20,
 		fontWeight: "600",
 	},
+	reportBtn: {
+		position: "absolute",
+		left: 0,
+		top: 0,
+		width: 40,
+		height: 40,
+		borderRadius: 0,
+		backgroundColor: StyleGuide.GREY,
+		borderTopLeftRadius: 10,
+		borderBottomRightRadius: 10,
+	},
 });

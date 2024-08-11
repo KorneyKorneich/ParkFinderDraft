@@ -7,17 +7,13 @@ import auth from "@react-native-firebase/auth";
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
-	const [ user, setUser ] = useState();
+	const [user, setUser] = useState();
 
 	function AuthStateChanged(user) {
 		setUser(user);
 	}
 
-	//TODO: dont forget to improve this
-		
-	// const stack = user ? authorizedStackRoutes : unauthorizedStackRoutes;
-
-	const stack = authorizedStackRoutes;
+	const stack = user ? authorizedStackRoutes : unauthorizedStackRoutes;
 
 	useEffect(() => {
 		const subscriber = auth().onAuthStateChanged(AuthStateChanged);
@@ -25,18 +21,11 @@ const StackNavigator = () => {
 	}, []);
 
 	return (
-
 		<Stack.Navigator initialRouteName="EmailAuthScreen" screenOptions={{ headerShown: false }}>
 			{stack.map((route, index) => (
-				<Stack.Screen
-					key={index}
-					name={route.name}
-					component={route.component}
-					options={route.options}
-				/>
+				<Stack.Screen key={index} name={route.name} component={route.component} options={route.options} />
 			))}
 		</Stack.Navigator>
-
 	);
 };
 

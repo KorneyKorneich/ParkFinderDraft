@@ -10,9 +10,8 @@ export const MapScreen = () => {
 	return (
 		<View>
 			<SearchBar />
-			<Map />
-			<Button title='watch park list' onPress={() => navigation.navigate("ParkListScreen")} />
+			<Map isPositionNeed={false} />
+			<Button title="watch park list" onPress={() => navigation.navigate("ParkListScreen")} />
 		</View>
 	);
 };
-

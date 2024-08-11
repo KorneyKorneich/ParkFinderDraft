@@ -10,3 +10,4 @@ export type { setLocationType, IUseSetlocationStore } from "../api/config/storeI
 export type { ParkingInf, ParkingSchema } from "../api/config/parkingSchema/parkingSchema.ts";
 
 export { FIRESTORE_DB, FIREBASE_APP, FIREBASE_AUTH, FIREBASE } from "./storage/storage.ts";
+export { locationArr } from "./tempData/locationArr.ts";
