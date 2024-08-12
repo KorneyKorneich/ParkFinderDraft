@@ -1,17 +1,16 @@
-import { View, Button } from "react-native";
+import { SafeAreaView } from "react-native";
 import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@shared/api";
 import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
+import { NearestParkingModal } from "@features/NearestParkingModal";
+import { styles } from "./MapScreen.styles";
 
 export const MapScreen = () => {
-	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-	return (
-		<View>
-			<SearchBar />
-			<Map isPositionNeed={false} />
-			<Button title="watch park list" onPress={() => navigation.navigate("ParkListScreen")} />
-		</View>
-	);
+    return (
+        <SafeAreaView style={styles.mapAreaScreen}>
+            <SearchBar />
+            <Map isPositionNeed={false} />
+            <NearestParkingModal />
+        </SafeAreaView>
+    );
 };

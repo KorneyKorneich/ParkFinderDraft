@@ -5,12 +5,12 @@ interface SetMarkers {
 }
 
 export const loadMarkers = async (setMarkers: SetMarkers) => {
-	const data = (await fetchMarkers()) as ParkingSchema[];
-	setMarkers(data);
+    const data = (await fetchMarkers()) as ParkingSchema[];
+    setMarkers(data);
 };
 
 const fetchMarkers = async () => {
-	return new Promise((resolve) => {
-		resolve(locationArr);
-	});
+    return new Promise((resolve) => {
+        resolve(locationArr);
+    });
 };
