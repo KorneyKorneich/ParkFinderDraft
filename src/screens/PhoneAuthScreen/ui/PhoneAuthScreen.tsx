@@ -7,6 +7,7 @@ import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
+import { ROUTES } from "@shared/api";
 
 export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
     const getCountries = useCountryStore((state) => state.fetchCountries);
@@ -19,30 +20,31 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [confirmation, setConfirmation] = useState<FirebaseAuthTypes.ConfirmationResult>();
 
-    function handleModalClose() {
+    const handleModalClose = () => {
         setIsModalVisible(false);
-    }
+    };
 
-    function handleModalOpen() {
+    const handleModalOpen = () => {
         setIsModalVisible(true);
-    }
+    };
 
-    async function handlePhoneVerify() {
-        try {
-            if (selectedCountry) {
-                const confirm = await phoneAuth({ selectedCountry: selectedCountry, phone: phone });
-                setConfirmation(confirm);
-            }
-            navigation.navigate("OTPVerifyScreen", { confirmation: confirmation });
-        } catch (e) {
-            //todo: add error handler
+    const handlePhoneVerify = async () => {
+        if (selectedCountry) {
+            const confirm = await phoneAuth({
+                selectedCountry: selectedCountry,
+                phone: phone,
+            });
+            setConfirmation(confirm);
         }
-    }
+        navigation.navigate(ROUTES.OTPVerifyScreen, {
+            confirmation: confirmation,
+        });
+    };
 
-    function handleCountryPick(item: Country) {
+    const handleCountryPick = (item: Country) => {
         setSelectedCountry(item);
         setIsModalVisible(false);
-    }
+    };
 
     useEffect(() => {
         getCountries().then(() => {

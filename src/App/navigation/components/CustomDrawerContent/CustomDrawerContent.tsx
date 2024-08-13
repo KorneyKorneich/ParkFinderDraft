@@ -5,6 +5,7 @@ import { useUserStore } from "@entities/user";
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => {
     const signOut = useUserStore((state) => state.signOut);
+
     return (
         <DrawerContentScrollView {...props}>
             <View>

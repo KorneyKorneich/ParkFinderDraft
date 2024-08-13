@@ -11,14 +11,15 @@ import {
 } from "react-native";
 import { styles } from "./CustomButton.styles";
 import { CustomImage } from "@shared/ui";
+import { Nullable } from "@shared/api";
 
 interface ICustomButton extends TouchableOpacityProps {
-    title?: string;
+    title?: Nullable<string>;
     style?: StyleProp<ViewStyle>;
     onPress?: (event: GestureResponderEvent) => void;
     textStyle?: StyleProp<TextStyle>;
     imgPath?: ImageSourcePropType;
-    color?: string;
+    color?: Nullable<string>;
 }
 
 export const CustomButton: React.FC<ICustomButton> = ({
@@ -30,12 +31,15 @@ export const CustomButton: React.FC<ICustomButton> = ({
     color,
     ...props
 }) => {
+    const buttonStyles = [
+        styles.btnArea,
+        styles.customButtonContainer,
+        color ? { backgroundColor: color } : null,
+        style,
+    ].filter(Boolean);
+
     return (
-        <TouchableOpacity
-            onPress={onPress}
-            {...props}
-            activeOpacity={0.8}
-            style={[styles.btnArea, styles.customButtonContainer, { backgroundColor: color }, style]}>
+        <TouchableOpacity onPress={onPress} {...props} activeOpacity={0.8} style={buttonStyles}>
             {title ? <Text style={[styles.title, textStyle]}>{title}</Text> : imgPath && <CustomImage path={imgPath} />}
         </TouchableOpacity>
     );

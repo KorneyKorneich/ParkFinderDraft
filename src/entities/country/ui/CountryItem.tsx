@@ -9,11 +9,13 @@ interface CountryItemProps {
     handleCountryPick: (country: Country) => void;
 }
 
-export const CountryItem = (props: CountryItemProps) => {
-    const { item, handleCountryPick } = props;
+export const CountryItem = ({ item, handleCountryPick }: CountryItemProps) => {
+    const handleOnCountryPick = () => {
+        handleCountryPick(item);
+    };
 
     return (
-        <TouchableOpacity onPress={() => handleCountryPick(item)} style={styles.countryContainer}>
+        <TouchableOpacity onPress={handleOnCountryPick} style={styles.countryContainer}>
             <CustomImage path={{ uri: item.flag }} resizeMode={"contain"} />
             <Text>{item.name}</Text>
         </TouchableOpacity>

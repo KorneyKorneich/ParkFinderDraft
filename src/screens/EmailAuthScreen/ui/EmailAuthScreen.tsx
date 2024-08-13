@@ -5,19 +5,21 @@ import { styles } from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn";
 import { UnauthorizedStackRoutesProps } from "@shared/api";
+import { ROUTES } from "@shared/api";
 
 export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
     const [isSignUp, setIsSignUp] = useState(true);
 
-    function handleToSignUp() {
+
+    const handleToSignUp = () => {
         setIsSignUp(true);
-    }
-    function handleToSignIn() {
+    };
+    const handleToSignIn = () => {
         setIsSignUp(false);
-    }
-    function handleToPhoneAuth() {
-        navigation.navigate("PhoneAuthScreen");
-    }
+    };
+    const handleToPhoneAuth = () => {
+        navigation.navigate(ROUTES.PhoneAuthScreen);
+    };
 
     return (
         <SafeAreaView style={styles.authScreenContainer}>
