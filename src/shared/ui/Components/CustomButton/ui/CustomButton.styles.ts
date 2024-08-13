@@ -4,17 +4,17 @@ import { StyleGuide } from "@shared/ui";
 export const styles = StyleSheet.create({
     btnArea: {
         backgroundColor: StyleGuide.BLUE,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         borderRadius: 12,
         paddingHorizontal: 15,
-        paddingVertical: 2
+        paddingVertical: 2,
     },
     title: {
         fontSize: 18,
         textAlign: "center",
         fontWeight: "bold",
-        color: StyleGuide.WHITE
+        color: StyleGuide.WHITE,
     },
     customButtonContainer: {
         width: "100%",

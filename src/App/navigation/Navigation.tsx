@@ -3,9 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import StackNavigator from "./navigators/StackNavigator";
 
 const Navigation = () => (
-	<NavigationContainer>
-		<StackNavigator />
-	</NavigationContainer>
+    <NavigationContainer>
+        <StackNavigator />
+    </NavigationContainer>
 );
 
 export default Navigation;

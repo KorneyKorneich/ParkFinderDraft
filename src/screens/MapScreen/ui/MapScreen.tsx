@@ -6,17 +6,17 @@ import { SearchBar } from "@features/SearchBar";
 import { AuthorizedStackParamList } from "@shared/api";
 
 export const MapScreen = () => {
-	const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
+    const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
 
-	const handleNavigateToParkingList = () => {
-		navigation.navigate("ParkListScreen");
-	};
+    const handleNavigateToParkingList = () => {
+        navigation.navigate("ParkListScreen");
+    };
 
-	return (
-		<View>
-			<SearchBar />
-			<Map />
-			<Button title="watch park list" onPress={handleNavigateToParkingList} />
-		</View>
-	);
+    return (
+        <View>
+            <SearchBar />
+            <Map />
+            <Button title="watch park list" onPress={handleNavigateToParkingList} />
+        </View>
+    );
 };

@@ -1,1 +1,1 @@
-export {CountryPickModal} from "./ui/CountryPickModal";
+export { CountryPickModal } from "./ui/CountryPickModal";
