@@ -18,6 +18,7 @@ target 'ParkingFinder' do
          pod 'Firebase', :modular_headers => true
          pod 'FirebaseCore', :modular_headers => true
          pod 'GoogleUtilities', :modular_headers => true
+         pod 'react-native-permissions', :path => '../node_modules/react-native-permissions'
   config = use_native_modules!
 
 

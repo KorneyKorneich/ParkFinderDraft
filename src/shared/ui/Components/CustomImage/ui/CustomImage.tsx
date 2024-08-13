@@ -4,11 +4,9 @@ import { styles } from "./CustomImage.styles";
 
 interface ICustomImage extends ImageProps {
     path: ImageSourcePropType;
-    style?: StyleProp<ImageStyle>
-};
+    style?: StyleProp<ImageStyle>;
+}
 
 export const CustomImage: React.FC<ICustomImage> = ({ path, style, ...props }) => {
-	return (
-		<Image {...props} style={[styles.checkedImg, style]} source={path} />
-	);
+    return <Image {...props} style={[styles.checkedImg, style]} source={path} />;
 };

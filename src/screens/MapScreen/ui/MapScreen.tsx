@@ -1,18 +1,22 @@
 import { View, Button } from "react-native";
 import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@shared/api";
 import { Map } from "@shared/ui";
 import { SearchBar } from "@features/SearchBar";
+import { AuthorizedStackParamList, ROUTES } from "@shared/api";
 
 export const MapScreen = () => {
-	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-	return (
-		<View>
-			<SearchBar />
-			<Map />
-			<Button title='watch park list' onPress={() => navigation.navigate("ParkListScreen")} />
-		</View>
-	);
-};
+    const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
 
+    const handleNavigateToParkingList = () => {
+        navigation.navigate(ROUTES.ParkListScreen);
+    };
+
+    return (
+        <View>
+            <SearchBar />
+            <Map />
+            <Button title="watch park list" onPress={handleNavigateToParkingList} />
+        </View>
+    );
+};

@@ -1,20 +1,20 @@
 import { AddParkScreen } from "@screens/AddParkScreen";
 import { MapScreen } from "@screens/MapScreen";
+import { ROUTES } from "@shared/api";
 
 export const bottomTabsRoutes = [
-	{
-		name: "MapScreen",
-		component: MapScreen,
-		options: {
-			title: "MapScreen",
-		},
-	},
-	{
-		name: "AddParkScreen",
-		component: AddParkScreen,
-		options: {
-			title: "AddParkScreen",
-		},
-	},
+    {
+        name: ROUTES.MapScreen,
+        component: MapScreen,
+        options: {
+            title: ROUTES.MapScreen,
+        },
+    },
+    {
+        name: ROUTES.AddParkScreen,
+        component: AddParkScreen,
+        options: {
+            title: ROUTES.AddParkScreen,
+        },
+    },
 ];
-

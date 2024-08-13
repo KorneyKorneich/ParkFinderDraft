@@ -38,13 +38,13 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
 	}
 
 	const handlePhoneVerify: SubmitHandler<PhoneForm> = async (data) => {
-		try {
+
 			if (selectedCountry) {
 				await phoneAuth({ selectedCountry: selectedCountry, phone: data.phone }).then((res) => {
 					navigation.navigate("OTPVerifyScreen", { confirmation: res });
 				});
 			}
-		} catch (e) {}
+
 	};
 
 	function handleCountryPick(item: Country) {
