@@ -8,16 +8,22 @@ import { styles } from "./SignIn.style";
 export const SignUp = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const signUp = useUserStore(state => state.signUp);
+	const signUp = useUserStore((state) => state.signUp);
 
 	const handleSignUp = () => {
-		signUp({email, password});
+		signUp({ email, password });
 	};
 	return (
 		<KeyboardAvoidingView>
-			<CustomInput title={"Email"} value={email} onChangeText={setEmail} boxStyle={styles.textInputBox}/>
-			<CustomInput title={"Password"} value={password} onChangeText={setPassword} boxStyle={styles.textInputBox} isPassword/>
-			<CustomButton title={"Sign Up"} onPress={handleSignUp} color={StyleGuide.GREEN}/>
+			<CustomInput title={"Email"} value={email} onChangeText={setEmail} boxStyle={styles.textInputBox} />
+			<CustomInput
+				title={"Password"}
+				value={password}
+				onChangeText={setPassword}
+				boxStyle={styles.textInputBox}
+				isPassword
+			/>
+			<CustomButton style={styles.button} title={"Sign Up"} onPress={handleSignUp} color={StyleGuide.GREEN} />
 		</KeyboardAvoidingView>
 	);
 };

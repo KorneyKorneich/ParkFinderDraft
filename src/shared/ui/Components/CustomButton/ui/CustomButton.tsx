@@ -14,12 +14,12 @@ import { CustomImage } from "@shared/ui";
 import { Nullable } from "@shared/api";
 
 interface ICustomButton extends TouchableOpacityProps {
-	title?: Nullable<string>;
+	title: Nullable<string>;
 	style?: StyleProp<ViewStyle>;
 	onPress?: (event: GestureResponderEvent) => void;
 	textStyle?: StyleProp<TextStyle>;
 	imgPath?: ImageSourcePropType;
-	color?: Nullable<string>;
+	color: Nullable<string>;
 }
 
 export const CustomButton: React.FC<ICustomButton> = ({

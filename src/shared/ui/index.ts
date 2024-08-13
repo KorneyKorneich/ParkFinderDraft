@@ -12,3 +12,4 @@ export { CustomInput } from "./Components/CustomInput/ui/CustomInput";
 export { CustomButton } from "./Components/CustomButton/ui/CustomButton";
 export { Map } from "./Components/Map/ui/Map";
 export { CustomImage } from "./Components/CustomImage/ui/CustomImage";
+export { Switcher } from "./Components/Switcher/ui/Switcher";

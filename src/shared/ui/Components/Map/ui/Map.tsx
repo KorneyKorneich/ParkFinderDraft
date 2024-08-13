@@ -1,9 +1,19 @@
-import React from "react";
-import { YaMap } from "react-native-yamap";
+import React, { useRef } from "react";
+import { YaMap, YaMapProps } from "react-native-yamap";
 import { styles } from "./Map.styles";
 
-export const Map = () => {
+interface MapProps extends YaMapProps {
+	children?: React.ReactNode;
+}
+
+export const Map = (props: MapProps) => {
 	YaMap.init(process.env.REACT_NATIVE_APP_YANDEX_MAP_API_KEY as string);
 
-	return <YaMap style={styles.map}></YaMap>;
+	const map = useRef<YaMap>(null);
+
+	return (
+		<YaMap ref={map} {...props} style={styles.map}>
+			{props.children}
+		</YaMap>
+	);
 };

@@ -8,30 +8,35 @@ import { InitialScreens, Nullable } from "@shared/api";
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
-	const [user, setUser] = useState<Nullable<FirebaseAuthTypes.User>>(null);
+    const [user, setUser] = useState<Nullable<FirebaseAuthTypes.User>>(null);
 
-	const AuthStateChanged = (user: Nullable<FirebaseAuthTypes.User>) => {
-		setUser(user);
-	};
+    const AuthStateChanged = (user: Nullable<FirebaseAuthTypes.User>) => {
+        setUser(user);
+    };
 
-	const routes = useMemo(() => {
-		return user ? authorizedStackRoutes : unauthorizedStackRoutes;
-	}, [user]);
+    const routes = useMemo(() => {
+        return user ? authorizedStackRoutes : unauthorizedStackRoutes;
+    }, [user]);
 
-	useEffect(() => {
-		const unsubscribe = auth().onAuthStateChanged(AuthStateChanged);
-		return () => unsubscribe();
-	}, []);
+    useEffect(() => {
+        const unsubscribe = auth().onAuthStateChanged(AuthStateChanged);
+        return () => unsubscribe();
+    }, []);
 
-	return (
-		<Stack.Navigator
-			initialRouteName={InitialScreens.UnauthorizedInitialScreen}
-			screenOptions={{ headerShown: false }}>
-			{routes.map((route, index) => (
-				<Stack.Screen key={index} name={route.name} component={route.component} options={route.options} />
-			))}
-		</Stack.Navigator>
-	);
+    return (
+        <Stack.Navigator
+            initialRouteName={InitialScreens.UnauthorizedInitialScreen}
+            screenOptions={{ headerShown: false }}>
+            {routes.map((route, index) => (
+                <Stack.Screen
+                    key={index}
+                    name={route.name}
+                    component={route.component}
+                    options={route.options}
+                />
+            ))}
+        </Stack.Navigator>
+    );
 };
 
 export default StackNavigator;
