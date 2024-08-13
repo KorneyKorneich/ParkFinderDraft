@@ -12,6 +12,6 @@ type UnauthorizedStackParamList = {
     EmailAuthScreen: undefined;
     PhoneAuthScreen: undefined;
     OTPVerifyScreen: { confirmation?: FirebaseAuthTypes.ConfirmationResult };
-}
+};
 
 export type UnauthorizedStackRoutesProps = NativeStackScreenProps<UnauthorizedStackParamList, "OTPVerifyScreen">;

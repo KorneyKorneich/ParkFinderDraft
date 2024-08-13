@@ -6,13 +6,12 @@ import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
 
 export const MapScreen = () => {
-	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-	return (
-		<View>
-			<SearchBar />
-			<Map />
-			<Button title='watch park list' onPress={() => navigation.navigate("ParkListScreen")} />
-		</View>
-	);
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    return (
+        <View>
+            <SearchBar />
+            <Map />
+            <Button title="watch park list" onPress={() => navigation.navigate("ParkListScreen")} />
+        </View>
+    );
 };
-

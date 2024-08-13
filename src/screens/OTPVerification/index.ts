@@ -1,1 +1,1 @@
-export {OTPVerification} from "./ui/OTPVerification";
+export { OTPVerification } from "./ui/OTPVerification";

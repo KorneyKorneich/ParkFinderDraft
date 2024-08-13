@@ -4,18 +4,13 @@ import { requestLocationPermission } from "../model/services/requestLocationPerm
 import { useSetCurretLocationStore } from "@entities/user";
 
 function App(): React.JSX.Element {
-	const { setCurrentLocation } = useSetCurretLocationStore();
+    const { setCurrentLocation } = useSetCurretLocationStore();
 
-	useEffect(() => {
-		requestLocationPermission(setCurrentLocation);
-	}, []);
+    useEffect(() => {
+        requestLocationPermission(setCurrentLocation);
+    }, []);
 
-	return (
-		<Navigation />
-	);
+    return <Navigation />;
 }
 
-
 export default App;
-
-
