@@ -3,13 +3,13 @@ import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Map } from "@shared/ui";
 import { SearchBar } from "@features/SearchBar";
-import { AuthorizedStackParamList } from "@shared/api";
+import { AuthorizedStackParamList, ROUTES } from "@shared/api";
 
 export const MapScreen = () => {
     const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
 
     const handleNavigateToParkingList = () => {
-        navigation.navigate("ParkListScreen");
+        navigation.navigate(ROUTES.ParkListScreen);
     };
 
     return (

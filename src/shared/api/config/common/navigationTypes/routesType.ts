@@ -1,7 +1,7 @@
 import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { NativeStackScreenProps } from "react-native-screens/native-stack";
 
-export type AuthorizedStackParamList = {
+export type AuthorizedStackParamList  = {
     MapScreen: undefined;
     AddParkScreen: undefined;
     DrawerNavigator: undefined;

@@ -7,6 +7,7 @@ import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
+import { ROUTES } from "@shared/api";
 
 export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
     const getCountries = useCountryStore((state) => state.fetchCountries);
@@ -35,7 +36,7 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
             });
             setConfirmation(confirm);
         }
-        navigation.navigate("OTPVerifyScreen", {
+        navigation.navigate(ROUTES.OTPVerifyScreen, {
             confirmation: confirmation,
         });
     };

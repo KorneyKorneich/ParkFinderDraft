@@ -5,6 +5,12 @@ export type {
     UnauthorizedStackRoutesProps,
     UnauthorizedStackParamList,
 } from "./config/common/navigationTypes/routesType.ts";
+export type {
+    setCurrentLocation,
+    ICurretLocationStore,
+    currentLocation,
+} from "../api/config/storeInterfaces/currentLocation.ts";
+export type { setLocationType, IUseSetlocationStore, location } from "../api/config/storeInterfaces/location.ts";
 export { InitialScreens, ROUTES } from "./config/common/navigationTypes/routesType.ts";
 
 export { FIRESTORE_DB, FIREBASE_APP, FIREBASE_AUTH, FIREBASE } from "./storage/storage.ts";

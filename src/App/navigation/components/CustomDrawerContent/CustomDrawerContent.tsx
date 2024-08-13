@@ -4,12 +4,13 @@ import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItem } from
 import { useUserStore } from "@entities/user";
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => {
-    const signOutOnPress = useUserStore((state) => state.signOut);
+    const signOut = useUserStore((state) => state.signOut);
+
     return (
         <DrawerContentScrollView {...props}>
             <View>
                 <Text>Menu</Text>
-                <DrawerItem label="Log Out" onPress={signOutOnPress} />
+                <DrawerItem label="Log Out" onPress={signOut} />
             </View>
         </DrawerContentScrollView>
     );
