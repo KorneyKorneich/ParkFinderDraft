@@ -9,6 +9,7 @@ export const requestLocationPermission = async (setCurrentLocation: setCurrentLo
         if (result === "granted") {
             try {
                 const location = (await getLocation()) as currentLocation;
+                console.log("location", location);
                 setCurrentLocation(location);
             } catch (error) {
                 console.error(error);

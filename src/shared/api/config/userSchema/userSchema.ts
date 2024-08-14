@@ -1,3 +1,3 @@
 export interface UserSchema {
-	uuid: string;
+    uuid: string;
 }

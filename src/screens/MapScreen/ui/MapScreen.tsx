@@ -1,9 +1,10 @@
 import { View, Button } from "react-native";
 import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { Map } from "@shared/ui";
 import { SearchBar } from "@features/SearchBar";
 import { AuthorizedStackParamList, ROUTES } from "@shared/api";
+import { Map } from "@features/Map";
+import { styles } from "./MapScreen.styles.ts";
 
 export const MapScreen = () => {
     const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
@@ -14,9 +15,11 @@ export const MapScreen = () => {
 
     return (
         <View>
-            <SearchBar />
+            <View style={styles.searchContainer}>
+                <SearchBar />
+            </View>
+
             <Map />
-            <Button title="watch park list" onPress={handleNavigateToParkingList} />
         </View>
     );
 };

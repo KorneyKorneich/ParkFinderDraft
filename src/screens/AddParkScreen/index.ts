@@ -1,1 +1,1 @@
-export { AddParkScreen } from "./ui/AddParkScreen ";
+export { AddParkScreen } from "./ui/AddParkScreen";

@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { authorizedStackRoutes } from "../routes/authorizedStackRoutes.ts";
 import { unauthorizedStackRoutes } from "../routes/unauthorizedStackRoutes.ts";
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { InitialScreens, Nullable } from "@shared/api";
 
 const Stack = createStackNavigator();

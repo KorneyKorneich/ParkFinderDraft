@@ -3,58 +3,63 @@ import { StyleGuide } from "@shared/ui";
 import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
-	container: {
-		width: "90%",
-		height: "100%",
-		marginHorizontal: "auto",
-	},
+    wrapper: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: StyleGuide.WHITE,
+    },
 
-	img: {
-		justifyContent: "center",
-		alignItems: "center",
-		marginTop: 35,
-	},
+    container: {
+        width: "90%",
+        marginHorizontal: "auto",
+    },
 
-	textContainer: {
-		marginTop: "20%",
-		justifyContent: "center",
-		alignItems: "center",
-	},
+    img: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 35,
+    },
 
-	title: {
-		fontSize: Fonts.HEADING_4,
-		marginBottom: 5,
-	},
+    textContainer: {
+        marginTop: "20%",
+        justifyContent: "center",
+        alignItems: "center",
+    },
 
-	text: {
-		fontSize: Fonts.REGULAR_BODY,
-	},
+    title: {
+        fontSize: Fonts.HEADING_4,
+        marginBottom: 5,
+    },
 
-	inputContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 20,
-		marginVertical: 20,
-		paddingBottom: 20,
-		borderBottomColor: StyleGuide.GREY,
-		borderBottomWidth: 1,
-	},
+    text: {
+        fontSize: Fonts.REGULAR_BODY,
+    },
 
-	selectCountryContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 10,
-	},
+    inputContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 20,
+        marginVertical: 20,
+        paddingBottom: 20,
+        borderBottomColor: StyleGuide.GREY,
+        borderBottomWidth: 1,
+    },
 
-	phoneInput: {
-		width: "100%",
-	},
-	errorMessage: {
-		color: StyleGuide.ERROR,
-	},
-	errorInput: {
-		borderBottomColor: StyleGuide.ERROR,
-	},
+    selectCountryContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+    },
+
+    phoneInput: {
+        width: "100%",
+    },
+    errorMessage: {
+        color: StyleGuide.ERROR,
+    },
+    errorInput: {
+        borderBottomColor: StyleGuide.ERROR,
+    },
 });
 
 export default styles;

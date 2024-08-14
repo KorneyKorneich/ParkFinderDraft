@@ -5,11 +5,13 @@ export const initMapAndSearch = async (searchValue: string, setLocation: setLoca
     try {
         const result = await Geocoder.addressToGeo(searchValue);
         if (result) {
+            console.log(result);
             setLocation(result);
         } else {
             setLocation(null);
         }
     } catch (error) {
+        console.log(error);
         setLocation(null);
     }
 };
