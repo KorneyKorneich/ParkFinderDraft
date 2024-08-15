@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
         width: "40%",
         backgroundColor: StyleGuide.LIGHT_BLUE_BTN,
         alignSelf: "center",
-        marginTop: 5,
+        marginVertical: 5
     },
     ratingBox: {
         position: "absolute",
@@ -79,6 +79,7 @@ export const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 0,
+        marginVertical: 0,
         backgroundColor: StyleGuide.GREY,
         borderTopLeftRadius: 10,
         borderBottomRightRadius: 10,

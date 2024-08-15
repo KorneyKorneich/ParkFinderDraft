@@ -2,16 +2,15 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import Modal from "react-native-modal";
 import { ParkingInf } from "@shared/api";
-import { CustomButton } from "../../CustomButton/ui/CustomButton";
+import { CustomButton, CustomImage } from "@shared/ui";
 import { styles } from "./ParkingInfModal.styles";
-import { CustomImage } from "../../CustomImage/ui/CustomImage";
 
-const handicapImg = require("../../../assets/images/handicap.png");
-const flashImg = require("../../../assets/images/flash.png");
-const moneyImg = require("../../../assets/images/money.png");
-const freeImg = require("../../../assets/images/free.png");
-const starImg = require("../../../assets/images/star.png");
-const flagImg = require("../../../assets/images/flag.png");
+const handicapImg = require("@shared/ui/assets/images/handicap.png");
+const flashImg = require("@shared/ui/assets/images/flash.png");
+const moneyImg = require("@shared/ui/assets/images/money.png");
+const freeImg = require("@shared/ui/assets/images/free.png");
+const starImg = require("@shared/ui/assets/images/star.png");
+const flagImg = require("@shared/ui/assets/images/flag.png");
 
 interface ParkingInfModal {
     isModalVisible: boolean;

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { styles } from "./SearchBar.style";
 import { CustomButton, CustomInput } from "@shared/ui";
 import { initMapAndSearch } from "../model/searchLocation";
-import { useSetlocationStore } from "@entities/user/index";
+import { useSetlocationStore } from "@entities/user";
 
 export const SearchBar = () => {
     const image = require("@shared/ui/assets/images/loupe.png");

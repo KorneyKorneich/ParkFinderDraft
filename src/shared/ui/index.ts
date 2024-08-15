@@ -12,4 +12,3 @@ export { StyleGuide } from "./stylesConsts/stylesConsts";
 export { CustomInput } from "./Components/CustomInput/ui/CustomInput";
 export { CustomButton } from "./Components/CustomButton/ui/CustomButton";
 export { CustomImage } from "./Components/CustomImage/ui/CustomImage";
-export { ParkingInfModal } from "./Components/ParkingInfModal/ui/ParkingInfModal";
