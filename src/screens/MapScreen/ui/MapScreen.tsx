@@ -2,7 +2,7 @@ import { SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
-import { NearestParkingModal } from "@features/NearestParkingModal";
+import { ParkingBottomSheet } from "@features/ParkingBottomSheet";
 import { styles } from "./MapScreen.styles";
 import { ParkingInf, ParkingSchema } from "@shared/api";
 import { getParkingsData } from "../api/getParkingsData";
@@ -30,7 +30,11 @@ export const MapScreen = () => {
                         setIsModalVisible={setModalVisible}
                         setParkingInf={setParkingInf}
                     />
-                    <NearestParkingModal nearestParkingData={parkingData} />
+                    <ParkingBottomSheet
+                        nearestParkingData={parkingData}
+                        setIsModalVisible={setModalVisible}
+                        setParkingInf={setParkingInf}
+                    />
                 </>
             )}
             {parkingInf && (

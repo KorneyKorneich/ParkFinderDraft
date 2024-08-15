@@ -1,7 +1,9 @@
 import { Dimensions } from "react-native";
 
 export enum StyleGuide {
+    NEAREST_PARKING_BTN = "rgba(209, 209, 209, .3)",
     GREY = "rgb(227, 227, 227)",
+    LIGHT_GREY = "rgb(211, 211, 211)",
     WHITE = "rgb(255,255,255)",
     BLACK = "rgb(0,0,0)",
     GREEN = "rgb(51, 173, 95)",
@@ -15,6 +17,7 @@ export enum StyleGuide {
     CHECKBOX_BORDER = "rgb(108, 117, 125)",
     BACKGROUND_LIGHT = "rgb(240, 240, 240)",
     TEXT_GREY = "rgb(125, 125, 145)",
+    NORMAL_GREY = "rgb(128, 128, 128)",
 }
 
 export enum Fonts {
