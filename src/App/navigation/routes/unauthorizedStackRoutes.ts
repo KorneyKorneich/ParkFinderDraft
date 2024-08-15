@@ -1,12 +1,13 @@
+import React from "react";
 import { EmailAuthScreen } from "@screens/EmailAuthScreen";
 import { PhoneAuthScreen } from "@screens/PhoneAuthScreen";
-import { OTPVerification } from "@screens/OTPVerification";
 import { StackNavigationOptions } from "@react-navigation/stack";
 import { UnauthorizedStackParamList, ROUTES } from "@shared/api";
+import { OTPVerification } from "@screens/OTPVerification";
 
 type RouteConfig<ParamList extends Record<string, object | undefined>, RouteName extends keyof ParamList> = {
     name: RouteName;
-    component: React.ComponentType<any>; // Expect a component, not an element
+    component: React.ComponentType<any>;
     options?: StackNavigationOptions;
 };
 

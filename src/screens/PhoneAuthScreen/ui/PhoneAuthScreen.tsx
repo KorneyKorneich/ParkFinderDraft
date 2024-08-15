@@ -17,7 +17,6 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
         handleSubmit,
         control,
         formState: { errors },
-        setError,
     } = useForm<PhoneForm>();
 
     const getCountries = useCountryStore((state) => state.fetchCountries);
@@ -29,13 +28,13 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     const [selectedCountry, setSelectedCountry] = useState<Nullable<Country>>(null);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    function handleModalClose() {
+    const handleModalClose = () => {
         setIsModalVisible(false);
-    }
+    };
 
-    function handleModalOpen() {
+    const handleModalOpen = () => {
         setIsModalVisible(true);
-    }
+    };
 
     const handlePhoneVerify: SubmitHandler<PhoneForm> = async (data) => {
         if (selectedCountry) {

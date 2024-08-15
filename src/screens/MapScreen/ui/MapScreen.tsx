@@ -1,4 +1,4 @@
-import { View, Button } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { SearchBar } from "@features/SearchBar";
