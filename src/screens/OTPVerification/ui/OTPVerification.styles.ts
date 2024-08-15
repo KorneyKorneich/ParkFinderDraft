@@ -1,12 +1,19 @@
 import { StyleSheet } from "react-native";
-import { FONTS } from "@shared/ui/stylesConsts/stylesConsts.ts";
+import { Fonts, StyleGuide } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
+    wrapper: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: StyleGuide.WHITE,
+    },
     container: {
         width: "90%",
         marginHorizontal: "auto",
     },
     img: {
+        width: 200,
+        height: 200,
         marginHorizontal: "auto",
         marginTop: 40,
     },
@@ -16,23 +23,23 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 
-    title: {
-        fontSize: FONTS.HEADING_4,
-        marginBottom: 5,
-    },
+	title:{
+		fontSize: Fonts.HEADING_4,
+		marginBottom: 5
+	},
 
-    text: {
-        fontSize: FONTS.REGULAR_BODY,
-    },
+	text:{
+		fontSize: Fonts.REGULAR_BODY,
+	},
 
-    OTPInput: {
-        width: "90%",
-        marginHorizontal: "auto",
-        marginTop: "5%",
-    },
-    OTPConfirm: {
-        marginTop: "10%",
-    },
+	OTPInput:{
+		width: "90%",
+		marginHorizontal: "auto",
+		marginTop: "5%"
+	},
+	OTPConfirm:{
+		marginTop: "10%"
+	}
 });
 
 export default styles;

@@ -1,15 +1,13 @@
 import { Text, SafeAreaView, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { DeviceMobile, Google, Logo, FormSwitcher } from "@shared/ui";
+import { DeviceMobile, Google, Logo } from "@shared/ui";
 import { styles } from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn";
-import { UnauthorizedStackParamList } from "@shared/api";
-import { NativeStackScreenProps } from "react-native-screens/native-stack";
+import { UnauthorizedStackRoutesProps } from "@shared/api";
+import { ROUTES } from "@shared/api";
 
-type EmailAuthScreenProps = NativeStackScreenProps<UnauthorizedStackParamList, "EmailAuthScreen">;
-
-export const EmailAuthScreen = ({ navigation }: EmailAuthScreenProps) => {
+export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
     const [isSignUp, setIsSignUp] = useState(true);
 
     const handleToSignUp = () => {
@@ -19,7 +17,7 @@ export const EmailAuthScreen = ({ navigation }: EmailAuthScreenProps) => {
         setIsSignUp(false);
     };
     const handleToPhoneAuth = () => {
-        navigation.navigate("PhoneAuthScreen");
+        navigation.navigate(ROUTES.PhoneAuthScreen);
     };
 
     return (

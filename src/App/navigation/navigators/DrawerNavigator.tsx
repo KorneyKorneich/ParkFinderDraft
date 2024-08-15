@@ -6,18 +6,21 @@ import CustomDrawerContent from "../components/CustomDrawerContent/CustomDrawerC
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
-    return (
-        <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
-            {drawerRoutes.map((route, index) => (
-                <Drawer.Screen
-                    key={index}
-                    name={route.name}
-                    component={route.component}
-                    options={route.options}
-                />
-            ))}
-        </Drawer.Navigator>
-    );
+	return (
+		<Drawer.Navigator
+			drawerContent={(props) => <CustomDrawerContent {...props} />}
+		>
+			{drawerRoutes.map((route, index) => (
+				<Drawer.Screen
+					key={index}
+					name={route.name}
+					component={route.component}
+					options={route.options}
+				/>
+			))}
+		</Drawer.Navigator>
+	);
 };
 
 export default DrawerNavigator;
+

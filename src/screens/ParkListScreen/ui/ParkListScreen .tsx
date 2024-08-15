@@ -4,12 +4,12 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AuthorizedStackParamList } from "@shared/api";
 
 export const ParkListScreen = () => {
-	const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
+    const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
 
-	return (
-		<View>
-			<Text>ParkListScreen</Text>
-			<Button title="to main" onPress={navigation.goBack} />
-		</View>
-	);
+    return (
+        <View>
+            <Text>ParkListScreen</Text>
+            <Button title="to main" onPress={navigation.goBack} />
+        </View>
+    );
 };

@@ -1,10 +1,11 @@
 {
-  "trailingComma": "es5",
-  "printWidth" : 110,
-  "tabWidth": 4,
-  "semi": true,
-  "singleQuote": false,
-  "bracketSpacing": true,
-  "bracketSameLine" : true ,
-  "useTabs" : false
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false,
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "useTabs": false,
+    "endOfLine": "crlf"
 }
