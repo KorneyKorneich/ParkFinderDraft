@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
     inputBox: {
         width: "100%",
         justifyContent: "center",
-        paddingHorizontal: 10,
     },
     container: {
         flexDirection: "column",
@@ -14,12 +13,22 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 12,
     },
-    input: {
+    inputContainer: {
         width: "100%",
         backgroundColor: StyleGuide.WHITE,
         padding: 10,
         borderRadius: 8,
-        borderColor: StyleGuide.GREY,
-        borderWidth: 1,
+        flexDirection: "row",
+    },
+    input: {
+        flex: 1,
+    },
+    error: {
+        color: StyleGuide.ERROR,
+        borderColor: StyleGuide.ERROR,
+    },
+    eyeIcon: {
+        width: 20,
+        height: 20,
     },
 });

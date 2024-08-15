@@ -3,9 +3,14 @@ import { StyleGuide } from "@shared/ui";
 import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
+    wrapper: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: StyleGuide.WHITE,
+    },
+
     container: {
         width: "90%",
-        height: "100%",
         marginHorizontal: "auto",
     },
 
@@ -48,6 +53,12 @@ const styles = StyleSheet.create({
 
     phoneInput: {
         width: "100%",
+    },
+    errorMessage: {
+        color: StyleGuide.ERROR,
+    },
+    errorInput: {
+        borderBottomColor: StyleGuide.ERROR,
     },
 });
 

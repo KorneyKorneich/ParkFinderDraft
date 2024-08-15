@@ -9,7 +9,7 @@ export interface UserStoreSchema {
     phoneSignIn: (phoneCreds: PhoneCreds) => Promise<FirebaseAuthTypes.ConfirmationResult>;
     OTPConfirm: (props: OTPProps) => void;
     signOut: () => Promise<void>;
-    loginError?: string;
+    loginError: Nullable<string>;
     isLoading: boolean;
 }
 

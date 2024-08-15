@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 12,
         paddingHorizontal: 15,
-        paddingVertical: 2,
+        paddingVertical: 15,
+        marginVertical: 10,
     },
     title: {
         fontSize: 18,

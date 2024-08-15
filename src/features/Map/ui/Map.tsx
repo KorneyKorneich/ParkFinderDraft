@@ -8,9 +8,6 @@ import { Nullable } from "@shared/api";
 export const Map = () => {
     const { currentLocation } = useSetCurretLocationStore();
 
-    YaMap.init(process.env.REACT_NATIVE_APP_YANDEX_MAP_API_KEY as string);
-    Geocoder.init(process.env.REACT_NATIVE_APP_GEOCODER_API_KEY as string);
-
     const { location } = useSetlocationStore();
 
     const mapRef = useRef<Nullable<YaMap>>(null);

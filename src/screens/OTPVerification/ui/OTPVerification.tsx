@@ -1,5 +1,5 @@
 import styles from "./OTPVerification.styles.ts";
-import { KeyboardAvoidingView, SafeAreaView, Text, View } from "react-native";
+import { ActivityIndicator, KeyboardAvoidingView, SafeAreaView, Text, View } from "react-native";
 import { CustomButton, StyleGuide, VerificationImg } from "@shared/ui";
 import React, { useState } from "react";
 import { OtpInput } from "react-native-otp-entry";
@@ -14,15 +14,17 @@ export const OTPVerification = ({ navigation, route }: UnauthorizedStackRoutesPr
     const confirm = confirmation;
 
     const OTPConfirm = useUserStore((state) => state.OTPConfirm);
+    const isLoading = useUserStore((state) => state.isLoading);
+
     const handleOTPConfirm = () => {
         confirm ? OTPConfirm({ confirm, code }) : navigation.goBack();
     };
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.wrapper}>
             <KeyboardAvoidingView behavior={"height"} style={styles.container}>
                 <View style={styles.img}>
-                    <VerificationImg height={200} width={200} />
+                    <VerificationImg />
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>Enter verification code</Text>
@@ -31,10 +33,19 @@ export const OTPVerification = ({ navigation, route }: UnauthorizedStackRoutesPr
                 </View>
 
                 <View style={styles.OTPInput}>
-                    <OtpInput onTextChange={(text) => setCode(text)} numberOfDigits={6} focusColor={StyleGuide.GREEN} />
+                    <OtpInput
+                        type={"numeric"}
+                        onTextChange={(text) => setCode(text)}
+                        numberOfDigits={6}
+                        focusColor={StyleGuide.GREEN}
+                    />
                 </View>
                 <View style={styles.OTPConfirm}>
-                    <CustomButton title={"Confirm"} onPress={handleOTPConfirm} color={StyleGuide.GREEN} />
+                    {isLoading ? (
+                        <ActivityIndicator size={"large"} color={StyleGuide.GREEN} />
+                    ) : (
+                        <CustomButton title={"Confirm"} onPress={handleOTPConfirm} color={StyleGuide.GREEN} />
+                    )}
                 </View>
             </KeyboardAvoidingView>
         </SafeAreaView>
