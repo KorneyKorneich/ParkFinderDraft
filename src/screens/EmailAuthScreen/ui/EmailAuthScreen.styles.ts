@@ -2,94 +2,92 @@ import { StyleSheet } from "react-native";
 import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
-	authScreenContainer:{
-		width: "90%",
-		padding: 20,
-		marginHorizontal: "auto",
-	},
-	logoWrapper:{
-		justifyContent: "center",
-		alignItems: "center",
-		marginBottom: "20%",
-		marginTop: "10%"
-	},
-	switcher:{
-		marginVertical: 10,
-		marginHorizontal: "auto",
-		flexDirection: "row",
-		justifyContent:"space-around",
-		width: "100%",
-		backgroundColor: StyleGuide.GREY,
-		borderRadius: 12,
-		padding: 5,
+    authScreenContainer: {
+        width: "90%",
+        padding: 20,
+        marginHorizontal: "auto",
+    },
+    logoWrapper: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: "20%",
+        marginTop: "10%",
+    },
+    switcher: {
+        marginVertical: 10,
+        marginHorizontal: "auto",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        width: "100%",
+        backgroundColor: StyleGuide.GREY,
+        borderRadius: 12,
+        padding: 5,
+    },
+    signUp: {
+        padding: 5,
+        width: "49%",
+    },
+    signUpText: {
+        textAlign: "center",
+        color: StyleGuide.TEXT_GREY,
+    },
+    signIn: {
+        padding: 5,
+        width: "49%",
+    },
+    signInText: {
+        textAlign: "center",
+        color: StyleGuide.TEXT_GREY,
+    },
+    active: {
+        backgroundColor: StyleGuide.WHITE,
+        borderRadius: 8,
+    },
+    textActive: {
+        color: StyleGuide.BLACK,
+    },
 
-	},
-	signUp:{
-		padding: 5,
-		width: "49%",
+    bottomOptions: {
+        marginVertical: 10,
+    },
 
-	},
-	signUpText: {
-		textAlign: "center",
-		color: StyleGuide.TEXT_GREY,
-	},
-	signIn:{
-		padding: 5,
-		width: "49%",
-	},
-	signInText: {
-		textAlign: "center",
-		color: StyleGuide.TEXT_GREY,
-	},
-	active:{
-		backgroundColor: StyleGuide.WHITE,
-		borderRadius: 8,
-	},
-	textActive:{
-		color: StyleGuide.BLACK
-	},
+    separator: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    line: {
+        flex: 1,
+        height: 1,
+        backgroundColor: StyleGuide.GREY,
+    },
 
-	bottomOptions:{
-		marginVertical: 10
-	},
+    separatorText: {
+        width: 50,
+        textAlign: "center",
+        color: StyleGuide.GREY,
+        fontWeight: "bold",
+    },
 
-	separator: {
-		flexDirection: "row",
-		alignItems: "center"
-	},
-	line:{
-		flex: 1,
-		height: 1,
-		backgroundColor: StyleGuide.GREY
-	},
+    buttonsContainer: {
+        marginTop: 15,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+    },
 
-	separatorText:{
-		width: 50,
-		textAlign: "center",
-		color: StyleGuide.GREY,
-		fontWeight: "bold",
-	},
-
-	buttonsContainer:{
-		marginTop: 15,
-		flexDirection: "row",
-		justifyContent: "space-evenly",
-	},
-
-	authWithGoogle:{
-		padding: 20,
-		backgroundColor: StyleGuide.WHITE,
-		width: "49%",
-		justifyContent: "center",
-		alignItems: "center",
-		borderRadius: 12,
-	},
-	authWithPhone:{
-		padding: 20,
-		backgroundColor: StyleGuide.WHITE,
-		width: "49%",
-		justifyContent: "center",
-		alignItems: "center",
-		borderRadius: 12,
-	}
+    authWithGoogle: {
+        padding: 20,
+        backgroundColor: StyleGuide.WHITE,
+        width: "49%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 12,
+    },
+    authWithPhone: {
+        padding: 20,
+        backgroundColor: StyleGuide.WHITE,
+        width: "49%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 12,
+    },
 });

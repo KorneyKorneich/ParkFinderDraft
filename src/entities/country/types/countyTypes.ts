@@ -12,9 +12,8 @@ interface Flag {
 }
 
 export interface Country {
-    code: string,
-    name: string,
-    callingCode: string,
-    flag:string
+    code: string;
+    name: string;
+    callingCode: string;
+    flag: string;
 }
-

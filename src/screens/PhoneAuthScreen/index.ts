@@ -1,1 +1,1 @@
-export {PhoneAuthScreen} from "./ui/PhoneAuthScreen";
+export { PhoneAuthScreen } from "./ui/PhoneAuthScreen";

@@ -1,5 +1,5 @@
 export interface UserSchema {
     email: string;
-    uid: string
+    uid: string;
     uuid: string;
-};
+}

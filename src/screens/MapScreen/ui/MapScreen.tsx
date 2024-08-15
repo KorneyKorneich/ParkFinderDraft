@@ -1,17 +1,23 @@
-import { View, Button } from "react-native";
-import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@shared/api";
+import React, { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native";
 import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
+import { ParkingSchema } from "@shared/api";
+import { getParkingsData } from "../api/getParkingsData";
 
 export const MapScreen = () => {
-	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-	return (
-		<View>
-			<SearchBar />
-			<Map isPositionNeed={false} />
-			<Button title="watch park list" onPress={() => navigation.navigate("ParkListScreen")} />
-		</View>
-	);
+    const [parkingData, setParkingData] = useState<ParkingSchema[]>();
+
+    useEffect(() => {
+        const unsubscribe = getParkingsData(setParkingData);
+
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <SafeAreaView>
+            <SearchBar />
+            {parkingData && <Map isPositionNeed={false} parkingData={parkingData} />}
+        </SafeAreaView>
+    );
 };
