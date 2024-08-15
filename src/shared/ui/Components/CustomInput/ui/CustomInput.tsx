@@ -8,7 +8,7 @@ interface CustomInputProps extends TextInputProps {
     isPassword?: boolean;
     boxStyle?: StyleProp<ViewStyle>;
     inputStyles?: StyleProp<ViewStyle>;
-    value: string;
+    value?: string;
     incorrectValue?: boolean;
     passwordVisible?: boolean;
     togglePasswordVisible?: () => void;
