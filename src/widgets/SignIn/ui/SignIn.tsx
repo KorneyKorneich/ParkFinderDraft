@@ -1,31 +1,116 @@
-import { KeyboardAvoidingView } from "react-native";
-import { useState } from "react";
+import { KeyboardAvoidingView, Text, ActivityIndicator } from "react-native";
 import { useUserStore } from "@entities/user";
 import { CustomButton, CustomInput, StyleGuide } from "@shared/ui";
 import { styles } from "./SignIn.style";
+import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { FirebaseError } from "firebase/app";
+import { getFirebaseAuthErrorMessage } from "@shared/api";
+import { useState } from "react";
+
+interface SignInForm {
+    email: string;
+    password: string;
+}
 
 export const SignIn = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const signIn = useUserStore((state) => state.signIn);
+    const {
+        handleSubmit,
+        control,
+        formState: { errors },
+        setError,
+    } = useForm<SignInForm>();
 
-    const handleSignIn = async () => {
-        await signIn({ email, password })
-            .catch
-            //todo: add error handler
-            ();
+    const signIn = useUserStore((state) => state.signIn);
+    const isLoading = useUserStore((state) => state.isLoading);
+
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisible = () => setIsPasswordVisible(!isPasswordVisible);
+
+    const handleSignIn: SubmitHandler<SignInForm> = async (data) => {
+        try {
+            await signIn({ email: data.email, password: data.password });
+        } catch (error) {
+            const firebaseError = error as FirebaseError;
+            const errorMessage = getFirebaseAuthErrorMessage(firebaseError);
+            switch (firebaseError.code) {
+                case "auth/invalid-email":
+                case "auth/user-not-found":
+                case "auth/email-already-in-use":
+                    setError("email", { type: "manual", message: errorMessage });
+                    break;
+                case "auth/wrong-password":
+                case "auth/weak-password":
+                    setError("password", { type: "manual", message: errorMessage });
+                    break;
+                default:
+                    setError("email", { type: "manual", message: errorMessage });
+                    setError("password", { type: "manual", message: errorMessage });
+                    break;
+            }
+        }
     };
+
     return (
-        <KeyboardAvoidingView>
-            <CustomInput title={"Email"} value={email} onChangeText={setEmail} boxStyle={styles.textInputBox} />
-            <CustomInput
-                title={"Password"}
-                value={password}
-                onChangeText={setPassword}
-                boxStyle={styles.textInputBox}
-                isPassword
-            />
-            <CustomButton title={"Sign In"} onPress={handleSignIn} color={StyleGuide.GREEN} />
-        </KeyboardAvoidingView>
+        <>
+            <KeyboardAvoidingView>
+                <Controller
+                    name={"email"}
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <CustomInput
+                            title={"Email"}
+                            value={value}
+                            onChangeText={onChange}
+                            boxStyle={styles.textInputBox}
+                            inputStyles={styles.inputStyles}
+                            onBlur={onBlur}
+                            incorrectValue={!!errors.email}
+                        />
+                    )}
+                    rules={{
+                        required: "Email is required.",
+                        pattern: {
+                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            message: "Enter a valid Email.",
+                        },
+                    }}
+                />
+                {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+
+                <Controller
+                    name={"password"}
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <CustomInput
+                            title={"Password"}
+                            value={value}
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            boxStyle={styles.textInputBox}
+                            inputStyles={styles.inputStyles}
+                            isPassword
+                            incorrectValue={!!errors.password}
+                            passwordVisible={isPasswordVisible}
+                            togglePasswordVisible={togglePasswordVisible}
+                        />
+                    )}
+                    rules={{
+                        required: "Password is required",
+                        minLength: {
+                            value: 6,
+                            message: "Min length is 6.",
+                        },
+                    }}
+                />
+                {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
+
+                {isLoading ? (
+                    <ActivityIndicator size={"large"} color={StyleGuide.GREEN} />
+                ) : (
+                    <CustomButton title={"Sign In"} onPress={handleSubmit(handleSignIn)} color={StyleGuide.GREEN} />
+                )}
+            </KeyboardAvoidingView>
+        </>
     );
 };

@@ -1,1 +1,1 @@
-export { ParkListScreen } from "./ui/ParkListScreen.tsx";
+export { ParkListScreen } from "./ui/ParkListScreen ";

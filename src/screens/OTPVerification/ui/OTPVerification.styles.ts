@@ -1,12 +1,19 @@
 import { StyleSheet } from "react-native";
-import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
+import { Fonts, StyleGuide } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
+    wrapper: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: StyleGuide.WHITE,
+    },
     container: {
         width: "90%",
         marginHorizontal: "auto",
     },
     img: {
+        width: 200,
+        height: 200,
         marginHorizontal: "auto",
         marginTop: 40,
     },

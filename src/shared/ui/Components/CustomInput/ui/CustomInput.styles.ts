@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
@@ -14,12 +14,33 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 12,
     },
+    inputContainer: {
+        ...Platform.select({
+            android: {
+                borderRadius: 8,
+                flexDirection: "row",
+                alignItems: "center"
+            },
+            ios: {
+                width: "100%",
+                backgroundColor: StyleGuide.WHITE,
+                padding: 10,
+                borderRadius: 8,
+                borderColor: StyleGuide.GREY,
+                borderWidth: 1,
+                flexDirection: "row",
+            },
+        }),
+    },
     input: {
-        width: "100%",
-        backgroundColor: StyleGuide.WHITE,
-        padding: 10,
-        borderRadius: 8,
-        borderColor: StyleGuide.GREY,
-        borderWidth: 1,
+        flex: 1,
+    },
+    error: {
+        color: StyleGuide.ERROR,
+        borderColor: StyleGuide.ERROR,
+    },
+    eyeIcon: {
+        width: 20,
+        height: 20,
     },
 });

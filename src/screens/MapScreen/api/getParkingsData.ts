@@ -9,6 +9,10 @@ export const getParkingsData = (setParkingData: ISetParkingData) => {
     const unsubscribe = firestore()
         .collection("parkingSpots")
         .onSnapshot((querySnapshot) => {
+            if (!querySnapshot) {
+                return;
+            }
+
             const parkingSpots: ParkingSchema[] = [];
 
             querySnapshot.forEach((documentSnapshot) => {
@@ -19,5 +23,5 @@ export const getParkingsData = (setParkingData: ISetParkingData) => {
             setParkingData(parkingSpots);
         });
 
-    return unsubscribe; 
+    return unsubscribe;
 };

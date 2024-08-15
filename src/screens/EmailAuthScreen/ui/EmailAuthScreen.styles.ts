@@ -2,6 +2,11 @@ import { StyleSheet } from "react-native";
 import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
+    container: {
+        height: "100%",
+        width: "100%",
+        backgroundColor: StyleGuide.WHITE,
+    },
     authScreenContainer: {
         width: "90%",
         padding: 20,
@@ -19,7 +24,7 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         width: "100%",
-        backgroundColor: StyleGuide.GREY,
+        backgroundColor: StyleGuide.BORDER_GREY,
         borderRadius: 12,
         padding: 5,
     },
@@ -57,7 +62,7 @@ export const styles = StyleSheet.create({
     },
     line: {
         flex: 1,
-        height: 1,
+        height: 2,
         backgroundColor: StyleGuide.GREY,
     },
 
@@ -77,6 +82,8 @@ export const styles = StyleSheet.create({
     authWithGoogle: {
         padding: 20,
         backgroundColor: StyleGuide.WHITE,
+        borderColor: StyleGuide.BORDER_GREY,
+        borderWidth: 1,
         width: "49%",
         justifyContent: "center",
         alignItems: "center",
@@ -84,6 +91,8 @@ export const styles = StyleSheet.create({
     },
     authWithPhone: {
         padding: 20,
+        borderColor: StyleGuide.BORDER_GREY,
+        borderWidth: 1,
         backgroundColor: StyleGuide.WHITE,
         width: "49%",
         justifyContent: "center",

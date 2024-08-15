@@ -1,11 +1,12 @@
 import DrawerNavigator from "../navigators/DrawerNavigator";
+import { ROUTES } from "@shared/api";
 
 export const authorizedStackRoutes = [
     {
-        name: "DrawerNavigator",
+        name: ROUTES.DrawerNavigator,
         component: DrawerNavigator,
         options: {
-            title: "DrawerNavigator",
+            title: ROUTES.DrawerNavigator,
         },
     },
 ];

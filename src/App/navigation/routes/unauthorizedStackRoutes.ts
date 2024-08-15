@@ -1,27 +1,36 @@
+import React from "react";
 import { EmailAuthScreen } from "@screens/EmailAuthScreen";
 import { PhoneAuthScreen } from "@screens/PhoneAuthScreen";
+import { StackNavigationOptions } from "@react-navigation/stack";
+import { UnauthorizedStackParamList, ROUTES } from "@shared/api";
 import { OTPVerification } from "@screens/OTPVerification";
 
-export const unauthorizedStackRoutes = [
+type RouteConfig<ParamList extends Record<string, object | undefined>, RouteName extends keyof ParamList> = {
+    name: RouteName;
+    component: React.ComponentType<any>;
+    options?: StackNavigationOptions;
+};
+
+export const unauthorizedStackRoutes: RouteConfig<UnauthorizedStackParamList, keyof UnauthorizedStackParamList>[] = [
     {
-        name: "EmailAuthScreen",
+        name: ROUTES.EmailAuthScreen as keyof UnauthorizedStackParamList,
         component: EmailAuthScreen,
         options: {
-            title: "EmailAuthScreen",
+            title: ROUTES.EmailAuthScreen,
         },
     },
     {
-        name: "PhoneAuthScreen",
+        name: ROUTES.PhoneAuthScreen as keyof UnauthorizedStackParamList,
         component: PhoneAuthScreen,
         options: {
-            title: "PhoneAuthScreen",
+            title: ROUTES.PhoneAuthScreen,
         },
     },
     {
-        name: "OTPVerifyScreen",
+        name: ROUTES.OTPVerifyScreen as keyof UnauthorizedStackParamList,
         component: OTPVerification,
         options: {
-            title: "OTPVerifyScreen",
+            title: ROUTES.OTPVerifyScreen,
         },
     },
 ];
