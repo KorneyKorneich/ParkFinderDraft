@@ -1,1 +1,1 @@
-export {EmailAuthScreen} from "./ui/EmailAuthScreen.tsx";
+export { EmailAuthScreen } from "./ui/EmailAuthScreen.tsx";
