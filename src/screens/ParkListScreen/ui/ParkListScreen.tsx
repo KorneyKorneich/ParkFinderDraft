@@ -9,7 +9,7 @@ export const ParkListScreen = () => {
     return (
         <View>
             <Text>ParkListScreen</Text>
-            <Button title="to main" onPress={() => navigation.goBack()} />
+            <Button title="to main" onPress={navigation.goBack} />
         </View>
     );
 };

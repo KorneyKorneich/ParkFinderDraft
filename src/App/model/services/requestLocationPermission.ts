@@ -1,15 +1,16 @@
 import { PermissionsAndroid, Platform } from "react-native";
 import Geolocation from "react-native-geolocation-service";
 import { getLocation } from "@shared/lib";
-import { currentLocation, setCurrentLocation } from "@shared/api";
+import { setLocationType } from "@shared/api";
+import { location } from "@shared/api";
 
-export const requestLocationPermission = async (setCurrentLocation: setCurrentLocation) => {
+export const requestLocationPermission = async (setLocation: setLocationType) => {
     if (Platform.OS === "ios") {
         const result = await Geolocation.requestAuthorization("whenInUse");
         if (result === "granted") {
             try {
-                const location = (await getLocation()) as currentLocation;
-                setCurrentLocation(location);
+                const location = (await getLocation()) as location;
+                setLocation(location);
             } catch (error) {
                 console.error(error);
             }
@@ -24,8 +25,8 @@ export const requestLocationPermission = async (setCurrentLocation: setCurrentLo
         });
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             try {
-                const location = (await getLocation()) as currentLocation;
-                setCurrentLocation(location);
+                const location = (await getLocation()) as location;
+                setLocation(location);
             } catch (error) {
                 //TODO: fill catch area with error logic
             }

@@ -2,18 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { YaMap } from "react-native-yamap";
 import { styles } from "./Map.styles";
 import { useSetlocationStore } from "@entities/user";
-import { useSetCurretLocationStore } from "@entities/user";
 import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
 import { ParkingMarker } from "@features/ParkingMarker";
 import { ParkingInfModal } from "@shared/ui";
-import { loadMarkers } from "../model/fetchAndLoadMarks";
 
 interface Map {
     isPositionNeed: boolean;
+    parkingData: ParkingSchema[];
 }
 
-export const Map: React.FC<Map> = ({ isPositionNeed }) => {
-    const { currentLocation } = useSetCurretLocationStore();
+export const Map: React.FC<Map> = ({ isPositionNeed, parkingData }) => {
     const [lastMarkerClickTimestamp, setLastMarkerClickTimestamp] = useState<number>(Date.now());
     const [isModalVisible, setModalVisible] = useState<boolean>(false);
     const [mapReady, setMapReady] = useState<boolean>(false);
@@ -23,20 +21,14 @@ export const Map: React.FC<Map> = ({ isPositionNeed }) => {
     const mapRef = useRef<Nullable<YaMap>>(null);
 
     useEffect(() => {
-        if (mapRef.current && currentLocation) {
-            mapRef.current.setCenter({ lat: currentLocation.lat, lon: currentLocation.lon }, 10, 0, 0);
-        }
-    }, [currentLocation, mapReady]);
-
-    useEffect(() => {
         if (mapRef.current && location) {
             mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 10, 0, 0);
         }
-    }, [location]);
+    }, [location, mapReady]);
 
     useEffect(() => {
-        loadMarkers(setMarkers);
-    }, []);
+        setMarkers(parkingData);
+    }, [parkingData]);
 
     const handlepPressOnMarker = (value: ParkingSchema) => {
         const now = Date.now();
