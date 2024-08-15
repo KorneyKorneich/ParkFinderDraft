@@ -19,8 +19,12 @@ export const MapScreen = () => {
     return (
         <SafeAreaView style={styles.mapAreaScreen}>
             <SearchBar />
-            {parkingData && <Map isPositionNeed={false} parkingData={parkingData} />}
-            <NearestParkingModal />
+            {parkingData && (
+                <>
+                    <Map isPositionNeed={false} parkingData={parkingData} />
+                    <NearestParkingModal nearestParkingData={parkingData}/>
+                </>
+            )}
         </SafeAreaView>
     );
 };
