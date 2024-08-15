@@ -1,5 +1,4 @@
  def node_require(script)
-   # Resolve script with node to allow for hoisting
    require Pod::Executable.execute_command('node', ['-p',
         "require.resolve(
      '#{script}',
@@ -36,13 +35,11 @@ target 'ParkingFinder' do
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
   target 'ParkingFinderTests' do
     inherit! :complete
-    # Pods for testing
   end
 
   post_install do |installer|
@@ -50,7 +47,6 @@ target 'ParkingFinder' do
       installer,
       config[:reactNativePath],
       :mac_catalyst_enabled => false,
-      # :ccache_enabled => true
     )
   end
 end
