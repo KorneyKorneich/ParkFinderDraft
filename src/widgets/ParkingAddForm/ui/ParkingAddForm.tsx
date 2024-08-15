@@ -1,7 +1,7 @@
 import styles from "./ParkingAddForm.styles.ts";
 import { Text, View } from "react-native";
 import { Controller, useForm } from "react-hook-form";
-import { CustomInput, Switcher } from "@shared/ui";
+import { CustomButton, CustomInput, StyleGuide, FormSwitcher } from "@shared/ui";
 import React, { useState } from "react";
 
 interface ParkingAddFormProps {}
@@ -20,6 +20,7 @@ export const ParkingAddForm = (props: ParkingAddFormProps) => {
     const handleOnSwitchAddressPress = () => {
         setIsAddress(true);
     };
+    const handleOnMapPick = () => {};
 
     return (
         <>
@@ -33,17 +34,81 @@ export const ParkingAddForm = (props: ParkingAddFormProps) => {
                             title={"Title"}
                             value={value}
                             onChange={onChange}
-                            placeholder={"Enter the parking space name"}></CustomInput>
+                            placeholder={"Enter the parking space name"}
+                        />
                     )}
                     name={"parkingName"}
                 />
-                <Switcher
+                <FormSwitcher
                     optionToggle={isAddress}
                     firstOptionTitle={"Address"}
                     secondOptionTitle={"Coordinates"}
                     handleOnFirstOptionPress={handleOnSwitchAddressPress}
                     handleOnSecondOptionPress={handleOnSwitchCoordinatesPress}
                 />
+                {isAddress ? (
+                    <Controller
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                            <CustomInput
+                                titleStyle={styles.parkingNameTitle}
+                                value={value}
+                                onChange={onChange}
+                                placeholder={"Enter the parking space address"}
+                            />
+                        )}
+                        name={"parkingName"}
+                    />
+                ) : (
+                    <>
+                        <View style={styles.coordinatesInputContainer}>
+                            <View style={styles.coordinatesInput}>
+                                <Controller
+                                    control={control}
+                                    render={({ field: { value, onChange } }) => (
+                                        <CustomInput
+                                            value={value}
+                                            onChange={onChange}
+                                            placeholder={"Enter the parking space name"}
+                                        />
+                                    )}
+                                    name={"parkingName"}
+                                />
+                            </View>
+                            <View style={styles.coordinatesInput}>
+                                <Controller
+                                    control={control}
+                                    render={({ field: { value, onChange } }) => (
+                                        <CustomInput
+                                            value={value}
+                                            onChange={onChange}
+                                            placeholder={"Enter the parking space name"}
+                                        />
+                                    )}
+                                    name={"parkingName"}
+                                />
+                            </View>
+                        </View>
+                    </>
+                )}
+                <CustomButton
+                    title={"Pick point on map"}
+                    color={StyleGuide.SEARCH_BTN}
+                    textStyle={styles.buttonTextStyle}
+                    onPress={handleOnMapPick}
+                />
+                <Text style={styles.additionalTitle}>Additional:</Text>
+                <View style={styles.additionalOptions}>
+                    <View style={styles.additionalOption}>
+                        <Text style={styles.additionalOptionText}>Additional:</Text>
+                    </View>
+                    <View style={styles.additionalOption}>
+                        <Text style={styles.additionalOptionText}>Additional:</Text>
+                    </View>
+                    <View style={styles.additionalOption}>
+                        <Text style={styles.additionalOptionText}>Additional:</Text>
+                    </View>
+                </View>
             </View>
         </>
     );

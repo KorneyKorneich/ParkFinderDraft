@@ -1,4 +1,4 @@
-import styles from "./Switcher.styles.ts";
+import styles from "./FormSwitcher.styles.ts";
 import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
@@ -10,7 +10,7 @@ interface SwitcherProps {
     handleOnSecondOptionPress: () => void;
 }
 
-export const Switcher = (props: SwitcherProps) => {
+export const FormSwitcher = (props: SwitcherProps) => {
     const {
         optionToggle,
         handleOnFirstOptionPress,

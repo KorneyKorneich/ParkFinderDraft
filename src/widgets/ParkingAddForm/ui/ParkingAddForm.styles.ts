@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     parkingNameTitle: {
         fontSize: FONTS.HEADING_4,
     },
-
     switcher: {
         marginVertical: 10,
         marginHorizontal: "auto",
@@ -25,6 +24,25 @@ const styles = StyleSheet.create({
         backgroundColor: StyleGuide.GREY,
         borderRadius: 12,
         padding: 5,
+    },
+    coordinatesInputContainer: {
+        flexDirection: "row",
+    },
+    coordinatesInput: {
+        width: "50%",
+    },
+    buttonTextStyle: {
+        color: StyleGuide.BLUE,
+    },
+    additionalTitle: {
+        fontSize: FONTS.HEADING_3,
+        fontWeight: "bold",
+    },
+    additionalOption: {
+        marginVertical: 5,
+    },
+    additionalOptionText: {
+        fontSize: FONTS.REGULAR_BODY,
     },
 });
 

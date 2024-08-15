@@ -1285,10 +1285,10 @@ PODS:
     - React-perflogger (= 0.74.3)
     - React-utils (= 0.74.3)
   - RecaptchaInterop (100.0.0)
-  - RNFBApp (20.3.0):
+  - RNFBApp (20.4.0):
     - Firebase/CoreOnly (= 10.29.0)
     - React-Core
-  - RNFBAuth (20.3.0):
+  - RNFBAuth (20.4.0):
     - Firebase/Auth (= 10.29.0)
     - React-Core
     - RNFBApp
@@ -1313,7 +1313,30 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated (3.14.0):
+  - RNReanimated (3.15.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNReanimated/reanimated (= 3.15.0)
+    - RNReanimated/worklets (= 3.15.0)
+    - Yoga
+  - RNReanimated/reanimated (3.15.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1334,7 +1357,28 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.33.0):
+  - RNReanimated/worklets (3.15.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - RNScreens (3.34.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1356,9 +1400,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSVG (15.4.0):
+  - RNSVG (15.5.0):
     - React-Core
-  - RNYamap (4.6.0):
+  - RNYamap (4.6.1):
     - React
     - YandexMapsMobile (= 4.6.1-full)
   - SocketRocket (0.7.0)
@@ -1647,13 +1691,13 @@ SPEC CHECKSUMS:
   React-utils: a06061b3887c702235d2dac92dacbd93e1ea079e
   ReactCommon: f00e436b3925a7ae44dfa294b43ef360fbd8ccc4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  RNFBApp: a7aff07a7f212149539fce51a1326c6d208b03ad
-  RNFBAuth: 3ed676e60d0ca3b2c71023240658e1f02bc752d7
+  RNFBApp: 2f83756f4d8be2859af5e2cf54130c20e380119d
+  RNFBAuth: ae6e6195e2cf783f8ad1977186925c61358c8ec9
   RNGestureHandler: efed690b8493a00b99654043daeb1335276ac4a2
-  RNReanimated: f4ff116e33e0afc3d127f70efe928847c7c66355
-  RNScreens: d2a12528d1abe4922e7ee5c9a00dd40c827c2ab5
-  RNSVG: cb24fb322de8c1ebf59904e7aca0447bb8dbed5a
-  RNYamap: 318681058bb5c369a720d18eb872145a60a23bac
+  RNReanimated: 45553a3ae29a75a76269595f8554d07d4090e392
+  RNScreens: aa943ad421c3ced3ef5a47ede02b0cbfc43a012e
+  RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
+  RNYamap: 4f3e0d284409e3da24dfa2b298391b0092e2d0e4
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   YandexMapsMobile: b5f4dfeb8d1fe324dc18afb33d772b04d04d34f6
   Yoga: 88480008ccacea6301ff7bf58726e27a72931c8d

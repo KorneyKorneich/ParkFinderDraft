@@ -1,6 +1,6 @@
 import { Text, SafeAreaView, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { DeviceMobile, Google, Logo, Switcher } from "@shared/ui";
+import { DeviceMobile, Google, Logo, FormSwitcher } from "@shared/ui";
 import { styles } from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn";
@@ -27,7 +27,7 @@ export const EmailAuthScreen = ({ navigation }: EmailAuthScreenProps) => {
             <View style={styles.logoWrapper}>
                 <Logo />
             </View>
-            <Switcher
+            <FormSwitcher
                 optionToggle={isSignUp}
                 firstOptionTitle={"Sign Up"}
                 secondOptionTitle={"Sign In"}
