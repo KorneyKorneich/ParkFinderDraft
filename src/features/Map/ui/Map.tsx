@@ -4,18 +4,17 @@ import { styles } from "./Map.styles";
 import { useSetlocationStore } from "@entities/user";
 import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
 import { ParkingMarker } from "@features/ParkingMarker";
-import { ParkingInfModal } from "@shared/ui";
 
 interface Map {
     isPositionNeed: boolean;
     parkingData: ParkingSchema[];
+    setIsModalVisible?: (isModalVisible: boolean) => void;
+    setParkingInf?: (parkingInf: ParkingInf) => void;
 }
 
-export const Map: React.FC<Map> = ({ isPositionNeed, parkingData }) => {
+export const Map: React.FC<Map> = ({ isPositionNeed, parkingData, setIsModalVisible, setParkingInf }) => {
     const [lastMarkerClickTimestamp, setLastMarkerClickTimestamp] = useState<number>(Date.now());
-    const [isModalVisible, setModalVisible] = useState<boolean>(false);
     const [mapReady, setMapReady] = useState<boolean>(false);
-    const [parkingInf, setParkingInf] = useState<ParkingInf>();
     const [markers, setMarkers] = useState<ParkingSchema[]>();
     const { location } = useSetlocationStore();
     const mapRef = useRef<Nullable<YaMap>>(null);
@@ -34,8 +33,8 @@ export const Map: React.FC<Map> = ({ isPositionNeed, parkingData }) => {
         const now = Date.now();
         if (now - lastMarkerClickTimestamp < 300) return;
         setLastMarkerClickTimestamp(now);
-        setParkingInf(value.parkingInf);
-        setModalVisible(true);
+        setParkingInf && setParkingInf(value.parkingInf);
+        setIsModalVisible && setIsModalVisible(true);
     };
 
     return (
@@ -54,20 +53,12 @@ export const Map: React.FC<Map> = ({ isPositionNeed, parkingData }) => {
                                     <ParkingMarker
                                         key={value.id}
                                         location={value.location}
-                                        mapStatus={mapReady}
                                         onPress={() => handlepPressOnMarker(value)}
                                     />
                                 )
                             );
                         })}
                 </YaMap>
-            )}
-            {parkingInf && (
-                <ParkingInfModal
-                    setModalVisible={setModalVisible}
-                    isModalVisible={isModalVisible}
-                    parkingInf={parkingInf}
-                />
             )}
         </>
     );
