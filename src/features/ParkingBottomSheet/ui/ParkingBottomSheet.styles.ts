@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
         alignItems: "center",
-        paddingVertical: 20,
+        paddingTop: 20,
         backgroundColor: StyleGuide.WHITE,
         borderTopColor: StyleGuide.LIGHT_GREY,
         borderTopWidth: 1,
@@ -21,4 +21,7 @@ export const styles = StyleSheet.create({
     mapArea: {
         width: "100%",
     },
+    separator: {
+        height: 5
+    }
 });

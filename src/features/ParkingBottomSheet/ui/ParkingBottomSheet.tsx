@@ -5,8 +5,8 @@ import { styles } from "./ParkingBottomSheet.styles";
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
 import { ParkingInf, ParkingSchema } from "@shared/api";
 import { useSetlocationStore } from "@entities/user";
-import { CustomHandle } from "../components/ui/CustomHandle/CustomHandle";
-import ParkingBtnInf from "../components/ui/ParkingBtnInf/ParkingBtnInf";
+import { CustomHandle } from "./components/ui/CustomHandle/CustomHandle";
+import ParkingBtnInf from "./components/ui/ParkingBtnInf/ParkingBtnInf";
 
 interface IParkingBottomSheet {
     nearestParkingData: ParkingSchema[];
@@ -20,11 +20,10 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     setParkingInf,
 }) => {
     const bottomSheetRef = useRef<BottomSheetMethods>(null);
-    const [currentSnapIndex, setCurrentSnapIndex] = useState<number>(1);
     const [parkingByRating, setParkingByRating] = useState<ParkingSchema[]>();
     const { setLocation } = useSetlocationStore();
 
-    const snapPoints = useMemo(() => ["4%", "15%", "87%"], []);
+    const snapPoints = useMemo(() => ["4%", "16%", "87%"], []);
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () => {
@@ -45,10 +44,6 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
         setParkingByRating(defineHighestRating);
     }, [nearestParkingData]);
 
-    const handleSheetChanges = (index: number) => {
-        setCurrentSnapIndex(index);
-    };
-
     const handleChooseParking = (value: ParkingSchema) => {
         setIsModalVisible(true);
         setParkingInf(value.parkingInf);
@@ -63,25 +58,21 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     return (
         <BottomSheet
             ref={bottomSheetRef}
-            index={currentSnapIndex}
+            index={1}
             snapPoints={snapPoints}
             handleComponent={CustomHandle}
             backgroundStyle={styles.backgroundSyle}
-            overDragResistanceFactor={0}
-            onChange={handleSheetChanges}>
+            overDragResistanceFactor={0}>
             <BottomSheetView style={styles.contentContainer}>
                 <Text style={styles.text}>Nearest parking</Text>
-                {currentSnapIndex === 1 && parkingByRating ? (
-                    <ParkingBtnInf handleChooseParking={handleChooseParking} parkingByRating={parkingByRating[0]} />
-                ) : (
-                    <View style={styles.mapArea}>
-                        <FlatList
-                            data={parkingByRating}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id.toString()}
-                        />
-                    </View>
-                )}
+                <View style={styles.mapArea}>
+                    <FlatList
+                        data={parkingByRating}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.id.toString()}
+                        ItemSeparatorComponent={() => <View style={styles.separator} />}
+                    />
+                </View>
             </BottomSheetView>
         </BottomSheet>
     );
