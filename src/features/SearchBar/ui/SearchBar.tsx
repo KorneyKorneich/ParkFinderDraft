@@ -5,8 +5,9 @@ import { CustomButton, CustomInput } from "@shared/ui";
 import { initMapAndSearch } from "../model/searchLocation";
 import { useSetlocationStore } from "@entities/user";
 
+const image = require("@shared/ui/assets/images/loupe.png");
+
 export const SearchBar = () => {
-    const image = require("@shared/ui/assets/images/loupe.png");
     const [value, setValue] = useState<string>();
 
     const { setLocation } = useSetlocationStore();
