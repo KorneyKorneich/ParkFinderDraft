@@ -29,6 +29,7 @@ export const MapScreen = () => {
                     parkingData={parkingData}
                     setIsModalVisible={setModalVisible}
                     setParkingInf={setParkingInf}
+                    pressable={true}
                 />
             )}
             {parkingInf && (

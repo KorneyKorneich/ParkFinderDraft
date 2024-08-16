@@ -13,6 +13,7 @@ interface MapProps extends YaMapProps {
     parkingData: ParkingSchema[];
     setIsModalVisible?: (isModalVisible: boolean) => void;
     setParkingInf?: (parkingInf: ParkingInf) => void;
+    pressable: boolean;
 }
 
 export const Map: React.FC<MapProps> = ({
@@ -22,6 +23,7 @@ export const Map: React.FC<MapProps> = ({
     setParkingInf,
     height,
     mapRef,
+    pressable,
     ...rest
 }) => {
     const [lastMarkerClickTimestamp, setLastMarkerClickTimestamp] = useState<number>(Date.now());
@@ -39,14 +41,6 @@ export const Map: React.FC<MapProps> = ({
         setMarkers(parkingData);
     }, [parkingData]);
 
-    const handlepPressOnMarker = (value: ParkingSchema) => {
-        const now = Date.now();
-        if (now - lastMarkerClickTimestamp < 300) return;
-        setLastMarkerClickTimestamp(now);
-        setParkingInf && setParkingInf(value.parkingInf);
-        setIsModalVisible && setIsModalVisible(true);
-    };
-
     return (
         <>
             {markers && (
@@ -59,14 +53,24 @@ export const Map: React.FC<MapProps> = ({
                     {mapReady &&
                         markers.length > 0 &&
                         markers.map((value) => {
+                            const handlePressOnMarker = () => {
+                                const now = Date.now();
+                                if (now - lastMarkerClickTimestamp < 300) return;
+                                setLastMarkerClickTimestamp(now);
+                                setParkingInf && setParkingInf(value.parkingInf);
+                                setIsModalVisible && setIsModalVisible(true);
+                            };
                             return (
-                                value.approvedStatus && (
+                                value.approvedStatus &&
+                                (pressable ? (
                                     <ParkingMarker
                                         key={value.id}
                                         location={value.location}
-                                        onPress={() => handlepPressOnMarker(value)}
+                                        onPress={handlePressOnMarker}
                                     />
-                                )
+                                ) : (
+                                    <ParkingMarker key={value.id} location={value.location} />
+                                ))
                             );
                         })}
                 </YaMap>
