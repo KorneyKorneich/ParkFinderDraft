@@ -7,7 +7,7 @@ const image = require("@shared/ui/assets/images/marker.png");
 
 interface IParkingMarker {
     location: location;
-    onPress: () => void;
+    onPress?: () => void;
 }
 
 export const ParkingMarker: React.FC<IParkingMarker> = ({ location, onPress }) => {

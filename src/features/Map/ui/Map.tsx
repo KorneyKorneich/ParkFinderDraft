@@ -1,23 +1,35 @@
-import React, { useEffect, useRef, useState } from "react";
-import { YaMap } from "react-native-yamap";
+import React, { useEffect, RefObject, useState } from "react";
+import { YaMap, YaMapProps } from "react-native-yamap";
 import { styles } from "./Map.styles";
 import { useSetlocationStore } from "@entities/user";
-import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
+import { ParkingInf, ParkingSchema } from "@shared/api";
 import { ParkingMarker } from "@features/ParkingMarker";
+import { DimensionValue } from "react-native";
 
-interface Map {
+interface MapProps extends YaMapProps {
+    height?: DimensionValue;
+    mapRef: RefObject<YaMap>;
     isPositionNeed: boolean;
     parkingData: ParkingSchema[];
     setIsModalVisible?: (isModalVisible: boolean) => void;
     setParkingInf?: (parkingInf: ParkingInf) => void;
+    pressable: boolean;
 }
 
-export const Map: React.FC<Map> = ({ isPositionNeed, parkingData, setIsModalVisible, setParkingInf }) => {
+export const Map: React.FC<MapProps> = ({
+    isPositionNeed,
+    parkingData,
+    setIsModalVisible,
+    setParkingInf,
+    height,
+    mapRef,
+    pressable,
+    ...rest
+}) => {
     const [lastMarkerClickTimestamp, setLastMarkerClickTimestamp] = useState<number>(Date.now());
     const [mapReady, setMapReady] = useState<boolean>(false);
     const [markers, setMarkers] = useState<ParkingSchema[]>();
     const { location } = useSetlocationStore();
-    const mapRef = useRef<Nullable<YaMap>>(null);
 
     useEffect(() => {
         if (mapRef.current && location) {
@@ -29,33 +41,36 @@ export const Map: React.FC<Map> = ({ isPositionNeed, parkingData, setIsModalVisi
         setMarkers(parkingData);
     }, [parkingData]);
 
-    const handlepPressOnMarker = (value: ParkingSchema) => {
-        const now = Date.now();
-        if (now - lastMarkerClickTimestamp < 300) return;
-        setLastMarkerClickTimestamp(now);
-        setParkingInf && setParkingInf(value.parkingInf);
-        setIsModalVisible && setIsModalVisible(true);
-    };
-
     return (
         <>
             {markers && (
                 <YaMap
                     showUserPosition={isPositionNeed}
                     ref={mapRef}
-                    style={styles.map}
-                    onMapLoaded={() => setMapReady(true)}>
+                    style={[styles.map, height ? { height: height } : null]}
+                    onMapLoaded={() => setMapReady(true)}
+                    {...rest}>
                     {mapReady &&
                         markers.length > 0 &&
                         markers.map((value) => {
+                            const handlePressOnMarker = () => {
+                                const now = Date.now();
+                                if (now - lastMarkerClickTimestamp < 300) return;
+                                setLastMarkerClickTimestamp(now);
+                                setParkingInf && setParkingInf(value.parkingInf);
+                                setIsModalVisible && setIsModalVisible(true);
+                            };
                             return (
-                                value.approvedStatus && (
+                                value.approvedStatus &&
+                                (pressable ? (
                                     <ParkingMarker
                                         key={value.id}
                                         location={value.location}
-                                        onPress={() => handlepPressOnMarker(value)}
+                                        onPress={handlePressOnMarker}
                                     />
-                                )
+                                ) : (
+                                    <ParkingMarker key={value.id} location={value.location} />
+                                ))
                             );
                         })}
                 </YaMap>
