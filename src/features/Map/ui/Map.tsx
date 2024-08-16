@@ -1,16 +1,18 @@
-import React, { useEffect, useRef } from "react";
-import { YaMap, Geocoder } from "react-native-yamap";
+import React, { RefObject, useEffect } from "react";
+import { YaMap, YaMapProps } from "react-native-yamap";
 import { styles } from "./Map.styles";
 import { useSetlocationStore } from "@entities/user";
 import { useSetCurretLocationStore } from "@entities/user";
-import { Nullable } from "@shared/api";
 
-export const Map = () => {
+interface MapProps extends YaMapProps {
+    height?: number;
+    mapRef: RefObject<YaMap>;
+}
+
+export const Map = ({ height, mapRef, ...rest }: MapProps) => {
     const { currentLocation } = useSetCurretLocationStore();
 
     const { location } = useSetlocationStore();
-
-    const mapRef = useRef<Nullable<YaMap>>(null);
 
     useEffect(() => {
         if (mapRef.current && currentLocation) {
@@ -19,10 +21,17 @@ export const Map = () => {
     }, [currentLocation]);
 
     useEffect(() => {
-        if (mapRef.current && location) {
+        if (mapRef.current && mapRef) {
             mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 10, 0, 0);
         }
     }, [location]);
 
-    return <YaMap ref={mapRef} style={styles.map}></YaMap>;
+    return (
+        <YaMap
+            rotateGesturesEnabled={false}
+            {...rest}
+            mapType={"vector"}
+            ref={mapRef}
+            style={[styles.map, { height }]}></YaMap>
+    );
 };
