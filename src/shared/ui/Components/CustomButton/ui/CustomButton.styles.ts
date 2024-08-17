@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
@@ -8,8 +8,15 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 12,
         paddingHorizontal: 15,
-        paddingVertical: 15,
         marginVertical: 10,
+        ...Platform.select({
+            android: {
+                paddingVertical: 2,
+            },
+            ios: {
+                paddingVertical: 15,
+            },
+        }),
     },
     title: {
         fontSize: 18,

@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: Fonts.REGULAR_BODY,
     },
-
     inputContainer: {
         flexDirection: "row",
         alignItems: "center",

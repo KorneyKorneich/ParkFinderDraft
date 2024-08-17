@@ -14,6 +14,7 @@ export const OTPVerification = ({ navigation, route }: UnauthorizedStackRoutesPr
     const confirm = confirmation;
 
     const OTPConfirm = useUserStore((state) => state.OTPConfirm);
+
     const isLoading = useUserStore((state) => state.isLoading);
 
     const handleOTPConfirm = () => {
@@ -31,7 +32,6 @@ export const OTPVerification = ({ navigation, route }: UnauthorizedStackRoutesPr
                     <Text style={styles.text}>We are automatically detecting SMS </Text>
                     <Text style={styles.text}>sent to your mobile phone number </Text>
                 </View>
-
                 <View style={styles.OTPInput}>
                     <OtpInput
                         type={"numeric"}

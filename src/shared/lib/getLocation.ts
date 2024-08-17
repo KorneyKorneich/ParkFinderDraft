@@ -1,11 +1,11 @@
 import Geolocation from "react-native-geolocation-service";
-import { currentLocation } from "@shared/api";
+import { location } from "@shared/api";
 
 export const getLocation = () => {
     return new Promise((resolve) => {
         Geolocation.getCurrentPosition(
             (position) => {
-                const location: currentLocation = {
+                const location: location = {
                     lat: position.coords.latitude,
                     lon: position.coords.longitude,
                 };
