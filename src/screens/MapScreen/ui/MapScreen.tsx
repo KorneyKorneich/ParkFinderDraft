@@ -9,6 +9,8 @@ import { getParkingsData } from "../api/getParkingsData";
 import { ParkingInfModal } from "@features/ParkingInfModal";
 import YaMap from "react-native-yamap";
 
+const userLocationImg = require("@shared/ui/assets/images/current-location.png");
+
 export const MapScreen = () => {
     const [parkingData, setParkingData] = useState<ParkingSchema[]>();
     const [isModalVisible, setModalVisible] = useState<boolean>(false);
@@ -28,11 +30,12 @@ export const MapScreen = () => {
                 <>
                     <Map
                         mapRef={mapRef}
-                        isPositionNeed={false}
                         parkingData={parkingData}
                         setIsModalVisible={setModalVisible}
                         setParkingInf={setParkingInf}
                         pressable={true}
+                        userLocationIcon={userLocationImg}
+                        userLocationIconScale={2.3}
                     />
                     <ParkingBottomSheet
                         nearestParkingData={parkingData}

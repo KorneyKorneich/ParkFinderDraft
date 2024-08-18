@@ -1,4 +1,4 @@
-import BottomTabNavigator from "../navigators/BottomTabNavigator";
+import BottomTabNavigator from "../navigators/BottomTabNavigator/BottomTabNavigator";
 import { ParkListScreen } from "@screens/ParkListScreen";
 import { ROUTES } from "@shared/api";
 
