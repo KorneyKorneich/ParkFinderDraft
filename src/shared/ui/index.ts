@@ -6,10 +6,12 @@ export { DownArrow } from "./assets/DownArrow";
 export { CloseIcon } from "./assets/CloseIcon";
 export { VerificationImg } from "./assets/VerificationImg";
 export { Eye } from "./assets/Eye";
+export { MapMarker } from "./assets/MapMarker";
 
 export { StyleGuide } from "./stylesConsts/stylesConsts";
 
 export { CustomInput } from "./Components/CustomInput/ui/CustomInput";
 export { CustomButton } from "./Components/CustomButton/ui/CustomButton";
 export { CustomImage } from "./Components/CustomImage/ui/CustomImage";
-export { FormSwitcher } from "./Components/Switcher/ui/FormSwitcher.tsx";
+export { FormSwitcher } from "@shared/ui/Components/FormSwitcher/ui/FormSwitcher";
+export { OptionSwitcher } from "./Components/OptionSwitcher/ui/OptionSwitcher";

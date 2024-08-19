@@ -11,13 +11,8 @@ interface SwitcherProps {
 }
 
 export const FormSwitcher = (props: SwitcherProps) => {
-    const {
-        optionToggle,
-        handleOnFirstOptionPress,
-        handleOnSecondOptionPress,
-        firstOptionTitle,
-        secondOptionTitle,
-    } = props;
+    const { optionToggle, handleOnFirstOptionPress, handleOnSecondOptionPress, firstOptionTitle, secondOptionTitle } =
+        props;
 
     return (
         <>
@@ -25,9 +20,7 @@ export const FormSwitcher = (props: SwitcherProps) => {
                 <TouchableOpacity
                     onPress={handleOnFirstOptionPress}
                     style={[styles.option, optionToggle ? styles.activeOption : null]}>
-                    <Text style={[styles.optionText, optionToggle ? styles.textActive : null]}>
-                        {firstOptionTitle}
-                    </Text>
+                    <Text style={[styles.optionText, optionToggle ? styles.textActive : null]}>{firstOptionTitle}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={handleOnSecondOptionPress}

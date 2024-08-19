@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
 import { Nullable, UnauthorizedStackRoutesProps } from "@shared/api";
-import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useUserStore } from "@entities/user";
 import { CountryPickModal } from "@widgets/CountryPickModal";
 import { Country, useCountryStore } from "@entities/country";
@@ -29,13 +28,12 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     const [selectedCountry, setSelectedCountry] = useState<Nullable<Country>>(null);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-	const handleModalClose = () => {
-		setIsModalVisible(false);
-	};
-
-	const handleModalOpen = () => {
-		setIsModalVisible(true);
-	};
+    const handleModalClose = () => {
+        setIsModalVisible(false);
+    };
+    const handleModalOpen = () => {
+        setIsModalVisible(true);
+    };
 
     const handlePhoneVerify: SubmitHandler<PhoneForm> = async (data) => {
         if (selectedCountry) {
@@ -45,16 +43,16 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
         }
     };
 
-	const handleCountryPick = (item: Country) => {
-		setSelectedCountry(item);
-		setIsModalVisible(false);
-	};
+    const handleCountryPick = (item: Country) => {
+        setSelectedCountry(item);
+        setIsModalVisible(false);
+    };
 
-	useEffect(() => {
-		getCountries().then(() => {
-			setSelectedCountry(defaultCountry);
-		});
-	}, []);
+    useEffect(() => {
+        getCountries().then(() => {
+            setSelectedCountry(defaultCountry);
+        });
+    }, []);
 
     return (
         <View style={styles.wrapper}>

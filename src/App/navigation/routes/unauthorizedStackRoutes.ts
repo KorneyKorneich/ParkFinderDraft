@@ -1,11 +1,9 @@
 import React from "react";
-import DrawerNavigator from "../navigators/DrawerNavigator";
 import { EmailAuthScreen } from "@screens/EmailAuthScreen";
 import { PhoneAuthScreen } from "@screens/PhoneAuthScreen";
 import { OTPVerification } from "@screens/OTPVerification";
 import { StackNavigationOptions } from "@react-navigation/stack";
-import { AuthorizedStackParamList, UnauthorizedStackParamList, ROUTES } from "@shared/api";
-import { NativeStackScreenProps } from "react-native-screens/native-stack";
+import { UnauthorizedStackParamList, ROUTES } from "@shared/api";
 
 type RouteConfig<ParamList extends Record<string, object | undefined>, RouteName extends keyof ParamList> = {
     name: RouteName;

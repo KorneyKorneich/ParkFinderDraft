@@ -19,9 +19,6 @@ export const SearchBar = () => {
 
     return (
         <View style={styles.controlledInBox}>
-            {/*TS2322: Type string | undefined is not assignable to type string
-Type undefined is not assignable to type string
-CustomInput.tsx(10, 5): The expected type comes from property value which is declared here on type IntrinsicAttributes & CustomInputProps*/}
             <CustomInput
                 value={value}
                 onChangeText={setValue}

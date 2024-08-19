@@ -16,19 +16,24 @@ const styles = StyleSheet.create({
         fontSize: FONTS.HEADING_4,
     },
     switcher: {
-        marginVertical: 10,
-        marginHorizontal: "auto",
-        flexDirection: "row",
-        justifyContent: "space-around",
+        // marginVertical: 10,
+        // marginHorizontal: "auto",
+        // flexDirection: "row",
+        // justifyContent: "space-around",
         width: "100%",
-        backgroundColor: StyleGuide.GREY,
+        // backgroundColor: StyleGuide.GREY,
         borderRadius: 12,
         padding: 5,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: StyleGuide.GREY,
     },
     coordinatesInputContainer: {
         flexDirection: "row",
     },
     coordinatesInput: {
+        borderRadius: 8,
         width: "50%",
     },
     buttonTextStyle: {
@@ -38,10 +43,18 @@ const styles = StyleSheet.create({
         fontSize: FONTS.HEADING_3,
         fontWeight: "bold",
     },
+    additionalOptions: {
+        width: "100%",
+    },
     additionalOption: {
+        width: "100%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
         marginVertical: 5,
     },
     additionalOptionText: {
+        width: "70%",
         fontSize: FONTS.REGULAR_BODY,
     },
 });

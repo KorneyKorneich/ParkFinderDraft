@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: StyleGuide.WHITE,
     },
     authScreenContainer: {
-        width: "90%",
+        width: "100%",
         padding: 20,
         marginHorizontal: "auto",
     },
@@ -73,11 +73,11 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
     },
 
-	buttonsContainer:{
-		marginTop: 15,
-		flexDirection: "row",
-		justifyContent: "space-evenly",
-	},
+    buttonsContainer: {
+        marginTop: 15,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+    },
 
     authWithGoogle: {
         padding: 20,

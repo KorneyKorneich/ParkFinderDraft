@@ -19,9 +19,8 @@ export const Map = ({ height, mapRef, ...rest }: MapProps) => {
             mapRef.current.setCenter({ lat: currentLocation.lat, lon: currentLocation.lon }, 10, 0, 0);
         }
     }, [currentLocation]);
-
     useEffect(() => {
-        if (mapRef.current && mapRef) {
+        if (mapRef.current && location) {
             mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 10, 0, 0);
         }
     }, [location]);

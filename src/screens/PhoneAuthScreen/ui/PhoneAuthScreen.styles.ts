@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { StyleGuide } from "@shared/ui";
-import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
+import { FONTS } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -14,42 +14,42 @@ const styles = StyleSheet.create({
         marginHorizontal: "auto",
     },
 
-	img: {
-		justifyContent: "center",
-		alignItems: "center",
-		marginTop: 35,
-	},
+    img: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 35,
+    },
 
-	textContainer: {
-		marginTop: "20%",
-		justifyContent: "center",
-		alignItems: "center",
-	},
+    textContainer: {
+        marginTop: "20%",
+        justifyContent: "center",
+        alignItems: "center",
+    },
 
-	title: {
-		fontSize: Fonts.HEADING_4,
-		marginBottom: 5,
-	},
+    title: {
+        fontSize: FONTS.HEADING_4,
+        marginBottom: 5,
+    },
 
-	text: {
-		fontSize: Fonts.REGULAR_BODY,
-	},
+    text: {
+        fontSize: FONTS.REGULAR_BODY,
+    },
 
-	inputContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 20,
-		marginVertical: 20,
-		paddingBottom: 20,
-		borderBottomColor: StyleGuide.GREY,
-		borderBottomWidth: 1,
-	},
+    inputContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 20,
+        marginVertical: 20,
+        paddingBottom: 20,
+        borderBottomColor: StyleGuide.GREY,
+        borderBottomWidth: 1,
+    },
 
-	selectCountryContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 10,
-	},
+    selectCountryContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+    },
 
     phoneInput: {
         width: "100%",

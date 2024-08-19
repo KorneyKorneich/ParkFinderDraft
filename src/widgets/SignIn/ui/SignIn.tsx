@@ -33,20 +33,17 @@ export const SignIn = () => {
         } catch (error) {
             const firebaseError = error as FirebaseError;
             const errorMessage = getFirebaseAuthErrorMessage(firebaseError);
-            switch (firebaseError.code) {
-                case "auth/invalid-email":
-                case "auth/user-not-found":
-                case "auth/email-already-in-use":
-                    setError("email", { type: "manual", message: errorMessage });
-                    break;
-                case "auth/wrong-password":
-                case "auth/weak-password":
-                    setError("password", { type: "manual", message: errorMessage });
-                    break;
-                default:
-                    setError("email", { type: "manual", message: errorMessage });
-                    setError("password", { type: "manual", message: errorMessage });
-                    break;
+            if (
+                firebaseError.code === "auth/invalid-email" ||
+                firebaseError.code === "auth/user-not-found" ||
+                firebaseError.code === "auth/email-already-in-use"
+            ) {
+                setError("email", { type: "manual", message: errorMessage });
+            } else if (firebaseError.code === "auth/wrong-password" || firebaseError.code === "auth/weak-password") {
+                setError("password", { type: "manual", message: errorMessage });
+            } else {
+                setError("email", { type: "manual", message: errorMessage });
+                setError("password", { type: "manual", message: errorMessage });
             }
         }
     };
@@ -114,4 +111,3 @@ export const SignIn = () => {
         </>
     );
 };
-
