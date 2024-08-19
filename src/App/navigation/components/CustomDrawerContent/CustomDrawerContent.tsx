@@ -17,4 +17,3 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
 };
 
 export default CustomDrawerContent;
-

@@ -1,27 +1,53 @@
-import { View } from "react-native";
-import React, { useRef } from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { SearchBar } from "@features/SearchBar";
-import { AuthorizedStackParamList, ROUTES } from "@shared/api";
+import React, { useEffect, useRef, useState } from "react";
+import { SafeAreaView } from "react-native";
 import { Map } from "@features/Map";
-import { styles } from "./MapScreen.styles.ts";
-import { SIZES } from "@shared/ui/stylesConsts/stylesConsts.ts";
-import { YaMap } from "react-native-yamap";
+import { SearchBar } from "@features/SearchBar";
+import { ParkingBottomSheet } from "@features/ParkingBottomSheet";
+import { styles } from "./MapScreen.styles";
+import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
+import { getParkingsData } from "../api/getParkingsData";
+import { ParkingInfModal } from "@features/ParkingInfModal";
+import YaMap from "react-native-yamap";
 
 export const MapScreen = () => {
-    const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
-    const mapRef = useRef<YaMap>(null);
+    const [parkingData, setParkingData] = useState<ParkingSchema[]>();
+    const [isModalVisible, setModalVisible] = useState<boolean>(false);
+    const [parkingInf, setParkingInf] = useState<ParkingInf>();
+    const mapRef = useRef<Nullable<YaMap>>(null);
 
-    const handleNavigateToParkingList = () => {
-        navigation.navigate(ROUTES.ParkListScreen);
-    };
+    useEffect(() => {
+        const unsubscribe = getParkingsData(setParkingData);
+
+        return () => unsubscribe();
+    }, []);
 
     return (
-        <View>
-            <View style={styles.searchContainer}>
-                <SearchBar />
-            </View>
-            <Map mapRef={mapRef} height={SIZES.HEIGHT} />
-        </View>
+        <SafeAreaView style={styles.mapAreaScreen}>
+            <SearchBar />
+            {parkingData && (
+                <>
+                    <Map
+                        mapRef={mapRef}
+                        isPositionNeed={false}
+                        parkingData={parkingData}
+                        setIsModalVisible={setModalVisible}
+                        setParkingInf={setParkingInf}
+                        pressable={true}
+                    />
+                    <ParkingBottomSheet
+                        nearestParkingData={parkingData}
+                        setIsModalVisible={setModalVisible}
+                        setParkingInf={setParkingInf}
+                    />
+                </>
+            )}
+            {parkingInf && (
+                <ParkingInfModal
+                    setModalVisible={setModalVisible}
+                    isModalVisible={isModalVisible}
+                    parkingInf={parkingInf}
+                />
+            )}
+        </SafeAreaView>
     );
 };

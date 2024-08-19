@@ -1,8 +1,13 @@
 import Svg, { Circle, Path, G, Ellipse } from "react-native-svg";
 
-export const VerificationImg = () => {
+interface VerificationImgProps {
+    width: number;
+    height: number;
+}
+
+export const VerificationImg = (props: VerificationImgProps) => {
     return (
-        <Svg viewBox="0 0 681 686.689">
+        <Svg width={props.width} height={props.height} viewBox="0 0 681 686.689">
             <G id="Group_25" data-name="Group 25" transform="translate(-228 -105)">
                 <Ellipse
                     id="Ellipse_92"

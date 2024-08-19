@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { styles } from "./SearchBar.style";
 import { CustomButton, CustomInput } from "@shared/ui";
 import { initMapAndSearch } from "../model/searchLocation";
-import { useSetlocationStore } from "@entities/user/model/setlocationStore/setlocationStore";
+import { useSetlocationStore } from "@entities/user";
+
+const image = require("@shared/ui/assets/images/loupe.png");
 
 export const SearchBar = () => {
-    const image = require("@shared/ui/assets/images/loupe.png");
     const [value, setValue] = useState<string>();
 
     const { setLocation } = useSetlocationStore();
@@ -24,6 +25,7 @@ export const SearchBar = () => {
                 onChangeText={setValue}
                 boxStyle={styles.inputBoxStyle}
                 style={styles.inputStyles}
+                
             />
             <CustomButton imgPath={image} onPress={handleSearch} style={styles.btnStyle} />
         </View>

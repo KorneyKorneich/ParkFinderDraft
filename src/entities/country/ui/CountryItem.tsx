@@ -21,4 +21,3 @@ export const CountryItem = ({ item, handleCountryPick }: CountryItemProps) => {
         </TouchableOpacity>
     );
 };
-

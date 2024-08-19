@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
@@ -11,5 +11,10 @@ export const styles = StyleSheet.create({
     inputStyles: {
         borderWidth: 1,
         borderColor: StyleGuide.GREY,
+        ...Platform.select({
+            android: {
+                paddingHorizontal: 5,
+            },
+        }),
     },
 });
