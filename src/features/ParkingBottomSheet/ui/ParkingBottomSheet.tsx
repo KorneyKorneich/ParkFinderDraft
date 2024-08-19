@@ -23,7 +23,7 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     const [parkingByRating, setParkingByRating] = useState<ParkingSchema[]>();
     const { setLocation } = useSetlocationStore();
 
-    const snapPoints = useMemo(() => ["4%", "16%", "87%"], []);
+    const snapPoints = useMemo(() => [26, 104, "87%"], []);
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () => {
@@ -64,7 +64,7 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
             backgroundStyle={styles.backgroundSyle}
             overDragResistanceFactor={0}>
             <BottomSheetView style={styles.contentContainer}>
-                <Text style={styles.text}>Nearest parking</Text>
+                <Text style={styles.text}>Nearest parkings</Text>
                 <View style={styles.mapArea}>
                     <FlatList
                         data={parkingByRating}

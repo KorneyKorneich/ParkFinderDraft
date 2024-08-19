@@ -1,1 +1,2 @@
-export { getLocation } from "./getLocation";
+export { getLocation } from "./helpers/getLocation";
+export { watchLocation } from "./helpers/watchLocation";

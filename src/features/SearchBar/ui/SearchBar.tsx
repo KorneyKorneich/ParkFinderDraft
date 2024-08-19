@@ -25,7 +25,6 @@ export const SearchBar = () => {
                 onChangeText={setValue}
                 boxStyle={styles.inputBoxStyle}
                 style={styles.inputStyles}
-                
             />
             <CustomButton imgPath={image} onPress={handleSearch} style={styles.btnStyle} />
         </View>
