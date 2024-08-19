@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native";
 import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
+import { ParkingBottomSheet } from "@features/ParkingBottomSheet";
+import { styles } from "./MapScreen.styles";
 import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
 import { getParkingsData } from "../api/getParkingsData";
 import { ParkingInfModal } from "@features/ParkingInfModal";
@@ -20,17 +22,24 @@ export const MapScreen = () => {
     }, []);
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.mapAreaScreen}>
             <SearchBar />
             {parkingData && (
-                <Map
-                    mapRef={mapRef}
-                    isPositionNeed={false}
-                    parkingData={parkingData}
-                    setIsModalVisible={setModalVisible}
-                    setParkingInf={setParkingInf}
-                    pressable={true}
-                />
+                <>
+                    <Map
+                        mapRef={mapRef}
+                        isPositionNeed={false}
+                        parkingData={parkingData}
+                        setIsModalVisible={setModalVisible}
+                        setParkingInf={setParkingInf}
+                        pressable={true}
+                    />
+                    <ParkingBottomSheet
+                        nearestParkingData={parkingData}
+                        setIsModalVisible={setModalVisible}
+                        setParkingInf={setParkingInf}
+                    />
+                </>
             )}
             {parkingInf && (
                 <ParkingInfModal
