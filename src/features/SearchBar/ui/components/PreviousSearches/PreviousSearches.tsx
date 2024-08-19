@@ -12,7 +12,7 @@ interface IPreviousSearches {
 }
 
 export const PreviousSearches: React.FC<IPreviousSearches> = ({ triger, setValue, handleSearch, isResult }) => {
-    const [hints, setHints] = useState<string[]>([]);
+    const [hints, setHints] = useState<string[]>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,3 +51,4 @@ export const PreviousSearches: React.FC<IPreviousSearches> = ({ triger, setValue
         </View>
     );
 };
+ 
