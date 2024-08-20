@@ -5,6 +5,7 @@ import { useSetlocationStore } from "@entities/user";
 import { ParkingInf, ParkingSchema } from "@shared/api";
 import { ParkingMarker } from "@features/ParkingMarker";
 import { DimensionValue } from "react-native";
+import { SIZES } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 interface MapProps extends YaMapProps {
     height?: DimensionValue;
@@ -21,7 +22,7 @@ export const Map: React.FC<MapProps> = ({
     parkingData,
     setIsModalVisible,
     setParkingInf,
-    height,
+    height = SIZES.HEIGHT,
     mapRef,
     pressable,
     ...rest
@@ -47,7 +48,7 @@ export const Map: React.FC<MapProps> = ({
                 <YaMap
                     showUserPosition={isPositionNeed}
                     ref={mapRef}
-                    style={[styles.map, height ? { height: height } : null]}
+                    style={[styles.map, { height: height }]}
                     onMapLoaded={() => setMapReady(true)}
                     {...rest}>
                     {mapReady &&

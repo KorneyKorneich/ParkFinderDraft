@@ -3,8 +3,15 @@ import { StyleGuide } from "@shared/ui";
 import { SIZES } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 export default StyleSheet.create({
+    map: {
+        position: "absolute",
+        height: "100%",
+        backgroundColor: StyleGuide.GREEN,
+    },
     modalContainer: {
+        position: "relative",
         flex: 1,
+        // backgroundColor: StyleGuide.ERROR,
         backgroundColor: StyleGuide.TRANSPARENT_GRAY,
         justifyContent: "flex-end",
     },
@@ -25,6 +32,7 @@ export default StyleSheet.create({
     },
     mapContainer: {
         flex: 0.8,
+        // backgroundColor: StyleGuide.BLUE,
     },
     mapMarker: {
         position: "absolute",

@@ -8,7 +8,7 @@ export { VerificationImg } from "./assets/VerificationImg";
 export { Eye } from "./assets/Eye";
 export { MapMarker } from "./assets/MapMarker";
 
-export { StyleGuide } from "./stylesConsts/stylesConsts";
+export { StyleGuide, SIZES, FONTS } from "./stylesConsts/stylesConsts";
 
 export { CustomInput } from "./Components/CustomInput/ui/CustomInput";
 export { CustomButton } from "./Components/CustomButton/ui/CustomButton";

@@ -8,6 +8,7 @@ import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
 import { getParkingsData } from "../api/getParkingsData";
 import { ParkingInfModal } from "@features/ParkingInfModal";
 import YaMap from "react-native-yamap";
+import { SIZES } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 export const MapScreen = () => {
     const [parkingData, setParkingData] = useState<ParkingSchema[]>();
@@ -33,6 +34,7 @@ export const MapScreen = () => {
                         setIsModalVisible={setModalVisible}
                         setParkingInf={setParkingInf}
                         pressable={true}
+                        height={SIZES.HEIGHT}
                     />
                     <ParkingBottomSheet
                         nearestParkingData={parkingData}

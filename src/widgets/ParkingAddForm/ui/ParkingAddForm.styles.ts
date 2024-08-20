@@ -16,12 +16,7 @@ const styles = StyleSheet.create({
         fontSize: FONTS.HEADING_4,
     },
     switcher: {
-        // marginVertical: 10,
-        // marginHorizontal: "auto",
-        // flexDirection: "row",
-        // justifyContent: "space-around",
         width: "100%",
-        // backgroundColor: StyleGuide.GREY,
         borderRadius: 12,
         padding: 5,
     },

@@ -4,7 +4,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { CustomButton, CustomInput, StyleGuide, FormSwitcher, OptionSwitcher } from "@shared/ui";
 import React, { useState } from "react";
 import { Point } from "react-native-yamap";
-import { parkingSpotSchema, sendParkingSpotInfo } from "@widgets/ParkingAddForm/api/funcs.ts";
+import { parkingSpotSchema, sendParkingSpotInfo } from "../api/funcs.ts";
 import { SpotPickingMap } from "@widgets/SpotPickingMap";
 
 interface AdditionalOptionsType {
@@ -141,7 +141,7 @@ export const ParkingAddForm = () => {
                 )}
                 <CustomButton
                     title={"Pick point on map"}
-                    color={StyleGuide.SEARCH_BTN}
+                    color={StyleGuide.LIGHT_GREY}
                     textStyle={styles.buttonTextStyle}
                     onPress={handleMapOpen}
                 />
