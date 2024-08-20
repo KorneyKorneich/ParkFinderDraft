@@ -18,6 +18,7 @@ export enum StyleGuide {
     BACKGROUND_LIGHT = "rgb(240, 240, 240)",
     TEXT_GREY = "rgb(125, 125, 145)",
     NORMAL_GREY = "rgb(128, 128, 128)",
+    HINTS_GRAY = "rgba(209, 209, 209, 0.65)",
 }
 
 export enum Fonts {

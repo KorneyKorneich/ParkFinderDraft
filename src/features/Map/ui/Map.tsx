@@ -5,7 +5,7 @@ import { useSetlocationStore } from "@entities/user";
 import { ParkingInf, ParkingSchema } from "@shared/api";
 import { ParkingMarker } from "@features/ParkingMarker";
 import { DimensionValue } from "react-native";
-import { CurrentLocationBtn } from "../components/CurrentLocationBtn/ui/CurrentLocationBtn";
+import { CurrentLocationBtn } from "./components/CurrentLocationBtn/ui/CurrentLocationBtn";
 
 interface MapProps extends YaMapProps {
     height?: DimensionValue;
@@ -32,7 +32,7 @@ export const Map: React.FC<MapProps> = ({
 
     useEffect(() => {
         if (mapRef.current && location) {
-            mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 10, 0, 0);
+            mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 18, 0, 0, 1);
         }
     }, [location, mapReady]);
 
