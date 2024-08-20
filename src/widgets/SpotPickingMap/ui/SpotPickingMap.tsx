@@ -34,6 +34,7 @@ export const SpotPickingMap = ({
             });
         }
     };
+
     return (
         <Modal transparent visible={isModalVisible} animationType="slide" onRequestClose={handleModalClose}>
             <View style={styles.modalContainer}>
@@ -44,7 +45,7 @@ export const SpotPickingMap = ({
                     <View style={styles.mapMarker}>
                         <MapMarker height={40} width={40} color={StyleGuide.GREEN} />
                     </View>
-                    <Map mapRef={mapRef} isPositionNeed={false} pressable={true} height={SIZES.HEIGHT} />
+                    <Map mapRef={mapRef} pressable={false} parkingData={[]} height={SIZES.HEIGHT} />
                 </View>
                 <CustomButton
                     style={styles.button}
