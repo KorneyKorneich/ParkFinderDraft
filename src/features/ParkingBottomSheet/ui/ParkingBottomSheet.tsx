@@ -7,15 +7,14 @@ import { ParkingInf, ParkingSchema } from "@shared/api";
 import { useSetlocationStore } from "@entities/user";
 import { CustomHandle } from "./components/ui/CustomHandle/CustomHandle";
 import ParkingBtnInf from "./components/ui/ParkingBtnInf/ParkingBtnInf";
+import { useParkingsStore } from "@entities/parkings";
 
 interface IParkingBottomSheet {
-    nearestParkingData: ParkingSchema[];
     setIsModalVisible: (isModalVisible: boolean) => void;
     setParkingInf: (parkingInf: ParkingInf) => void;
 }
 
 export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
-    nearestParkingData,
     setIsModalVisible,
     setParkingInf,
 }) => {
@@ -23,6 +22,7 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     const [parkingByRating, setParkingByRating] = useState<ParkingSchema[]>();
     const [currentIndex, setCurrentIndex] = useState<number>();
     const { setLocation } = useSetlocationStore();
+    const { parkingsMarkers } = useParkingsStore();
 
     const snapPoints = useMemo(() => [26, 104, "87%"], []);
 
@@ -37,13 +37,13 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     }, [currentIndex]);
 
     const defineHighestRating = useMemo(() => {
-        const highest = nearestParkingData.sort((a, b) => b.parkingInf.rating - a.parkingInf.rating);
+        const highest = parkingsMarkers.sort((a, b) => b.parkingInf.rating - a.parkingInf.rating);
         return highest;
-    }, [nearestParkingData]);
+    }, [parkingsMarkers]);
 
     useEffect(() => {
         setParkingByRating(defineHighestRating);
-    }, [nearestParkingData]);
+    }, [parkingsMarkers]);
 
     const handleMoveBottom = (index: number) => {
         setCurrentIndex(index);
