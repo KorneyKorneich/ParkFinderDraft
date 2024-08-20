@@ -21,19 +21,20 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
 }) => {
     const bottomSheetRef = useRef<BottomSheetMethods>(null);
     const [parkingByRating, setParkingByRating] = useState<ParkingSchema[]>();
+    const [currentIndex, setCurrentIndex] = useState<number>();
     const { setLocation } = useSetlocationStore();
 
-    const snapPoints = useMemo(() => ["4%", "16%", "87%"], []);
+    const snapPoints = useMemo(() => [26, 104, "87%"], []);
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () => {
-            bottomSheetRef.current?.snapToIndex(1);
+            currentIndex === 2 && bottomSheetRef.current?.snapToIndex(1);
         });
 
         return () => {
             keyboardDidShowListener.remove();
         };
-    }, []);
+    }, [currentIndex]);
 
     const defineHighestRating = useMemo(() => {
         const highest = nearestParkingData.sort((a, b) => b.parkingInf.rating - a.parkingInf.rating);
@@ -43,6 +44,10 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     useEffect(() => {
         setParkingByRating(defineHighestRating);
     }, [nearestParkingData]);
+
+    const handleMoveBottom = (index: number) => {
+        setCurrentIndex(index);
+    };
 
     const handleChooseParking = (value: ParkingSchema) => {
         setIsModalVisible(true);
@@ -59,12 +64,13 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
         <BottomSheet
             ref={bottomSheetRef}
             index={1}
+            onChange={(index) => handleMoveBottom(index)}
             snapPoints={snapPoints}
             handleComponent={CustomHandle}
             backgroundStyle={styles.backgroundSyle}
             overDragResistanceFactor={0}>
             <BottomSheetView style={styles.contentContainer}>
-                <Text style={styles.text}>Nearest parking</Text>
+                <Text style={styles.text}>Nearest parkings</Text>
                 <View style={styles.mapArea}>
                     <FlatList
                         data={parkingByRating}

@@ -1,31 +1,24 @@
-import { StyleGuide } from "@shared/ui/";
+import { StyleGuide } from "@shared/ui";
 import { Platform, StyleSheet } from "react-native";
 import { SIZES } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 export const styles = StyleSheet.create({
+    inputAndHints: {
+        position: "absolute",
+        zIndex: 2,
+        top: 20,
+        left: "20%",
+        width: "80%",
+        transform: [{ translateX: -40 }],
+    },
     controlledInBox: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        height: 55,
         ...Platform.select({
-            android: {
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                position: "absolute",
-                zIndex: 2,
-                top: 20,
-                left: "20%",
-                width: "80%",
-                transform: [{ translateX: -40 }],
-            },
+            android: {},
             ios: {
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                position: "absolute",
-                zIndex: 2,
-                top: 20,
-                left: "20%",
-                width: "80%",
-                transform: [{ translateX: -40 }],
                 backgroundColor: StyleGuide.WHITE,
                 borderRadius: 12,
                 height: SIZES.HEIGHT * 0.06,
@@ -42,12 +35,12 @@ export const styles = StyleSheet.create({
                 borderBottomLeftRadius: 12,
                 borderTopRightRadius: 0,
                 borderBottomRightRadius: 0,
-                paddingLeft: 10,
                 borderColor: StyleGuide.TRANSPARENT_GRAY,
                 borderWidth: 1,
-                paddingHorizontal: 0,
+                paddingHorizontal: 10,
                 borderRadius: 8,
                 width: "100%",
+                height: 55,
             },
             ios: {},
         }),
@@ -72,4 +65,8 @@ export const styles = StyleSheet.create({
             },
         }),
     },
+    activityIndicator: {
+        position: "absolute",
+        right: "23%"
+    }
 });
