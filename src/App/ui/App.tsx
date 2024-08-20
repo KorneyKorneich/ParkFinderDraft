@@ -5,10 +5,10 @@ import { useSetlocationStore } from "@entities/user";
 import { AppProvider } from "../providers/AppProvider";
 
 function App(): React.JSX.Element {
-    const { setLocation } = useSetlocationStore();
+    const { setLocation, setCurrentLocation } = useSetlocationStore();
 
     useEffect(() => {
-        requestLocationPermission(setLocation);
+        requestLocationPermission(setLocation, setCurrentLocation);
     }, []);
 
     return (

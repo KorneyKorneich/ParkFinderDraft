@@ -6,18 +6,17 @@ import { ParkingInf, ParkingSchema } from "@shared/api";
 import { ParkingMarker } from "@features/ParkingMarker";
 import { DimensionValue } from "react-native";
 import { CurrentLocationBtn } from "./components/CurrentLocationBtn/ui/CurrentLocationBtn";
+import { useParkingsStore } from "@entities/parkings";
 
 interface MapProps extends YaMapProps {
     height?: DimensionValue;
     mapRef: RefObject<YaMap>;
-    parkingData?: ParkingSchema[];
     setIsModalVisible?: (isModalVisible: boolean) => void;
     setParkingInf?: (parkingInf: ParkingInf) => void;
     pressable: boolean;
 }
 
 export const Map: React.FC<MapProps> = ({
-    parkingData,
     setIsModalVisible,
     setParkingInf,
     height,
@@ -29,6 +28,7 @@ export const Map: React.FC<MapProps> = ({
     const [mapReady, setMapReady] = useState<boolean>(false);
     const [markers, setMarkers] = useState<ParkingSchema[]>();
     const { location } = useSetlocationStore();
+    const { parkingsMarkers } = useParkingsStore();
 
     useEffect(() => {
         if (mapRef.current && location) {
@@ -37,8 +37,8 @@ export const Map: React.FC<MapProps> = ({
     }, [location, mapReady]);
 
     useEffect(() => {
-        setMarkers(parkingData);
-    }, [parkingData]);
+        setMarkers(parkingsMarkers);
+    }, [parkingsMarkers]);
 
     return (
         <>

@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { CloseIcon, CustomButton, MapMarker, SIZES, StyleGuide } from "@shared/ui";
 import { Map } from "@features/Map";
 import styles from "./SpotPickingMap.styles.ts";
 import { Modal, TouchableOpacity, View } from "react-native";
 import { Geocoder, Point, YaMap } from "react-native-yamap";
 import { Nullable } from "@shared/api";
+import { useSetlocationStore } from "@entities/user/index.ts";
 
 interface SpotPickModalProps {
     isModalVisible: boolean;
@@ -22,6 +23,7 @@ export const SpotPickingMap = ({
     setIsModalOpen,
 }: SpotPickModalProps) => {
     const mapRef = useRef<Nullable<YaMap>>(null);
+    const { setLocation, currentLocation } = useSetlocationStore();
 
     const handleSpotPick = () => {
         if (mapRef?.current) {
@@ -35,6 +37,10 @@ export const SpotPickingMap = ({
         }
     };
 
+    useEffect(() => {
+        setLocation(currentLocation);
+    }, [isModalVisible]);
+
     return (
         <Modal transparent visible={isModalVisible} animationType="slide" onRequestClose={handleModalClose}>
             <View style={styles.modalContainer}>
@@ -45,7 +51,7 @@ export const SpotPickingMap = ({
                     <View style={styles.mapMarker}>
                         <MapMarker height={40} width={40} color={StyleGuide.GREEN} />
                     </View>
-                    <Map mapRef={mapRef} pressable={false} parkingData={[]} height={SIZES.HEIGHT} />
+                    <Map mapRef={mapRef} pressable={false} height={SIZES.HEIGHT} />
                 </View>
                 <CustomButton
                     style={styles.button}

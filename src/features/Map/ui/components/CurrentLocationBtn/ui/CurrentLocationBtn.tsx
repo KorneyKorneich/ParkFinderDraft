@@ -10,14 +10,17 @@ const currentLocationImg = require("@shared/ui/assets/images/location.png");
 const noCurrentLocationImg = require("@shared/ui/assets/images/no-location.png");
 
 export const CurrentLocationBtn = () => {
-    const [currentLocation, setCurrentLocation] = useState<Nullable<location>>();
+    const [currentLocation, setCurrentLocation] = useState<Nullable<location>>(null);
     const [image, setImage] = useState<ImageSourcePropType>(currentLocationImg);
     const [triger, setTriger] = useState<boolean>(false);
-    const { setLocation } = useSetlocationStore();
+    const { setLocation, setCurrentLocation: setCurrentLoc } = useSetlocationStore();
 
     const handleGetCurrentLocation = async () => {
         setTriger(!triger);
-        currentLocation && setLocation(currentLocation);
+        if (currentLocation) {
+            setLocation(currentLocation);
+            setCurrentLoc(currentLocation);
+        }
     };
 
     useEffect(() => {

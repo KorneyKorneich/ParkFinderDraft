@@ -4,7 +4,7 @@ import { getLocation } from "@shared/lib";
 import { setLocationType } from "@shared/api";
 import { location } from "@shared/api";
 
-export const requestLocationPermission = async (setLocation: setLocationType) => {
+export const requestLocationPermission = async (setLocation: setLocationType, setCurrentLocation: setLocationType) => {
     if (Platform.OS === "ios") {
         const result = await Geolocation.requestAuthorization("whenInUse");
         if (result === "granted") {
@@ -24,12 +24,9 @@ export const requestLocationPermission = async (setLocation: setLocationType) =>
             buttonPositive: "OK",
         });
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            try {
-                const location = (await getLocation()) as location;
-                setLocation(location);
-            } catch (error) {
-                //TODO: fill catch area with error logic
-            }
+            const location = (await getLocation()) as location;
+            setLocation(location);
+            setCurrentLocation(location);
         }
     }
 };
