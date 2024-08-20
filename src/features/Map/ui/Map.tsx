@@ -10,7 +10,7 @@ interface MapProps extends YaMapProps {
     height?: DimensionValue;
     mapRef: RefObject<YaMap>;
     isPositionNeed: boolean;
-    parkingData: ParkingSchema[];
+    parkingData?: ParkingSchema[];
     setIsModalVisible?: (isModalVisible: boolean) => void;
     setParkingInf?: (parkingInf: ParkingInf) => void;
     pressable: boolean;

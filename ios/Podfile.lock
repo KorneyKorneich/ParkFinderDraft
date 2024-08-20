@@ -2380,30 +2380,7 @@ PODS:
     - Yoga
   - RNPermissions (4.1.5):
     - React-Core
-  - RNReanimated (3.15.0):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.01.01.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Codegen
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 3.15.0)
-    - RNReanimated/worklets (= 3.15.0)
-    - Yoga
-  - RNReanimated/reanimated (3.15.0):
+  - RNReanimated (3.14.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2424,28 +2401,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated/worklets (3.15.0):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.01.01.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Codegen
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
-  - RNScreens (3.34.0):
+  - RNScreens (3.33.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2467,9 +2423,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSVG (15.5.0):
+  - RNSVG (15.4.0):
     - React-Core
-  - RNYamap (4.6.1):
+  - RNYamap (4.6.0):
     - React
     - YandexMapsMobile (= 4.6.1-full)
   - SocketRocket (0.7.0)
@@ -2791,14 +2747,14 @@ SPEC CHECKSUMS:
   RNFBFirestore: e47cdde04ea3d9e73e58e037e1aa1d0b1141c316
   RNGestureHandler: fc0d83b45872ee937ecc9814012d9b48586b4d7a
   RNPermissions: 107a3106f541d738b80450cdf2dd9fbd134646eb
-  RNReanimated: 45f0fd1250364dffec9aabd4a0959f2956a5e78b
-  RNScreens: db442e7b8c7bc8befec2ce057927305ff8598cc8
-  RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
-  RNYamap: 4f3e0d284409e3da24dfa2b298391b0092e2d0e4
+  RNReanimated: f6b214732ff303cb815ac81b26bbfd2070b69f43
+  RNScreens: 7868e19bb8b7643a990fd7a7e037796c4c9b4ff9
+  RNSVG: cb24fb322de8c1ebf59904e7aca0447bb8dbed5a
+  RNYamap: 318681058bb5c369a720d18eb872145a60a23bac
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   YandexMapsMobile: b5f4dfeb8d1fe324dc18afb33d772b04d04d34f6
   Yoga: eed50599a85bd9f6882a9938d118aed6a397db9c
 
-PODFILE CHECKSUM: dc8d9100d5e1fec309045f7da923d4cb40a7362e
+PODFILE CHECKSUM: bf74585597db8d4d63a8699f2c37b02cd40b1a07
 
 COCOAPODS: 1.15.2

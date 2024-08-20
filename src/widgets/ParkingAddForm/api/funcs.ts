@@ -18,15 +18,7 @@ export interface parkingSpotSchema {
 }
 
 export async function sendParkingSpotInfo(props: parkingSpotSchema) {
-    try {
-        console.log(props);
+    const docRef = await firestore().collection("parkingSpots").add(props);
 
-        // Ensure Firestore is initialized and ready to use
-        const docRef = await firestore().collection("parkingSpots").add(props);
-
-        console.log("Document written with ID: ", docRef.id);
-        return docRef.id;
-    } catch (error) {
-        console.error("Error adding document: ", error);
-    }
+    return docRef.id;
 }

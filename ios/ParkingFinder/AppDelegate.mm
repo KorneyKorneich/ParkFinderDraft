@@ -1,5 +1,5 @@
-#import <YandexMapsMobile/YMKMapKitFactory.h>
 #import "AppDelegate.h"
+#import <YandexMapsMobile/YMKMapKitFactory.h>
 #import <Firebase.h>
 #import <React/RCTBundleURLProvider.h>
 

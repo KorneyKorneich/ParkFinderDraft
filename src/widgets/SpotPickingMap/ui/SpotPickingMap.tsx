@@ -44,7 +44,7 @@ export const SpotPickingMap = ({
                     <View style={styles.mapMarker}>
                         <MapMarker height={40} width={40} color={StyleGuide.GREEN} />
                     </View>
-                    <Map mapRef={mapRef} height={SIZES.HEIGHT * 0.8} />
+                    <Map isPositionNeed pressable={false} mapRef={mapRef} height={SIZES.HEIGHT * 0.8} />
                 </View>
                 <CustomButton
                     style={styles.button}
