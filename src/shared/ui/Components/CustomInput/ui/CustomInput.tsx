@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleProp, Text, TextInput, TextInputProps, TouchableOpacity, View, ViewStyle } from "react-native";
+import { StyleProp, Text, TextInput, TextInputProps, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
 import { styles } from "./CustomInput.styles.ts";
 import { Eye, StyleGuide } from "@shared/ui";
 
@@ -8,7 +8,8 @@ interface CustomInputProps extends TextInputProps {
     isPassword?: boolean;
     boxStyle?: StyleProp<ViewStyle>;
     inputStyles?: StyleProp<ViewStyle>;
-    value?: string;
+    titleStyle?: StyleProp<TextStyle>;
+    value: string;
     incorrectValue?: boolean;
     passwordVisible?: boolean;
     togglePasswordVisible?: () => void;
@@ -23,12 +24,13 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     passwordVisible,
     togglePasswordVisible,
     inputStyles,
+    titleStyle,
     ...rest
 }) => {
     return (
         <View style={[styles.inputBox, boxStyle]}>
             <View style={styles.container}>
-                {title && <Text style={[styles.title, incorrectValue ? styles.error : null]}>{title}</Text>}
+                {title && <Text style={[styles.title, titleStyle, incorrectValue ? styles.error : null]}>{title}</Text>}
                 <View style={[styles.inputContainer, inputStyles, incorrectValue ? styles.error : null]}>
                     <TextInput
                         autoCapitalize={"none"}

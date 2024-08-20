@@ -21,7 +21,7 @@ export enum StyleGuide {
     HINTS_GRAY = "rgba(209, 209, 209, 0.65)",
 }
 
-export enum Fonts {
+export enum FONTS {
     HEADING_1 = 40,
     HEADING_2 = 36,
     HEADING_3 = 24,

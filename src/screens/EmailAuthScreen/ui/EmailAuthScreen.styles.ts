@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: StyleGuide.WHITE,
     },
     authScreenContainer: {
-        width: "90%",
+        width: "100%",
         padding: 20,
         marginHorizontal: "auto",
     },

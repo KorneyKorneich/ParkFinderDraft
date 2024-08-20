@@ -34,18 +34,13 @@ export const SignUp = () => {
             const firebaseError = error as FirebaseError;
             const errorMessage = getFirebaseAuthErrorMessage(firebaseError);
 
-            switch (firebaseError.code) {
-                case "auth/email-already-in-use":
-                case "auth/invalid-email":
-                    setError("email", { type: "manual", message: errorMessage });
-                    break;
-                case "auth/weak-password":
-                    setError("password", { type: "manual", message: errorMessage });
-                    break;
-                default:
-                    setError("email", { type: "manual", message: errorMessage });
-                    setError("password", { type: "manual", message: errorMessage });
-                    break;
+            if (firebaseError.code === "auth/email-already-in-use" || firebaseError.code === "auth/invalid-email") {
+                setError("email", { type: "manual", message: errorMessage });
+            } else if (firebaseError.code === "auth/weak-password") {
+                setError("password", { type: "manual", message: errorMessage });
+            } else {
+                setError("email", { type: "manual", message: errorMessage });
+                setError("password", { type: "manual", message: errorMessage });
             }
         }
     };

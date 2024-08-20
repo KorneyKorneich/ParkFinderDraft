@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
 import { Nullable, UnauthorizedStackRoutesProps } from "@shared/api";
@@ -31,7 +31,6 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     const handleModalClose = () => {
         setIsModalVisible(false);
     };
-
     const handleModalOpen = () => {
         setIsModalVisible(true);
     };
@@ -44,10 +43,10 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
         }
     };
 
-    function handleCountryPick(item: Country) {
+    const handleCountryPick = (item: Country) => {
         setSelectedCountry(item);
         setIsModalVisible(false);
-    }
+    };
 
     useEffect(() => {
         getCountries().then(() => {

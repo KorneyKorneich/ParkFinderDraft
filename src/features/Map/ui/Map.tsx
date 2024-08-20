@@ -10,7 +10,7 @@ import { CurrentLocationBtn } from "./components/CurrentLocationBtn/ui/CurrentLo
 interface MapProps extends YaMapProps {
     height?: DimensionValue;
     mapRef: RefObject<YaMap>;
-    parkingData: ParkingSchema[];
+    parkingData?: ParkingSchema[];
     setIsModalVisible?: (isModalVisible: boolean) => void;
     setParkingInf?: (parkingInf: ParkingInf) => void;
     pressable: boolean;

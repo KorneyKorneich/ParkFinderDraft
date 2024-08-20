@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Fonts, StyleGuide } from "@shared/ui/stylesConsts/stylesConsts.ts";
+import { FONTS, StyleGuide } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: Fonts.HEADING_4,
+        fontSize: FONTS.HEADING_4,
         marginBottom: 5,
     },
 
     text: {
-        fontSize: Fonts.REGULAR_BODY,
+        fontSize: FONTS.REGULAR_BODY,
     },
 
     OTPInput: {
