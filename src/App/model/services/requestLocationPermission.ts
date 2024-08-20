@@ -24,13 +24,9 @@ export const requestLocationPermission = async (setLocation: setLocationType, se
             buttonPositive: "OK",
         });
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            try {
-                const location = (await getLocation()) as location;
-                setLocation(location);
-                setCurrentLocation(location);
-            } catch (error) {
-                //TODO: fill catch area with error logic
-            }
+            const location = (await getLocation()) as location;
+            setLocation(location);
+            setCurrentLocation(location);
         }
     }
 };
