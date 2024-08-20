@@ -2345,6 +2345,8 @@ PODS:
     - React-perflogger (= 0.74.3)
     - React-utils (= 0.74.3)
   - RecaptchaInterop (100.0.0)
+  - RNCAsyncStorage (1.24.0):
+    - React-Core
   - RNFBApp (20.4.0):
     - Firebase/CoreOnly (= 10.29.0)
     - React-Core
@@ -2380,7 +2382,30 @@ PODS:
     - Yoga
   - RNPermissions (4.1.5):
     - React-Core
-  - RNReanimated (3.14.0):
+  - RNReanimated (3.15.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNReanimated/reanimated (= 3.15.0)
+    - RNReanimated/worklets (= 3.15.0)
+    - Yoga
+  - RNReanimated/reanimated (3.15.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2401,7 +2426,28 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.33.0):
+  - RNReanimated/worklets (3.15.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - RNScreens (3.34.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2423,9 +2469,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSVG (15.4.0):
+  - RNSVG (15.5.0):
     - React-Core
-  - RNYamap (4.6.0):
+  - RNYamap (4.6.1):
     - React
     - YandexMapsMobile (= 4.6.1-full)
   - SocketRocket (0.7.0)
@@ -2493,6 +2539,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
@@ -2643,6 +2690,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -2742,15 +2791,16 @@ SPEC CHECKSUMS:
   React-utils: 6f7ac39d9a0de447d4334bb25d144a28c0c5d8c9
   ReactCommon: 4a09c7d8a06e93c1e2e988a3b9f3db3d2449f2fc
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  RNCAsyncStorage: ec53e44dc3e75b44aa2a9f37618a49c3bc080a7a
   RNFBApp: 10819a4f67d634fe34aa607c6d1e8a8aef019308
   RNFBAuth: 43dea92a17ffa9481029a50df0e8c50943ec495a
   RNFBFirestore: e47cdde04ea3d9e73e58e037e1aa1d0b1141c316
   RNGestureHandler: fc0d83b45872ee937ecc9814012d9b48586b4d7a
   RNPermissions: 107a3106f541d738b80450cdf2dd9fbd134646eb
-  RNReanimated: f6b214732ff303cb815ac81b26bbfd2070b69f43
-  RNScreens: 7868e19bb8b7643a990fd7a7e037796c4c9b4ff9
-  RNSVG: cb24fb322de8c1ebf59904e7aca0447bb8dbed5a
-  RNYamap: 318681058bb5c369a720d18eb872145a60a23bac
+  RNReanimated: 45f0fd1250364dffec9aabd4a0959f2956a5e78b
+  RNScreens: db442e7b8c7bc8befec2ce057927305ff8598cc8
+  RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
+  RNYamap: 4f3e0d284409e3da24dfa2b298391b0092e2d0e4
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   YandexMapsMobile: b5f4dfeb8d1fe324dc18afb33d772b04d04d34f6
   Yoga: eed50599a85bd9f6882a9938d118aed6a397db9c

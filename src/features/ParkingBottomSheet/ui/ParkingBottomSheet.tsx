@@ -70,12 +70,12 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
             backgroundStyle={styles.backgroundSyle}
             overDragResistanceFactor={0}>
             <BottomSheetView style={styles.contentContainer}>
-                <Text style={styles.text}>Nearest parkings</Text>
+                <Text style={styles.text}>Nearest parking spots</Text>
                 <View style={styles.mapArea}>
                     <FlatList
                         data={parkingByRating}
                         renderItem={renderItem}
-                        keyExtractor={(item) => item.id.toString()}
+                        keyExtractor={(item) => item.id}
                         ItemSeparatorComponent={() => <View style={styles.separator} />}
                     />
                 </View>

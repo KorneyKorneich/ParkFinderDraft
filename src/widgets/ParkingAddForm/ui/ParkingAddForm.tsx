@@ -15,6 +15,7 @@ interface AdditionalOptionsType {
 
 interface ParkingAddFormSchema {
     parkingName: string;
+    description: string;
     address: string;
     coordinates?: { lat: number; lng: number };
 }
@@ -85,6 +86,23 @@ export const ParkingAddForm = () => {
                         />
                     )}
                 />
+                <View style={styles.parkingSpotDescription}>
+                    <Controller
+                        control={control}
+                        name="description"
+                        render={({ field: { value, onChange } }) => (
+                            <CustomInput
+                                inputStyles={[styles.input, styles.descriptionInput]}
+                                value={value}
+                                multiline={true}
+                                numberOfLines={2}
+                                onChangeText={onChange}
+                                placeholder={"Tell everyone something about this spot"}
+                            />
+                        )}
+                    />
+                </View>
+
                 <FormSwitcher
                     optionToggle={isAddress}
                     firstOptionTitle={"Address"}

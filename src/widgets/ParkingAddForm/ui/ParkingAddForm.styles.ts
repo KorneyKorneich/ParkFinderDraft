@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
         width: "70%",
         fontSize: FONTS.REGULAR_BODY,
     },
+    parkingSpotDescription: {
+        marginVertical: 5,
+        height: "11%",
+    },
+    descriptionInput: {
+        height: "100%",
+    },
 });
 
 export default styles;
