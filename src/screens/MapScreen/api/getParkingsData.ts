@@ -1,11 +1,12 @@
 import firestore from "@react-native-firebase/firestore";
 import { ParkingSchema } from "@shared/api";
+import { useParkingsStore } from "@entities/parkings";
 
 interface ISetParkingData {
-    (parkingData: ParkingSchema[]): void;
+    (value: ParkingSchema[]): void;
 }
 
-export const getParkingsData = (setParkingData: ISetParkingData) => {
+export const getParkingsData = (setParkingsMarkers: ISetParkingData) => {
     const unsubscribe = firestore()
         .collection("parkingSpots")
         .onSnapshot((querySnapshot) => {
@@ -17,10 +18,13 @@ export const getParkingsData = (setParkingData: ISetParkingData) => {
 
             querySnapshot.forEach((documentSnapshot) => {
                 const data = documentSnapshot.data() as ParkingSchema;
-                parkingSpots.push(data);
+                parkingSpots.push({
+                    ...data,
+                    id: documentSnapshot.id,
+                });
             });
 
-            setParkingData(parkingSpots);
+            setParkingsMarkers(parkingSpots);
         });
 
     return unsubscribe;

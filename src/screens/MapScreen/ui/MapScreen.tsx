@@ -9,17 +9,16 @@ import { getParkingsData } from "../api/getParkingsData";
 import { ParkingInfModal } from "@features/ParkingInfModal";
 import YaMap from "react-native-yamap";
 import { SIZES } from "@shared/ui";
-
-const userLocationImg = require("@shared/ui/assets/images/current-location.png");
+import { useParkingsStore } from "@entities/parkings";
 
 export const MapScreen = () => {
-    const [parkingData, setParkingData] = useState<ParkingSchema[]>();
     const [isModalVisible, setModalVisible] = useState<boolean>(false);
     const [parkingInf, setParkingInf] = useState<ParkingInf>();
     const mapRef = useRef<Nullable<YaMap>>(null);
+    const { setParkingsMarkers } = useParkingsStore();
 
     useEffect(() => {
-        const unsubscribe = getParkingsData(setParkingData);
+        const unsubscribe = getParkingsData(setParkingsMarkers);
 
         return () => unsubscribe();
     }, []);
@@ -27,25 +26,15 @@ export const MapScreen = () => {
     return (
         <SafeAreaView style={styles.mapAreaScreen}>
             <SearchBar />
-            {parkingData && (
-                <>
-                    <Map
-                        mapRef={mapRef}
-                        parkingData={parkingData}
-                        setIsModalVisible={setModalVisible}
-                        setParkingInf={setParkingInf}
-                        pressable={true}
-                        height={SIZES.HEIGHT}
-                        userLocationIcon={userLocationImg}
-                        userLocationIconScale={2.3}
-                    />
-                    <ParkingBottomSheet
-                        nearestParkingData={parkingData}
-                        setIsModalVisible={setModalVisible}
-                        setParkingInf={setParkingInf}
-                    />
-                </>
-            )}
+            <Map
+                mapRef={mapRef}
+                setIsModalVisible={setModalVisible}
+                setParkingInf={setParkingInf}
+                pressable={true}
+                height={SIZES.HEIGHT}
+                userLocationIconScale={2.3}
+            />
+            <ParkingBottomSheet setIsModalVisible={setModalVisible} setParkingInf={setParkingInf} />
             {parkingInf && (
                 <ParkingInfModal
                     setModalVisible={setModalVisible}
