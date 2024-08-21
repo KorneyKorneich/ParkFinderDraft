@@ -1,4 +1,4 @@
-import { location, Nullable } from "../common/common";
+import { LocationSchema, Nullable } from "../common/common";
 
 export interface ParkingInf {
     parkingName: string;
@@ -11,7 +11,7 @@ export interface ParkingInf {
 }
 
 export interface ParkingSchema {
-    location: location;
+    location: LocationSchema;
     id: string;
     parkingInf: ParkingInf;
     approvedStatus: boolean;
