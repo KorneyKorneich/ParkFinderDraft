@@ -11,5 +11,3 @@ export type {
 } from "./config/common/navigationTypes/routesType.ts";
 export { InitialScreens, ROUTES } from "./config/common/navigationTypes/routesType.ts";
 export { getFirebaseAuthErrorMessage } from "./helpers/getAuthError.ts";
-
-export { FIRESTORE_DB, FIREBASE_APP, FIREBASE } from "./storage/storage.ts";
