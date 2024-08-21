@@ -1,6 +1,6 @@
-import { ParkingSchema } from "@shared/api";
+import { Nullable, ParkingSchema } from "@shared/api";
 
 export interface IUseParkingsStore {
-    parkingsMarkers: ParkingSchema[];
+    parkingsMarkers: Nullable<ParkingSchema[]>;
     setParkingsMarkers: (parkingsMarkers: ParkingSchema[]) => void;
 }
