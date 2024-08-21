@@ -1,22 +1,47 @@
-import { View, Button } from "react-native";
-import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { Map } from "@shared/ui";
+import React, { useEffect, useRef, useState } from "react";
+import { SafeAreaView } from "react-native";
+import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
-import { AuthorizedStackParamList } from "@shared/api";
+import { ParkingBottomSheet } from "@features/ParkingBottomSheet";
+import { styles } from "./MapScreen.styles";
+import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
+import { getParkingsData } from "../api/getParkingsData";
+import { ParkingInfModal } from "@features/ParkingInfModal";
+import YaMap from "react-native-yamap";
+import { SIZES } from "@shared/ui";
+import { useParkingsStore } from "@entities/parkings";
 
 export const MapScreen = () => {
-	const navigation = useNavigation<NavigationProp<AuthorizedStackParamList>>();
+    const [isModalVisible, setModalVisible] = useState<boolean>(false);
+    const [parkingInf, setParkingInf] = useState<ParkingInf>();
+    const mapRef = useRef<Nullable<YaMap>>(null);
+    const { setParkingsMarkers } = useParkingsStore();
 
-	const handleNavigateToParkingList = () => {
-		navigation.navigate("ParkListScreen");
-	};
+    useEffect(() => {
+        const unsubscribe = getParkingsData(setParkingsMarkers);
 
-	return (
-		<View>
-			<SearchBar />
-			<Map />
-			<Button title="watch park list" onPress={handleNavigateToParkingList} />
-		</View>
-	);
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <SafeAreaView style={styles.mapAreaScreen}>
+            <SearchBar />
+            <Map
+                mapRef={mapRef}
+                setIsModalVisible={setModalVisible}
+                setParkingInf={setParkingInf}
+                pressable={true}
+                height={SIZES.HEIGHT}
+                userLocationIconScale={2.3}
+            />
+            <ParkingBottomSheet setIsModalVisible={setModalVisible} setParkingInf={setParkingInf} />
+            {parkingInf && (
+                <ParkingInfModal
+                    setModalVisible={setModalVisible}
+                    isModalVisible={isModalVisible}
+                    parkingInf={parkingInf}
+                />
+            )}
+        </SafeAreaView>
+    );
 };

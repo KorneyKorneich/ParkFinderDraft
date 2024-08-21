@@ -1,1 +1,1 @@
-export { AddParkScreen } from "./ui/AddParkScreen.tsx";
+export { AddParkingScreen } from "./ui/AddParkingScreen.tsx";

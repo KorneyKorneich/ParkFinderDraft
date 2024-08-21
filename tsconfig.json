@@ -1,20 +1,19 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
-  "compilerOptions": {
-    "module": "es2015",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "baseUrl": "./",
-    "paths": {
-      "@shared/*": ["src/shared/*"],
-      "@entities/*": ["src/entities/*"],
-      "@screens/*": ["src/screens/*"],
-      "@features/*": ["src/features/*"],
-      "@widgets/*": ["src/widgets/*"]
-
-    }
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+    "extends": "@react-native/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "module": "es2015",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "baseUrl": "./",
+        "paths": {
+            "@shared/*": ["src/shared/*"],
+            "@entities/*": ["src/entities/*"],
+            "@screens/*": ["src/screens/*"],
+            "@features/*": ["src/features/*"],
+            "@widgets/*": ["src/widgets/*"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }

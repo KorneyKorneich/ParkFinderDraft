@@ -1,38 +1,45 @@
 import { StyleSheet } from "react-native";
-import { Fonts } from "@shared/ui/stylesConsts/stylesConsts.ts";
+import { FONTS, StyleGuide } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 const styles = StyleSheet.create({
-	container:{
-		width: "90%",
-		marginHorizontal: "auto"
-	},
-	img:{
-		marginHorizontal: "auto",
-		marginTop: 40
-	},
-	textContainer:{
-		marginTop: "20%",
-		justifyContent: "center",
-		alignItems: "center",
-	},
+    wrapper: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: StyleGuide.WHITE,
+    },
+    container: {
+        width: "90%",
+        marginHorizontal: "auto",
+    },
+    img: {
+        width: 200,
+        height: 200,
+        marginHorizontal: "auto",
+        marginTop: 40,
+    },
+    textContainer: {
+        marginTop: "20%",
+        justifyContent: "center",
+        alignItems: "center",
+    },
 
-	title:{
-		fontSize: Fonts.HEADING_4,
-		marginBottom: 5
-	},
+    title: {
+        fontSize: FONTS.HEADING_4,
+        marginBottom: 5,
+    },
 
-	text:{
-		fontSize: Fonts.REGULAR_BODY,
-	},
+    text: {
+        fontSize: FONTS.REGULAR_BODY,
+    },
 
-	OTPInput:{
-		width: "90%",
-		marginHorizontal: "auto",
-		marginTop: "5%"
-	},
-	OTPConfirm:{
-		marginTop: "10%"
-	}
+    OTPInput: {
+        width: "90%",
+        marginHorizontal: "auto",
+        marginTop: "5%",
+    },
+    OTPConfirm: {
+        marginTop: "10%",
+    },
 });
 
 export default styles;
