@@ -52,6 +52,26 @@ const styles = StyleSheet.create({
         width: "70%",
         fontSize: FONTS.REGULAR_BODY,
     },
+    parkingSpotDescription: {
+        marginVertical: 5,
+        height: "11%",
+    },
+    descriptionInput: {
+        height: "100%",
+    },
+    suggestion: {
+        flexDirection: "row",
+        alignItems: "center",
+        height: "100%",
+        borderRadius: 8,
+        borderColor: StyleGuide.GREY,
+        borderWidth: 1,
+    },
+    suggestionList: {
+        flexDirection: "column",
+        height: "20%",
+        marginTop: 10,
+    },
 });
 
 export default styles;

@@ -4,7 +4,7 @@ import { Map } from "@features/Map";
 import { SearchBar } from "@features/SearchBar";
 import { ParkingBottomSheet } from "@features/ParkingBottomSheet";
 import { styles } from "./MapScreen.styles";
-import { Nullable, ParkingInf, ParkingSchema } from "@shared/api";
+import { Nullable, ParkingInf } from "@shared/api";
 import { getParkingsData } from "../api/getParkingsData";
 import { ParkingInfModal } from "@features/ParkingInfModal";
 import YaMap from "react-native-yamap";

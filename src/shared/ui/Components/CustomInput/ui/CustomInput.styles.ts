@@ -3,9 +3,17 @@ import { StyleGuide } from "@shared/ui";
 
 export const styles = StyleSheet.create({
     inputBox: {
-        width: "100%",
-        justifyContent: "center",
-        paddingHorizontal: 10,
+        ...Platform.select({
+            android: {
+                width: "100%",
+                justifyContent: "center",
+                paddingHorizontal: 10,
+            },
+            ios: {
+                width: "100%",
+                justifyContent: "center",
+            },
+        }),
     },
     container: {
         flexDirection: "column",
@@ -19,7 +27,7 @@ export const styles = StyleSheet.create({
             android: {
                 borderRadius: 8,
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
             },
             ios: {
                 width: "100%",

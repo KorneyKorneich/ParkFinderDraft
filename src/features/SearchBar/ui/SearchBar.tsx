@@ -57,7 +57,7 @@ export const SearchBar = () => {
                 )}
             </View>
             {value && isHintsVisible && (
-                <PreviousSearches triger={triger} setValue={setValue} handleSearch={handleSearch} isResult={isResult}/>
+                <PreviousSearches triger={triger} setValue={setValue} handleSearch={handleSearch} isResult={isResult} />
             )}
         </View>
     );
