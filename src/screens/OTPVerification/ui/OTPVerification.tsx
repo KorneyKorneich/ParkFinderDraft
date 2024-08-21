@@ -1,5 +1,5 @@
 import styles from "./OTPVerification.styles.ts";
-import { ActivityIndicator, KeyboardAvoidingView, SafeAreaView, Text, View } from "react-native";
+import { ActivityIndicator, KeyboardAvoidingView, Platform, SafeAreaView, Text, View } from "react-native";
 import { CustomButton, StyleGuide, VerificationImg } from "@shared/ui";
 import React, { useState } from "react";
 import { OtpInput } from "react-native-otp-entry";
@@ -23,7 +23,7 @@ export const OTPVerification = ({ navigation, route }: UnauthorizedStackRoutesPr
 
     return (
         <SafeAreaView style={styles.wrapper}>
-            <KeyboardAvoidingView behavior={"height"} style={styles.container}>
+            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "position" : "height"} style={styles.container}>
                 <View style={styles.img}>
                     <VerificationImg />
                 </View>
