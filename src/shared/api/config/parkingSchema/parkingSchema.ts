@@ -1,12 +1,12 @@
-import { LocationSchema } from "../common/common";
+import { LocationSchema, Nullable } from "../common/common";
 
 export interface ParkingInf {
     parkingName: string;
     paid: boolean;
     handicap: boolean;
     charging: boolean;
-    workingHours: string;
-    rating: number;
+    workingHours: Nullable<string>;
+    rating: Nullable<number>;
     comment: string;
 }
 
