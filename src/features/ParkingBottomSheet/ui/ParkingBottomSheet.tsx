@@ -14,10 +14,7 @@ interface IParkingBottomSheet {
     setParkingInf: (parkingInf: ParkingInf) => void;
 }
 
-export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
-    setIsModalVisible,
-    setParkingInf,
-}) => {
+export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({ setIsModalVisible, setParkingInf }) => {
     const bottomSheetRef = useRef<BottomSheetMethods>(null);
     const [parkingByRating, setParkingByRating] = useState<ParkingSchema[]>();
     const [currentIndex, setCurrentIndex] = useState<number>();
@@ -37,8 +34,12 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({
     }, [currentIndex]);
 
     const defineHighestRating = useMemo(() => {
-        const highest = parkingsMarkers.sort((a, b) => b.parkingInf.rating - a.parkingInf.rating);
-        return highest;
+        if (parkingsMarkers) {
+            const highestApproved = parkingsMarkers
+                .sort((a, b) => b.parkingInf.rating - a.parkingInf.rating)
+                .filter((value) => value.approvedStatus);
+            return highestApproved;
+        }
     }, [parkingsMarkers]);
 
     useEffect(() => {

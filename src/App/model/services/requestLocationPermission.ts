@@ -8,12 +8,8 @@ export const requestLocationPermission = async (setLocation: setLocationType, se
     if (Platform.OS === "ios") {
         const result = await Geolocation.requestAuthorization("whenInUse");
         if (result === "granted") {
-            try {
-                const location = (await getLocation()) as location;
-                setLocation(location);
-            } catch (error) {
-                console.error(error);
-            }
+            const location = (await getLocation()) as location;
+            setLocation(location);
         }
     } else if (Platform.OS === "android") {
         const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, {
