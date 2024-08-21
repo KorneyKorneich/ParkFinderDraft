@@ -59,6 +59,19 @@ const styles = StyleSheet.create({
     descriptionInput: {
         height: "100%",
     },
+    suggestion: {
+        flexDirection: "row",
+        alignItems: "center",
+        height: "100%",
+        borderRadius: 8,
+        borderColor: StyleGuide.GREY,
+        borderWidth: 1,
+    },
+    suggestionList: {
+        flexDirection: "column",
+        height: "20%",
+        marginTop: 10,
+    },
 });
 
 export default styles;

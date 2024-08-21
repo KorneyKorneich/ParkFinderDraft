@@ -15,6 +15,10 @@ export type UnauthorizedStackParamList = {
 };
 
 export type UnauthorizedStackRoutesProps = NativeStackScreenProps<UnauthorizedStackParamList, "OTPVerifyScreen">;
+export type AuthorizedStackRoutesProps<T extends keyof AuthorizedStackParamList> = NativeStackScreenProps<
+    AuthorizedStackParamList,
+    T
+>;
 
 export enum InitialScreens {
     UnauthorizedInitialScreen = "EmailAuthScreen",
