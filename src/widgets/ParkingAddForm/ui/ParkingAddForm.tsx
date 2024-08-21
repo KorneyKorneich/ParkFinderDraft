@@ -87,7 +87,6 @@ export const ParkingAddForm = () => {
 
     const handleSpotAdding: SubmitHandler<ParkingAddFormSchema> = async (data) => {
         setIsLoading(true);
-        console.log(data);
         if (marker) {
             const parkingSpotData: ParkingSchemaAddition = {
                 location: marker,
@@ -143,7 +142,6 @@ export const ParkingAddForm = () => {
                     print_address: 1,
                 },
             });
-            console.log(response.data.results[0].address.formatted_address);
             if (response.data && response.data.results) {
                 setSuggestions(response.data.results);
             } else {
