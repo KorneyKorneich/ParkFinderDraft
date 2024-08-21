@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, View, TouchableOpacity } from "react-native";
+import { Text, SafeAreaView, View, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native";
 import React, { useState } from "react";
 import { DeviceMobile, FormSwitcher, Google, Logo } from "@shared/ui";
 import { styles } from "./EmailAuthScreen.styles.ts";
@@ -23,17 +23,21 @@ export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.authScreenContainer}>
-                <View style={styles.logoWrapper}>
-                    <Logo />
-                </View>
-                <FormSwitcher
-                    optionToggle={isSignUp}
-                    firstOptionTitle={"Sign Up"}
-                    secondOptionTitle={"Sign In"}
-                    handleOnFirstOptionPress={handleToSignUp}
-                    handleOnSecondOptionPress={handleToSignIn}
-                />
-                {isSignUp ? <SignUp /> : <SignIn />}
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === "ios" ? "position" : "height"}
+                    keyboardVerticalOffset={10}>
+                    <View style={styles.logoWrapper}>
+                        <Logo />
+                    </View>
+                    <FormSwitcher
+                        optionToggle={isSignUp}
+                        firstOptionTitle={"Sign Up"}
+                        secondOptionTitle={"Sign In"}
+                        handleOnFirstOptionPress={handleToSignUp}
+                        handleOnSecondOptionPress={handleToSignIn}
+                    />
+                    {isSignUp ? <SignUp /> : <SignIn />}
+                </KeyboardAvoidingView>
                 <View style={styles.bottomOptions}>
                     <View style={styles.separator}>
                         <View style={styles.line} />
@@ -42,6 +46,7 @@ export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
                         </View>
                         <View style={styles.line} />
                     </View>
+
                     <View style={styles.buttonsContainer}>
                         <TouchableOpacity style={styles.authWithGoogle}>
                             <Google />
