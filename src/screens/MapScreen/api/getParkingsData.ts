@@ -1,6 +1,5 @@
 import firestore from "@react-native-firebase/firestore";
 import { ParkingSchema } from "@shared/api";
-import { useParkingsStore } from "@entities/parkings";
 
 interface ISetParkingData {
     (value: ParkingSchema[]): void;
