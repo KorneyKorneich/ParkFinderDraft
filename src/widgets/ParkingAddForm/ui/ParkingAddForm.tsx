@@ -4,10 +4,11 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { CustomButton, CustomInput, StyleGuide, FormSwitcher, OptionSwitcher } from "@shared/ui";
 import React, { useState } from "react";
 import { Geocoder, Point } from "react-native-yamap";
-import { parkingSpotSchema, sendParkingSpotInfo } from "../api/funcs.ts";
+import { sendParkingSpotInfo } from "../api/funcs.ts";
 import { SpotPickingMap } from "@widgets/SpotPickingMap";
-import { AuthorizedStackRoutesProps } from "@shared/api";
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
+import { AuthorizedNavigationProps, ParkingSchemaAddition } from "@shared/api";
 
 interface AdditionalOptionsType {
     isPaid: boolean;
@@ -68,7 +69,8 @@ export type AddressComponentKind = "COUNTRY" | "PROVINCE" | "LOCALITY" | "STREET
 
 const SUGGEST_API_URL = "https://suggest-maps.yandex.ru/v1/suggest";
 
-export const ParkingAddForm = ({ navigation }: { navigation: AuthorizedStackRoutesProps }) => {
+export const ParkingAddForm = () => {
+    const { navigate } = useNavigation<AuthorizedNavigationProps<"AddParkScreen">>();
     const [isAddress, setIsAddress] = useState<boolean>(true);
     const { control, setValue, handleSubmit, reset } = useForm<ParkingAddFormSchema>();
     const [additionalOptions, setAdditionalOptions] = useState<AdditionalOptionsType>({
@@ -87,15 +89,14 @@ export const ParkingAddForm = ({ navigation }: { navigation: AuthorizedStackRout
         setIsLoading(true);
         console.log(data);
         if (marker) {
-            const parkingSpotData: parkingSpotSchema = {
+            const parkingSpotData: ParkingSchemaAddition = {
                 location: marker,
-                id: 4,
-                approvedStatus: false,
+                approvedStatus: true,
                 parkingInf: {
                     parkingName: data.parkingName,
                     workingHours: null,
                     rating: null,
-                    comment: null,
+                    comment: data.description,
                     charging: additionalOptions.isCharge,
                     paid: additionalOptions.isPaid,
                     handicap: additionalOptions.isPlaceForDisabled,
@@ -103,7 +104,7 @@ export const ParkingAddForm = ({ navigation }: { navigation: AuthorizedStackRout
             };
             await sendParkingSpotInfo(parkingSpotData);
             setIsLoading(false);
-            navigation.navigate("MapScreen");
+            navigate("MapScreen");
             reset();
         }
     };
