@@ -16,14 +16,7 @@ interface MapProps extends YaMapProps {
     pressable: boolean;
 }
 
-export const Map: React.FC<MapProps> = ({
-    setIsModalVisible,
-    setParkingInf,
-    height,
-    mapRef,
-    pressable,
-    ...rest
-}) => {
+export const Map: React.FC<MapProps> = ({ setIsModalVisible, setParkingInf, height, mapRef, pressable, ...rest }) => {
     const [lastMarkerClickTimestamp, setLastMarkerClickTimestamp] = useState<number>(Date.now());
     const [mapReady, setMapReady] = useState<boolean>(false);
     const [markers, setMarkers] = useState<ParkingSchema[]>();
@@ -31,13 +24,13 @@ export const Map: React.FC<MapProps> = ({
     const { parkingsMarkers } = useParkingsStore();
 
     useEffect(() => {
-        if (mapRef.current && location) {
+        if (mapRef.current && location && mapReady) {
             mapRef.current.setCenter({ lat: location.lat, lon: location.lon }, 18, 0, 0, 1);
         }
     }, [location, mapReady]);
 
     useEffect(() => {
-        setMarkers(parkingsMarkers);
+        parkingsMarkers && setMarkers(parkingsMarkers);
     }, [parkingsMarkers]);
 
     return (
