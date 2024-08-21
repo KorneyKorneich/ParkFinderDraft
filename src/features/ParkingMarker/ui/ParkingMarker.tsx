@@ -1,4 +1,4 @@
-import { location } from "@shared/api";
+import { LocationSchema } from "@shared/api";
 import { CustomImage } from "@shared/ui";
 import React from "react";
 import { Marker } from "react-native-yamap";
@@ -6,7 +6,7 @@ import { Marker } from "react-native-yamap";
 const image = require("@shared/ui/assets/images/marker.png");
 
 interface IParkingMarker {
-    location: location;
+    location: LocationSchema;
     onPress?: () => void;
 }
 

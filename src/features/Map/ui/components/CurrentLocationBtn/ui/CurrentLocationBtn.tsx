@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CustomButton } from "@shared/ui";
 import { styles } from "./CurrentLocationBtn.styles";
 import { getLocation } from "@shared/lib";
-import { location } from "@shared/api";
+import { LocationSchema } from "@shared/api";
 import { useSetlocationStore } from "@entities/user";
 import { ImageSourcePropType } from "react-native";
 
@@ -14,7 +14,7 @@ export const CurrentLocationBtn = () => {
     const { setLocation, setCurrentLocation } = useSetlocationStore();
 
     const handleGetCurrentLocation = async () => {
-        const currentLocation = (await getLocation()) as location;
+        const currentLocation = (await getLocation()) as LocationSchema;
 
         if (currentLocation) {
             setLocation(currentLocation);
