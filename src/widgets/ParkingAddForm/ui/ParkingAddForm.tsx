@@ -1,11 +1,14 @@
 import styles from "./ParkingAddForm.styles.ts";
-import { Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { CustomButton, CustomInput, StyleGuide, FormSwitcher, OptionSwitcher } from "@shared/ui";
 import React, { useState } from "react";
-import { Point } from "react-native-yamap";
-import { parkingSpotSchema, sendParkingSpotInfo } from "../api/funcs.ts";
+import { Geocoder, Point } from "react-native-yamap";
+import { sendParkingSpotInfo } from "../api/funcs.ts";
 import { SpotPickingMap } from "@widgets/SpotPickingMap";
+import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
+import { AuthorizedNavigationProps, ParkingSchemaAddition } from "@shared/api";
 
 interface AdditionalOptionsType {
     isPaid: boolean;
@@ -15,13 +18,61 @@ interface AdditionalOptionsType {
 
 interface ParkingAddFormSchema {
     parkingName: string;
+    description: string;
     address: string;
     coordinates?: { lat: number; lng: number };
 }
 
+export type SuggestResponse = {
+    results: SuggestResult[];
+};
+
+export type SuggestResult = {
+    title: Title;
+    subtitle: Subtitle;
+    tags: string[];
+    distance: Distance;
+    address: Address;
+    uri: string;
+};
+
+export type Title = {
+    text: string;
+    hl: Highlight[];
+};
+
+export type Highlight = {
+    begin: number;
+    end: number;
+};
+
+export type Subtitle = {
+    text: string;
+};
+
+export type Distance = {
+    text: string;
+    value: number;
+};
+
+export type Address = {
+    formatted_address: string;
+    component: AddressComponent[];
+};
+
+export type AddressComponent = {
+    name: string;
+    kind: AddressComponentKind[];
+};
+
+export type AddressComponentKind = "COUNTRY" | "PROVINCE" | "LOCALITY" | "STREET" | "HOUSE";
+
+const SUGGEST_API_URL = "https://suggest-maps.yandex.ru/v1/suggest";
+
 export const ParkingAddForm = () => {
+    const { navigate } = useNavigation<AuthorizedNavigationProps<"AddParkScreen">>();
     const [isAddress, setIsAddress] = useState<boolean>(true);
-    const { control, setValue, handleSubmit } = useForm<ParkingAddFormSchema>();
+    const { control, setValue, handleSubmit, reset } = useForm<ParkingAddFormSchema>();
     const [additionalOptions, setAdditionalOptions] = useState<AdditionalOptionsType>({
         isPaid: false,
         isCharge: false,
@@ -29,27 +80,31 @@ export const ParkingAddForm = () => {
     });
     const [isMapVisible, setIsMapVisible] = useState(false);
     const [marker, setMarker] = useState<Point>();
+    const [isLoading, setIsLoading] = useState(false);
     const handleToggleOption = (option: keyof AdditionalOptionsType) => {
         setAdditionalOptions((prev) => ({ ...prev, [option]: !prev[option] }));
     };
 
     const handleSpotAdding: SubmitHandler<ParkingAddFormSchema> = async (data) => {
+        setIsLoading(true);
         if (marker) {
-            const parkingSpotData: parkingSpotSchema = {
+            const parkingSpotData: ParkingSchemaAddition = {
                 location: marker,
-                id: 4,
-                approvedStatus: false,
+                approvedStatus: true,
                 parkingInf: {
                     parkingName: data.parkingName,
                     workingHours: null,
                     rating: null,
-                    comment: null,
+                    comment: data.description,
                     charging: additionalOptions.isCharge,
                     paid: additionalOptions.isPaid,
                     handicap: additionalOptions.isPlaceForDisabled,
                 },
             };
             await sendParkingSpotInfo(parkingSpotData);
+            setIsLoading(false);
+            navigate("MapScreen");
+            reset();
         }
     };
 
@@ -58,14 +113,72 @@ export const ParkingAddForm = () => {
         setValue("coordinates.lat", coordinates.lat);
         setValue("coordinates.lng", coordinates.lon);
     };
+
     const handleOnSwitchCoordinatesPress = () => setIsAddress(false);
     const handleOnSwitchAddressPress = () => setIsAddress(true);
 
     const handleMapOpen = () => {
         setIsMapVisible(true);
     };
+
     const handleMapClose = () => {
         setIsMapVisible(false);
+    };
+
+    const [suggestions, setSuggestions] = useState<SuggestResult[] | null>(null);
+    const [isFetching, setIsFetching] = useState<boolean>(false);
+    const [fetchDelay, setFetchDelay] = useState<NodeJS.Timeout | null>(null);
+
+    const fetchSuggestions = async (text: string) => {
+        setIsFetching(true);
+        try {
+            const response = await axios.get<SuggestResponse>(SUGGEST_API_URL, {
+                params: {
+                    apikey: process.env.REACT_NATIVE_APP_GEOSADGEST_API_KEY,
+                    text: text,
+                    lang: "ru",
+                    results: "5",
+                    types: "country,street,house",
+                    print_address: 1,
+                },
+            });
+            if (response.data && response.data.results) {
+                setSuggestions(response.data.results);
+            } else {
+                setSuggestions([]);
+            }
+        } catch (error) {
+            console.error("Error fetching suggestions:", error);
+        } finally {
+            setIsFetching(false);
+        }
+    };
+
+    const handleInputChange = (text: string, onChange: (value: string) => void) => {
+        onChange(text);
+
+        if (fetchDelay) {
+            clearTimeout(fetchDelay);
+        }
+
+        if (text.length > 0) {
+            const delay = setTimeout(() => {
+                fetchSuggestions(text);
+            }, 500);
+
+            setFetchDelay(delay);
+        } else {
+            setSuggestions(null);
+        }
+    };
+
+    const getPoint = async (value: string) => {
+        const result = await Geocoder.addressToGeo(value);
+        if (result) {
+            setMarker(result);
+            setValue("coordinates.lat", result.lat);
+            setValue("coordinates.lng", result.lon);
+        }
     };
 
     return (
@@ -85,6 +198,23 @@ export const ParkingAddForm = () => {
                         />
                     )}
                 />
+                <View style={styles.parkingSpotDescription}>
+                    <Controller
+                        control={control}
+                        name="description"
+                        render={({ field: { value, onChange } }) => (
+                            <CustomInput
+                                inputStyles={[styles.input, styles.descriptionInput]}
+                                value={value}
+                                multiline={true}
+                                numberOfLines={2}
+                                onChangeText={onChange}
+                                placeholder={"Tell everyone something about this spot"}
+                            />
+                        )}
+                    />
+                </View>
+
                 <FormSwitcher
                     optionToggle={isAddress}
                     firstOptionTitle={"Address"}
@@ -93,18 +223,40 @@ export const ParkingAddForm = () => {
                     handleOnSecondOptionPress={handleOnSwitchCoordinatesPress}
                 />
                 {isAddress ? (
-                    <Controller
-                        control={control}
-                        name="address"
-                        render={({ field: { value, onChange } }) => (
-                            <CustomInput
-                                inputStyles={styles.input}
-                                value={value}
-                                onChangeText={onChange}
-                                placeholder={"Enter the parking space address"}
+                    <>
+                        <Controller
+                            control={control}
+                            name="address"
+                            render={({ field: { value, onChange } }) => (
+                                <CustomInput
+                                    inputStyles={styles.input}
+                                    value={value}
+                                    onChangeText={(text) => handleInputChange(text, onChange)}
+                                    placeholder={"Enter the parking space address"}
+                                />
+                            )}
+                        />
+                        {isFetching && <Text>Loading suggestions...</Text>}
+                        {suggestions && (
+                            <FlatList
+                                style={styles.suggestionList}
+                                data={suggestions || []}
+                                keyExtractor={(item, index) => index.toString()}
+                                renderItem={({ item }) => (
+                                    <Text
+                                        style={styles.suggestion}
+                                        onPress={() => {
+                                            getPoint(`${item.subtitle.text} ${item.title.text}`);
+                                            setValue("address", `${item.subtitle.text} ${item.title.text}`);
+                                            setSuggestions(null);
+                                        }}>
+                                        {item.subtitle && item.subtitle.text + " "}
+                                        {item.title && item.title.text}
+                                    </Text>
+                                )}
                             />
                         )}
-                    />
+                    </>
                 ) : (
                     <View style={styles.coordinatesInputContainer}>
                         <View style={styles.coordinatesInput}>
@@ -175,13 +327,17 @@ export const ParkingAddForm = () => {
                         </View>
                     </View>
                 </View>
-                <CustomButton
-                    title={"Add spot"}
-                    onPress={handleSubmit(async (data) => {
-                        await handleSpotAdding(data);
-                    })}
-                    color={StyleGuide.GREEN}
-                />
+                {isLoading ? (
+                    <ActivityIndicator size="large" color={StyleGuide.GREEN} />
+                ) : (
+                    <CustomButton
+                        title={"Add spot"}
+                        onPress={handleSubmit(async (data) => {
+                            await handleSpotAdding(data);
+                        })}
+                        color={StyleGuide.GREEN}
+                    />
+                )}
             </View>
             {isMapVisible && (
                 <SpotPickingMap

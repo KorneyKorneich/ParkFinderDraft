@@ -1,5 +1,6 @@
 import { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { NativeStackScreenProps } from "react-native-screens/native-stack";
+import { NavigationProp } from "@react-navigation/native";
 
 export type AuthorizedStackParamList = {
     MapScreen: undefined;
@@ -15,6 +16,15 @@ export type UnauthorizedStackParamList = {
 };
 
 export type UnauthorizedStackRoutesProps = NativeStackScreenProps<UnauthorizedStackParamList, "OTPVerifyScreen">;
+export type AuthorizedStackRoutesProps<T extends keyof AuthorizedStackParamList> = NativeStackScreenProps<
+    AuthorizedStackParamList,
+    T
+>;
+
+export type AuthorizedNavigationProps<T extends keyof AuthorizedStackParamList> = NavigationProp<
+    AuthorizedStackParamList,
+    T
+>;
 
 export enum InitialScreens {
     UnauthorizedInitialScreen = "EmailAuthScreen",
