@@ -1,23 +1,23 @@
-import { location, Nullable } from "../common/common";
+import { LocationSchema } from "../common/common";
 
 export interface ParkingInf {
     parkingName: string;
     paid: boolean;
     handicap: boolean;
     charging: boolean;
-    workingHours: Nullable<string>;
-    rating: Nullable<number>;
+    workingHours: string;
+    rating: number;
     comment: string;
 }
 
 export interface ParkingSchema {
-    location: location;
+    location: LocationSchema;
     id: string;
     parkingInf: ParkingInf;
     approvedStatus: boolean;
 }
 export interface ParkingSchemaAddition {
-    location: location;
+    location: LocationSchema;
     parkingInf: ParkingInf;
     approvedStatus: boolean;
 }

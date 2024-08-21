@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CustomButton } from "@shared/ui";
 import { styles } from "./CurrentLocationBtn.styles";
 import { watchLocation } from "@shared/lib";
-import { location, Nullable } from "@shared/api";
+import { LocationSchema, Nullable } from "@shared/api";
 import { useSetlocationStore } from "@entities/user";
 import { ImageSourcePropType } from "react-native";
 
@@ -10,7 +10,7 @@ const currentLocationImg = require("@shared/ui/assets/images/location.png");
 const noCurrentLocationImg = require("@shared/ui/assets/images/no-location.png");
 
 export const CurrentLocationBtn = () => {
-    const [currentLocation, setCurrentLocation] = useState<Nullable<location>>(null);
+    const [currentLocation, setCurrentLocation] = useState<Nullable<LocationSchema>>(null);
     const [image, setImage] = useState<ImageSourcePropType>(currentLocationImg);
     const [triger, setTriger] = useState<boolean>(false);
     const { setLocation, setCurrentLocation: setCurrentLoc } = useSetlocationStore();
@@ -24,7 +24,7 @@ export const CurrentLocationBtn = () => {
     };
 
     useEffect(() => {
-        const unsubscribe = watchLocation((loc: Nullable<location>) => {
+        const unsubscribe = watchLocation((loc: Nullable<LocationSchema>) => {
             if (loc) {
                 setCurrentLocation(loc);
                 setImage(currentLocationImg);

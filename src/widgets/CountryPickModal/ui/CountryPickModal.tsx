@@ -11,9 +11,12 @@ interface CountryPickModalProps {
     handleCountryPick: (item: Country) => void;
 }
 
-export const CountryPickModal = (props: CountryPickModalProps) => {
-    const { handleCountryPick, handleModalClose, countries, isModalVisible } = props;
-
+export const CountryPickModal = ({
+    handleCountryPick,
+    handleModalClose,
+    countries,
+    isModalVisible,
+}: CountryPickModalProps) => {
     return (
         <Modal animationType={"slide"} transparent visible={isModalVisible}>
             <TouchableWithoutFeedback onPress={handleModalClose}>

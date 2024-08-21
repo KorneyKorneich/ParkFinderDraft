@@ -1,12 +1,12 @@
 import Geolocation from "react-native-geolocation-service";
-import { location, Nullable } from "@shared/api";
+import { LocationSchema, Nullable } from "@shared/api";
 
-type WatchLocationProp = (loc: Nullable<location>, err: Nullable<Geolocation.GeoError>) => void;
+type WatchLocationProp = (loc: Nullable<LocationSchema>, err: Nullable<Geolocation.GeoError>) => void;
 
-export const watchLocation = (callback : WatchLocationProp) => {
+export const watchLocation = (callback: WatchLocationProp) => {
     const watchId = Geolocation.watchPosition(
         (position) => {
-            const location: location = {
+            const location: LocationSchema = {
                 lat: position.coords.latitude,
                 lon: position.coords.longitude,
             };
