@@ -26,16 +26,9 @@ export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
 
     useEffect(() => {
         (async () => {
-            try {
-                const credentials = await Keychain.getGenericPassword();
-                console.log(credentials);
-                if (credentials) {
-                    signIn({ email: credentials.username, password: credentials.password });
-                } else {
-                    console.log("No credentials stored");
-                }
-            } catch (error) {
-                console.log("Keychain couldn't be accessed!", error);
+            const credentials = await Keychain.getGenericPassword();
+            if (credentials) {
+                signIn({ email: credentials.username, password: credentials.password });
             }
         })();
     }, []);

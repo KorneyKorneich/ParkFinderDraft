@@ -21,7 +21,6 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
                     loginError: null,
                     isLoading: false,
                 });
-                console.log(res.user.getIdToken());
             })
             .catch((e) => {
                 set({ loginError: e, isLoading: false });
