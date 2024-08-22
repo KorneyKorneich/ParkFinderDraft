@@ -30,9 +30,14 @@ export enum InitialScreens {
     UnauthorizedInitialScreen = "EmailAuthScreen",
 }
 
+export enum ROUTES_NAMES {
+    AddParkingScreen = "Add Parking",
+    MapScreen = "Map",
+}
+
 export enum ROUTES {
     MapScreen = "MapScreen",
-    AddParkScreen = "AddParkScreen",
+    AddParkingScreen = "AddParkingScreen",
     DrawerNavigator = "DrawerNavigator",
     ParkListScreen = "ParkListScreen",
     EmailAuthScreen = "EmailAuthScreen",

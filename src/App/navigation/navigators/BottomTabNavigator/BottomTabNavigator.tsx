@@ -22,10 +22,9 @@ const BottomTabNavigator = () => {
 
                     if (route.name === ROUTES.MapScreen) {
                         icon = mapIcon;
-                    } else if (route.name === ROUTES.AddParkScreen) {
+                    } else if (route.name === ROUTES.AddParkingScreen) {
                         icon = addMarkerIcon;
                     }
-
                     return <CustomImage path={icon} />;
                 },
             })}>
