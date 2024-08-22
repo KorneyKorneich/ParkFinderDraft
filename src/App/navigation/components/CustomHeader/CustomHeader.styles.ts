@@ -4,8 +4,8 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     headerArea: {
         position: "absolute",
-        top: 140,
-        left: 0,
+        top: 120,
+        right: 0,
         backgroundColor: "transparent",
         justifyContent: "center",
     },
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         borderRadius: 0,
         paddingVertical: 10,
         backgroundColor: StyleGuide.TRANSPARENT_GRAY,
-        borderBottomRightRadius: 8,
-        borderTopRightRadius: 8,
+        borderBottomLeftRadius: 8,
+        borderTopLeftRadius: 8,
     },
 });

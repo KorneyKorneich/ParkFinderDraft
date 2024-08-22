@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import React from "react";
 import { DrawerContentComponentProps, DrawerItem } from "@react-navigation/drawer";
 import { useUserStore } from "@entities/user";
@@ -11,7 +11,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
     const signOut = useUserStore((state) => state.signOut);
 
     return (
-        <View {...props} style={styles.box}>
+        <SafeAreaView {...props} style={styles.box}>
             <View style={styles.boxInside}>
                 <View style={styles.logo}>
                     <Text style={styles.firstPartLogo}>Parking</Text>
@@ -23,7 +23,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
                 </View>
                 <DrawerItem label="Log out" style={styles.drawerItem} onPress={signOut} />
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
