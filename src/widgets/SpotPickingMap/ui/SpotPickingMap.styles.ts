@@ -11,7 +11,6 @@ export default StyleSheet.create({
     modalContainer: {
         position: "relative",
         flex: 1,
-        // backgroundColor: StyleGuide.ERROR,
         backgroundColor: StyleGuide.TRANSPARENT_GRAY,
         justifyContent: "flex-end",
     },
@@ -32,7 +31,6 @@ export default StyleSheet.create({
     },
     mapContainer: {
         flex: 0.8,
-        // backgroundColor: StyleGuide.BLUE,
     },
     mapMarker: {
         position: "absolute",
