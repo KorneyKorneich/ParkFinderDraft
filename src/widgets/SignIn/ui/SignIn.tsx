@@ -49,65 +49,63 @@ export const SignIn = () => {
     };
 
     return (
-        <>
-            <KeyboardAvoidingView keyboardVerticalOffset={SIZES.HEIGHT}>
-                <Controller
-                    name={"email"}
-                    control={control}
-                    render={({ field: { onChange, onBlur, value } }) => (
-                        <CustomInput
-                            title={"Email"}
-                            value={value}
-                            onChangeText={onChange}
-                            boxStyle={styles.textInputBox}
-                            inputStyles={styles.inputStyles}
-                            onBlur={onBlur}
-                            incorrectValue={!!errors.email}
-                        />
-                    )}
-                    rules={{
-                        required: "Email is required.",
-                        pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                            message: "Enter a valid Email.",
-                        },
-                    }}
-                />
-                {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
-
-                <Controller
-                    name={"password"}
-                    control={control}
-                    render={({ field: { onChange, onBlur, value } }) => (
-                        <CustomInput
-                            title={"Password"}
-                            value={value}
-                            onBlur={onBlur}
-                            onChangeText={onChange}
-                            boxStyle={styles.textInputBox}
-                            inputStyles={styles.inputStyles}
-                            isPassword
-                            incorrectValue={!!errors.password}
-                            passwordVisible={isPasswordVisible}
-                            togglePasswordVisible={togglePasswordVisible}
-                        />
-                    )}
-                    rules={{
-                        required: "Password is required",
-                        minLength: {
-                            value: 6,
-                            message: "Min length is 6.",
-                        },
-                    }}
-                />
-                {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
-
-                {isLoading ? (
-                    <ActivityIndicator size={"large"} color={StyleGuide.GREEN} />
-                ) : (
-                    <CustomButton title={"Sign In"} onPress={handleSubmit(handleSignIn)} color={StyleGuide.GREEN} />
+        <KeyboardAvoidingView keyboardVerticalOffset={SIZES.HEIGHT}>
+            <Controller
+                name={"email"}
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <CustomInput
+                        title={"Email"}
+                        value={value}
+                        onChangeText={onChange}
+                        boxStyle={styles.textInputBox}
+                        inputStyles={styles.inputStyles}
+                        onBlur={onBlur}
+                        incorrectValue={!!errors.email}
+                    />
                 )}
-            </KeyboardAvoidingView>
-        </>
+                rules={{
+                    required: "Email is required.",
+                    pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Enter a valid Email.",
+                    },
+                }}
+            />
+            {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+
+            <Controller
+                name={"password"}
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <CustomInput
+                        title={"Password"}
+                        value={value}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        boxStyle={styles.textInputBox}
+                        inputStyles={styles.inputStyles}
+                        isPassword
+                        incorrectValue={!!errors.password}
+                        passwordVisible={isPasswordVisible}
+                        togglePasswordVisible={togglePasswordVisible}
+                    />
+                )}
+                rules={{
+                    required: "Password is required",
+                    minLength: {
+                        value: 6,
+                        message: "Min length is 6.",
+                    },
+                }}
+            />
+            {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
+
+            {isLoading ? (
+                <ActivityIndicator size={"large"} color={StyleGuide.GREEN} />
+            ) : (
+                <CustomButton title={"Sign In"} onPress={handleSubmit(handleSignIn)} color={StyleGuide.GREEN} />
+            )}
+        </KeyboardAvoidingView>
     );
 };
