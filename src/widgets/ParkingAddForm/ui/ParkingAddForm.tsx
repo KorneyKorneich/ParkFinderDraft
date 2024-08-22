@@ -2,14 +2,15 @@ import styles from "./ParkingAddForm.styles.ts";
 import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { CustomButton, CustomInput, StyleGuide, FormSwitcher, OptionSwitcher } from "@shared/ui";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Geocoder, Point } from "react-native-yamap";
 import { sendParkingSpotInfo } from "../api/funcs.ts";
 import { SpotPickingMap } from "@widgets/SpotPickingMap";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-import { AuthorizedNavigationProps, ParkingSchemaAddition } from "@shared/api";
 import { ScrollView } from "react-native-gesture-handler";
+import { AuthorizedNavigationProps, ParkingSchemaAddition, WebLinks } from "@shared/api";
+import { AppContext } from "@entities/AppContext";
 
 interface AdditionalOptionsType {
     isPaid: boolean;
@@ -68,8 +69,6 @@ export type AddressComponent = {
 
 export type AddressComponentKind = "COUNTRY" | "PROVINCE" | "LOCALITY" | "STREET" | "HOUSE";
 
-const SUGGEST_API_URL = "https://suggest-maps.yandex.ru/v1/suggest";
-
 export const ParkingAddForm = () => {
     const { navigate } = useNavigation<AuthorizedNavigationProps<"AddParkScreen">>();
     const [isAddress, setIsAddress] = useState<boolean>(true);
@@ -85,6 +84,8 @@ export const ParkingAddForm = () => {
     const handleToggleOption = (option: keyof AdditionalOptionsType) => {
         setAdditionalOptions((prev) => ({ ...prev, [option]: !prev[option] }));
     };
+
+    const { setTrigger } = useContext(AppContext);
 
     const handleSpotAdding: SubmitHandler<ParkingAddFormSchema> = async (data) => {
         setIsLoading(true);
@@ -105,6 +106,7 @@ export const ParkingAddForm = () => {
             await sendParkingSpotInfo(parkingSpotData);
             setIsLoading(false);
             navigate("MapScreen");
+            setTrigger(true);
             reset();
         }
     };
@@ -133,7 +135,7 @@ export const ParkingAddForm = () => {
     const fetchSuggestions = async (text: string) => {
         setIsFetching(true);
         try {
-            const response = await axios.get<SuggestResponse>(SUGGEST_API_URL, {
+            const response = await axios.get<SuggestResponse>(WebLinks.SUGGEST_API, {
                 params: {
                     apikey: process.env.REACT_NATIVE_APP_GEOSADGEST_API_KEY,
                     text: text,
@@ -148,8 +150,6 @@ export const ParkingAddForm = () => {
             } else {
                 setSuggestions([]);
             }
-        } catch (error) {
-            console.error("Error fetching suggestions:", error);
         } finally {
             setIsFetching(false);
         }

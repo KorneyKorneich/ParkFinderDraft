@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         width: SIZES.WIDTH,
     },
     button: {
-        zIndex: 100,
+        zIndex: 10,
         position: "absolute",
     },
 });

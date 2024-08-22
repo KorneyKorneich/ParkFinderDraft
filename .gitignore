@@ -1,7 +1,7 @@
 .DS_Store
 .env
 package-lock.json
-./ios/Podfile.lock
+ios/Podfile.lock
 #.idea/workspace.xml
 #
 *.pbxuser

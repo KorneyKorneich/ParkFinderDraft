@@ -1,11 +1,12 @@
 import { ActivityIndicator, KeyboardAvoidingView, Text } from "react-native";
 import { useUserStore } from "@entities/user";
-import { CustomInput, StyleGuide, CustomButton } from "@shared/ui";
+import { CustomInput, StyleGuide, CustomButton, SIZES } from "@shared/ui";
 import { styles } from "./SignUp.style";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { FirebaseError } from "firebase/app";
 import { getFirebaseAuthErrorMessage } from "@shared/api";
 import { useState } from "react";
+import * as Keychain from "react-native-keychain";
 
 interface SignUpForm {
     email: string;
@@ -30,6 +31,7 @@ export const SignUp = () => {
     const handleSignUp: SubmitHandler<SignUpForm> = async (data) => {
         try {
             await signUp({ email: data.email, password: data.password });
+            await Keychain.setGenericPassword(data.email, data.password);
         } catch (error) {
             const firebaseError = error as FirebaseError;
             const errorMessage = getFirebaseAuthErrorMessage(firebaseError);
@@ -46,7 +48,7 @@ export const SignUp = () => {
     };
 
     return (
-        <KeyboardAvoidingView>
+        <KeyboardAvoidingView keyboardVerticalOffset={SIZES.HEIGHT}>
             <Controller
                 name="email"
                 control={control}

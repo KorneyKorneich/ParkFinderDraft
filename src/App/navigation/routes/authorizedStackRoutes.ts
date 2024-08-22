@@ -1,4 +1,4 @@
-import DrawerNavigator from "../navigators/DrawerNavigator";
+import DrawerNavigator from "../navigators/DrawerNavigator/DrawerNavigator";
 import { ROUTES } from "@shared/api";
 
 export const authorizedStackRoutes = [
