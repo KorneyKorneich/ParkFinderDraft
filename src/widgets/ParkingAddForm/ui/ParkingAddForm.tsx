@@ -8,6 +8,7 @@ import { sendParkingSpotInfo } from "../api/funcs.ts";
 import { SpotPickingMap } from "@widgets/SpotPickingMap";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
+import { ScrollView } from "react-native-gesture-handler";
 import { AuthorizedNavigationProps, ParkingSchemaAddition, WebLinks } from "@shared/api";
 import { AppContext } from "@entities/AppContext";
 
@@ -183,7 +184,7 @@ export const ParkingAddForm = () => {
 
     return (
         <>
-            <View style={styles.formContainer}>
+            <ScrollView style={styles.formContainer}>
                 <Text style={styles.formName}>Add Parking Place</Text>
                 <Controller
                     control={control}
@@ -338,7 +339,7 @@ export const ParkingAddForm = () => {
                         color={StyleGuide.GREEN}
                     />
                 )}
-            </View>
+            </ScrollView>
             {isMapVisible && (
                 <SpotPickingMap
                     setIsModalOpen={setIsMapVisible}
