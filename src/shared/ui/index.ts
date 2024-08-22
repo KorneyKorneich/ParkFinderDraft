@@ -7,6 +7,7 @@ export { CloseIcon } from "./assets/CloseIcon";
 export { VerificationImg } from "./assets/VerificationImg";
 export { Eye } from "./assets/Eye";
 export { MapMarker } from "./assets/MapMarker";
+export { ParkingIcon } from "./assets/ParkingIcon";
 
 export { StyleGuide, SIZES, FONTS } from "./stylesConsts/stylesConsts";
 
