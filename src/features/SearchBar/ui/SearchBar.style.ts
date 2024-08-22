@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     inputAndHints: {
         position: "absolute",
         zIndex: 2,
-        top: 20,
+        top: 30,
         left: "20%",
         width: "80%",
         transform: [{ translateX: -40 }],
@@ -67,6 +67,6 @@ export const styles = StyleSheet.create({
     },
     activityIndicator: {
         position: "absolute",
-        right: "23%"
-    }
+        right: "23%",
+    },
 });

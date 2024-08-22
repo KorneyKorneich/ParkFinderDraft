@@ -36,7 +36,11 @@ export const ParkingBottomSheet: React.FC<IParkingBottomSheet> = ({ setIsModalVi
     const defineHighestRating = useMemo(() => {
         if (parkingsMarkers) {
             const highestApproved = parkingsMarkers
-                .sort((a, b) => b.parkingInf.rating - a.parkingInf.rating)
+                .sort((a, b) => {
+                    const ratingA = a.parkingInf.rating ?? 0;
+                    const ratingB = b.parkingInf.rating ?? 0;
+                    return ratingB - ratingA;
+                })
                 .filter((value) => value.approvedStatus);
             return highestApproved;
         }
