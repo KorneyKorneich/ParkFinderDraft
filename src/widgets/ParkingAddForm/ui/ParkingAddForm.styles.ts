@@ -62,15 +62,16 @@ const styles = StyleSheet.create({
     suggestion: {
         flexDirection: "row",
         alignItems: "center",
-        height: "100%",
         borderRadius: 8,
         borderColor: StyleGuide.GREY,
         borderWidth: 1,
+        paddingVertical: 10,
+        marginVertical: 5,
+        paddingHorizontal: 5,
     },
     suggestionList: {
         flexDirection: "column",
         height: "20%",
-        marginTop: 10,
     },
 });
 

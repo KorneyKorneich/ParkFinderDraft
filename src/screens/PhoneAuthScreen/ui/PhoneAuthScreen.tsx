@@ -8,6 +8,7 @@ import {
     View,
     ActivityIndicator,
     KeyboardAvoidingView,
+    Platform,
 } from "react-native";
 import styles from "./PhoneAuthScreen.styles";
 import { CustomButton, DownArrow, PhoneNumberAuthIllustration, StyleGuide } from "@shared/ui";
@@ -66,7 +67,7 @@ export const PhoneAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     return (
         <View style={styles.wrapper}>
             <SafeAreaView style={styles.container}>
-                <KeyboardAvoidingView behavior={"height"}>
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "position" : "height"}>
                     <View style={styles.img}>
                         <PhoneNumberAuthIllustration width={"200"} height={"200"} />
                     </View>
