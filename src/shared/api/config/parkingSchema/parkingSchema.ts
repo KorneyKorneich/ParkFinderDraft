@@ -7,7 +7,7 @@ export interface ParkingInf {
     charging: boolean;
     workingHours: Nullable<string>;
     rating: Nullable<number>;
-    comment: string;
+    comment: Nullable<string>;
 }
 
 export interface ParkingSchema {

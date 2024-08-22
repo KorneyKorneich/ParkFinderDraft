@@ -34,8 +34,6 @@ export const styles = StyleSheet.create({
                 backgroundColor: StyleGuide.WHITE,
                 padding: 10,
                 borderRadius: 8,
-                borderColor: StyleGuide.GREY,
-                borderWidth: 1,
                 flexDirection: "row",
             },
         }),
