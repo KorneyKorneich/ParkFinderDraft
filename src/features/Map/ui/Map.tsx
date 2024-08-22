@@ -31,6 +31,8 @@ export const Map: React.FC<MapProps> = ({ setIsModalVisible, setParkingInf, heig
 
     useEffect(() => {
         parkingsMarkers && setMarkers(parkingsMarkers);
+
+        console.log(parkingsMarkers);
     }, [parkingsMarkers]);
 
     return (

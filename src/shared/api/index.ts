@@ -9,7 +9,7 @@ export type {
     AuthorizedStackRoutesProps,
     AuthorizedNavigationProps,
 } from "./config/common/navigationTypes/routesType.ts";
-export { InitialScreens, ROUTES } from "./config/common/navigationTypes/routesType.ts";
+export { InitialScreens, ROUTES, ROUTES_NAMES } from "./config/common/navigationTypes/routesType.ts";
 export { getFirebaseAuthErrorMessage } from "./helpers/getAuthError.ts";
 
 export { WebLinks } from "./helpers/webLinks.ts";
