@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { Credentials, OTPProps, PhoneCreds, UserStoreSchema } from "./userStore.cfg.ts";
 import auth from "@react-native-firebase/auth";
+import * as Keychain from "react-native-keychain";
 
 export const useUserStore = create<UserStoreSchema>()((set) => ({
     user: null,
@@ -20,6 +21,7 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
                     loginError: null,
                     isLoading: false,
                 });
+                console.log(res.user.getIdToken());
             })
             .catch((e) => {
                 set({ loginError: e, isLoading: false });
@@ -47,6 +49,7 @@ export const useUserStore = create<UserStoreSchema>()((set) => ({
     },
     signOut: async () => {
         set({ isLoading: true, loginError: null });
+        await Keychain.resetGenericPassword();
         await auth()
             .signOut()
             .then(() => {

@@ -1,14 +1,18 @@
 import { Text, SafeAreaView, View, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DeviceMobile, FormSwitcher, Google, Logo } from "@shared/ui";
 import { styles } from "./EmailAuthScreen.styles.ts";
 import { SignUp } from "@widgets/SignUp";
 import { SignIn } from "@widgets/SignIn";
 import { UnauthorizedStackRoutesProps } from "@shared/api";
 import { ROUTES } from "@shared/api";
+import * as Keychain from "react-native-keychain";
+import { useUserStore } from "@entities/user/index.ts";
 
 export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) => {
     const [isSignUp, setIsSignUp] = useState(true);
+
+    const signIn = useUserStore((state) => state.signIn);
 
     const handleToSignUp = () => {
         setIsSignUp(true);
@@ -19,6 +23,22 @@ export const EmailAuthScreen = ({ navigation }: UnauthorizedStackRoutesProps) =>
     const handleToPhoneAuth = () => {
         navigation.navigate(ROUTES.PhoneAuthScreen);
     };
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const credentials = await Keychain.getGenericPassword();
+                console.log(credentials);
+                if (credentials) {
+                    signIn({ email: credentials.username, password: credentials.password });
+                } else {
+                    console.log("No credentials stored");
+                }
+            } catch (error) {
+                console.log("Keychain couldn't be accessed!", error);
+            }
+        })();
+    }, []);
 
     return (
         <SafeAreaView style={styles.container}>

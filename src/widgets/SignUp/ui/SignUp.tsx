@@ -6,6 +6,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { FirebaseError } from "firebase/app";
 import { getFirebaseAuthErrorMessage } from "@shared/api";
 import { useState } from "react";
+import * as Keychain from "react-native-keychain";
 
 interface SignUpForm {
     email: string;
@@ -30,6 +31,7 @@ export const SignUp = () => {
     const handleSignUp: SubmitHandler<SignUpForm> = async (data) => {
         try {
             await signUp({ email: data.email, password: data.password });
+            await Keychain.setGenericPassword(data.email, data.password);
         } catch (error) {
             const firebaseError = error as FirebaseError;
             const errorMessage = getFirebaseAuthErrorMessage(firebaseError);
