@@ -97,7 +97,7 @@ export const ParkingAddForm = () => {
                     parkingName: data.parkingName,
                     workingHours: null,
                     rating: null,
-                    comment: data.description,
+                    comment: data.description || null,
                     charging: additionalOptions.isCharge,
                     paid: additionalOptions.isPaid,
                     handicap: additionalOptions.isPlaceForDisabled,
@@ -215,7 +215,6 @@ export const ParkingAddForm = () => {
                         )}
                     />
                 </View>
-
                 <FormSwitcher
                     optionToggle={isAddress}
                     firstOptionTitle={"Address"}

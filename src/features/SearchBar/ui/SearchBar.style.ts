@@ -4,12 +4,24 @@ import { SIZES } from "@shared/ui/stylesConsts/stylesConsts.ts";
 
 export const styles = StyleSheet.create({
     inputAndHints: {
-        position: "absolute",
-        zIndex: 2,
-        top: 30,
-        left: "20%",
-        width: "80%",
-        transform: [{ translateX: -40 }],
+        ...Platform.select({
+            ios: {
+                position: "absolute",
+                zIndex: 2,
+                top: SIZES.HEIGHT * 0.07,
+                left: "20%",
+                width: "80%",
+                transform: [{ translateX: -40 }],
+            },
+            android: {
+                position: "absolute",
+                zIndex: 2,
+                top: 30,
+                left: "20%",
+                width: "80%",
+                transform: [{ translateX: -40 }],
+            },
+        }),
     },
     controlledInBox: {
         flexDirection: "row",
