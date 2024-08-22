@@ -147,8 +147,6 @@ export const ParkingAddForm = () => {
             } else {
                 setSuggestions([]);
             }
-        } catch (error) {
-            console.error("Error fetching suggestions:", error);
         } finally {
             setIsFetching(false);
         }
